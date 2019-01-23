@@ -1,3 +1,4 @@
+[Work In Progress] Project is stable but currently only has a few of the exercises (3) converted, track the remaining here: https://github.com/kealjones-wk/ap_over_react/pull/1
 # AP OverReact: Advanced Patterns in OverReact
 
 These exercises are OverReact versions of the React exercises from https://egghead.io/courses/advanced-react-component-patterns.
@@ -13,3 +14,4 @@ Although this is currently built with dart1 and dart2 compatible components, thi
 2. Then run `webdev serve --hot-reload`.
 3. Open Chrome to http://localhost:8080
 4. Navigate to the `lib/src/exercises` directory and get started by editing `01.dart`, and because this is dart 2 all changes you make will automatically hot reload in your browser!
+
