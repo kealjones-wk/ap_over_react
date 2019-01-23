@@ -6,10 +6,10 @@ even though it is not a 1 to 1 the concepts are the same and if you ever get stu
 how it was done.
 
 ## Requires Dart 2
-Although this is currently built with dart1 and dart2 compatible components. It is expected that this project is
-used with dart 2.
+Although this is currently built with dart1 and dart2 compatible components, this project is meant for dart 2.
 
 ## Get Started
 1. First, you'll need to run `pub get`.
 2. Then run `webdev serve --hot-reload`.
-3. Open Chrome to http://localhost:8080 and enjoy!
+3. Open Chrome to http://localhost:8080
+4. Navigate to the `lib/src/exercises` directory and get started by editing `01.dart`, and because this is dart 2 all changes you make will automatically hot reload in your browser!
