@@ -1,0 +1,29 @@
+name: ap_over_react
+version: 1.0.0
+authors:
+  - Workiva Client Platform Team <cp@workiva.com>
+  - Keal Jones
+environment:
+  sdk: ">=1.24.2 <3.0.0"
+dependencies:
+  test: ^1.5.2
+  over_react:
+    git:
+      url: git@github.com:Workiva/over_react.git
+      ref: builder_generate_public_class
+  over_react_test:
+    git:
+      url: git@github.com:kealjones-wk/over_react_test.git
+      ref: 42d7f25267bc3dcb447f4816346c0ebdfb9a853d
+  build_runner: ^1.1.2
+  build_test: ^0.10.3
+  build_web_compilers: ^1.0.0
+  dart_dev: ^2.0.2
+  js: ^0.6.0
+transformers:
+  - over_react
+  # Reminder: dart2js should come after any other transformers that touch Dart code
+  - $dart2js
+  - test/pub_serve:
+      $include: test/**_test{.*,}.dart
+  - $dart2js

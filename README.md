@@ -1,2 +1,15 @@
-# ap_over_react
-AP OverReact: Advanced Patterns in OverReact Exercises
+# AP OverReact: Advanced Patterns in OverReact
+
+These exercises are OverReact versions of the React exercises from https://egghead.io/courses/advanced-react-component-patterns.
+It is expected to follow along with the videos in that course while doing these exercises to get the full benefit,
+even though it is not a 1 to 1 the concepts are the same and if you ever get stuck take a look at exercises-final to see
+how it was done.
+
+## Requires Dart 2
+Although this is currently built with dart1 and dart2 compatible components. It is expected that this project is
+used with dart 2.
+
+## Get Started
+1. First, you'll need to run `pub get`.
+2. Then run `webdev serve --hot-reload`.
+3. Open Chrome to http://localhost:8080 and enjoy!
