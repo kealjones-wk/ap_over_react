@@ -44,7 +44,7 @@ class ConsumerBaseComponent extends react.Component {
 
   @override
   componentWillUnmount() {
-    if (context[contextKey]) {
+    if (context[contextKey] != null) {
       context[contextKey].off(onUpdate);
     }
     super.componentWillUnmount();

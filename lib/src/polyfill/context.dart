@@ -30,7 +30,7 @@ class EventEmitter {
   }
 
   off(handler) {
-    handlers = handlers.where((h) => h != handler);
+    handlers = handlers.where((h) => h != handler).toList();
   }
 
   get() {
