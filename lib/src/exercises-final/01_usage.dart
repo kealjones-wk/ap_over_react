@@ -16,16 +16,14 @@ class _$UsageProps extends UiProps {
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
   @override
-  Map getDefaultProps() => (newProps()
-    ..onToggle = (arg) => print('onToggle ${arg}')
-  );
+  Map getDefaultProps() =>
+      newProps()..onToggle = (arg) => print('onToggle $arg');
 
   @override
   render() {
     return (Toggle()..onToggle = props.onToggle)();
   }
 }
-
 
 // Ignore everything below here: its just temporary dart2 compatibility stuff...
 

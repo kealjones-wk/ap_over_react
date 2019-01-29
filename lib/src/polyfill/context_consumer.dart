@@ -1,20 +1,17 @@
 import 'package:react/react.dart' as react;
-import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/polyfill/context.dart';
+import './context.dart';
 
 class ConsumerBaseComponent extends react.Component {
+  ConsumerBaseComponent(this.contextKey);
+
   String contextKey;
   dynamic observedBits;
-
-  ConsumerBaseComponent(this.contextKey);
 
   @override
   Iterable<String> get contextKeys => [contextKey];
 
   @override
-  Map getInitialState() => {
-    'value': getValue()
-  };
+  Map getInitialState() => {'value': getValue()};
 
   @override
   render() {
@@ -23,8 +20,7 @@ class ConsumerBaseComponent extends react.Component {
 
   @override
   componentWillReceiveProps(newProps) {
-    observedBits =
-      newProps['observedBits'] == null
+    observedBits = newProps['observedBits'] == null
         ? MAX_SIGNED_31_BIT_INT // Subscribe to all changes by default
         : newProps['observedBits'];
     super.componentWillReceiveProps(newProps);
@@ -36,8 +32,7 @@ class ConsumerBaseComponent extends react.Component {
       context[contextKey].on(onUpdate);
     }
 
-    observedBits =
-      props['observedBits'] == null
+    observedBits = props['observedBits'] == null
         ? MAX_SIGNED_31_BIT_INT // Subscribe to all changes by default
         : props['observedBits'];
   }

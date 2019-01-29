@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'dart:html';
-import 'package:over_react/react_dom.dart' as react_dom;
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/app_components/exercise_container.dart';
 
@@ -86,12 +84,8 @@ class AppComponent extends UiStatefulComponent<AppProps, AppState> {
   int defaultExerciseId = 1;
 
   @override
-  Map getDefaultProps() => (newProps());
-
-  @override
-  Map getInitialState() => (newState()
-    ..exerciseId = exerciseIdFromUrl ?? defaultExerciseId
-  );
+  Map getInitialState() => newState()
+    ..exerciseId = exerciseIdFromUrl ?? defaultExerciseId;
 
   int get exerciseIdFromUrl {
     String exerciseId = Uri.base.queryParameters['id'];
@@ -109,7 +103,7 @@ class AppComponent extends UiStatefulComponent<AppProps, AppState> {
     setState(newState()
       ..exerciseId = id
     );
-    window.history.pushState('','','?id=${id}');
+    window.history.pushState('','','?id=$id');
   }
 
   @override

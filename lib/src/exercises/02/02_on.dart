@@ -14,9 +14,6 @@ class _$ToggleOnProps extends Abstract02Props {}
 @Component()
 class ToggleOnComponent extends UiComponent<ToggleOnProps> {
   @override
-  Map getDefaultProps() => (newProps());
-
-  @override
   render() {
     return null;
   }

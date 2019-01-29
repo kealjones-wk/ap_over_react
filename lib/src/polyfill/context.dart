@@ -1,13 +1,10 @@
 import 'dart:math';
 
-import 'package:over_react/over_react.dart';
-import 'package:react/react.dart' as react;
-import 'package:ap_over_react/src/polyfill/context_provider.dart';
-import 'package:ap_over_react/src/polyfill/context_consumer.dart';
+import 'package:react/react.dart';
+import './context_provider.dart';
+import './context_consumer.dart';
 
 const MAX_SIGNED_31_BIT_INT = 1073741823;
-
-
 
 // Inlined Object.is polyfill.
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
@@ -20,7 +17,7 @@ objectIs(x, y) {
 }
 
 class EventEmitter {
-  EventEmitter(this.value);
+  EventEmitter([this.value]);
 
   List handlers = [];
   dynamic value;
@@ -39,33 +36,33 @@ class EventEmitter {
 
   set(newValue, changedBits) {
     value = newValue;
-    Callback1Arg callHandler = (handler) => handler(value, changedBits);
+    Function callHandler = (handler) => handler(value, changedBits);
     handlers.forEach(callHandler);
   }
 }
 
 createEventEmitter(dynamic value) {
-  return EventEmitter(value);
+  return new EventEmitter(value);
 }
 
 class Context<T> {
-  static String contextKey = '__create-context-${Random()}__';
-  Function([dynamic]) Function([Map]) Provider;
-  Function([dynamic]) Function([Map]) Consumer;
-
   Context([dynamic defaultValue, Function calculateChangedBits]) {
-    ReactComponentFactoryProxy _ProviderBase = registerComponent(() => new ProviderBaseComponent(contextKey, defaultValue, calculateChangedBits));
-    ReactComponentFactoryProxy _ConsumerBase = registerComponent(() => new ConsumerBaseComponent(contextKey));
+    var r = new Random();
+    var _random1 = r.nextInt(pow(2, 32));
+    var _random2 = r.nextInt(pow(2, 32));
+    var _bigRandom = (_random1 << 32) | _random2;
+    contextKey = '__create-context-${_bigRandom}__';
 
-    Provider = ([Map props]) {
+    ReactComponentFactoryProxy _ProviderBase = registerComponent(
+        () => new ProviderBaseComponent(contextKey, defaultValue, calculateChangedBits));
+    ReactComponentFactoryProxy _ConsumerBase =
+        registerComponent(() => new ConsumerBaseComponent(contextKey));
+
+    Provider = ([Map props = const {}]) {
       return ([children]) {
         var propsValue = (props != null) ? props['value'] : defaultValue;
         return _ProviderBase(
-          {
-            'value': propsValue,
-            'calculateChangedBits': calculateChangedBits
-          },
-          children);
+            {'value': propsValue, 'calculateChangedBits': calculateChangedBits}, children);
       };
     };
 
@@ -76,8 +73,11 @@ class Context<T> {
     };
   }
 
+  String contextKey;
+  Function([dynamic]) Function([Map]) Provider;
+  Function([dynamic]) Function([Map]) Consumer;
 }
 
-createContext([defaultValue, Function calculateChangedBits]){
-  return Context(defaultValue, calculateChangedBits);
+createContext([defaultValue, Function calculateChangedBits]) {
+  return new Context(defaultValue, calculateChangedBits);
 }

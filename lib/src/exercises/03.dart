@@ -2,7 +2,6 @@
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
-import 'package:ap_over_react/src/polyfill/context.dart';
 
 // ignore: uri_has_not_been_generated
 part '03.over_react.g.dart';
@@ -44,7 +43,6 @@ part '03.over_react.g.dart';
 
 // 🐨 create a ToggleContext with React.createContext here
 
-
 ///var ToggleContext = createContext();
 
 @Factory()
@@ -80,16 +78,10 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   //    src/exercises/02/02_on.dart
   //    src/exercises/02/02_off.dart
   @override
-  Map getInitialState() => (newState()
-    ..isOn = false
-  );
+  Map getInitialState() => newState()..isOn = false;
 
-  void toggle(_){
-    setState((newState()
-      ..isOn = !state.isOn
-      ),
-      () => props.onToggle(state.isOn)
-    );
+  void toggle(_) {
+    setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
   }
 
   @override
@@ -104,10 +96,10 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     // 2. cloneElement: https://pub.dartlang.org/documentation/over_react/1.24.1/over_react/cloneElement.html
     //
     // 🐨 you'll want to completely replace the code below with the above logic.
-    return (Switch()
+    return false;/*(Switch()
       ..isOn = state.isOn
       ..onClick = toggle
-    )();
+    )();*/
   }
 }
 
@@ -119,6 +111,7 @@ class ToggleProps extends _$ToggleProps with _$TogglePropsAccessorsMixin {
   // ignore: undefined_identifier, undefined_class, const_initialized_with_non_constant_value
   static const PropsMeta meta = _$metaForToggleProps;
 }
+
 // AF-3369 This will be removed once the transition to Dart 2 is complete.
 // ignore: mixin_of_non_class, undefined_class
 class ToggleState extends _$ToggleState with _$ToggleStateAccessorsMixin {

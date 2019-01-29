@@ -9,14 +9,10 @@ part '02_on.over_react.g.dart';
 UiFactory<ToggleOnProps> ToggleOn = _$ToggleOn;
 
 @Props()
-class _$ToggleOnProps extends Abstract02Props {
-}
+class _$ToggleOnProps extends Abstract02Props {}
 
 @Component()
 class ToggleOnComponent extends UiComponent<ToggleOnProps> {
-  @override
-  Map getDefaultProps() => (newProps());
-
   @override
   render() {
     return props.isOn ? Dom.span()(props.children) : null;

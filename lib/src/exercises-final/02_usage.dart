@@ -19,25 +19,20 @@ class _$UsageProps extends UiProps {
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
   @override
-  Map getDefaultProps() => (newProps()
-    ..onToggle = (arg) => print('onToggle ${arg}')
-  );
+  Map getDefaultProps() =>
+      newProps()..onToggle = (arg) => print('onToggle $arg');
 
   @override
   render() {
-    return (Toggle()
-        ..onToggle = props.onToggle
-      )(
-        ToggleOn()('The button is on'),
-        ToggleOff()('The button is off'),
-        ToggleButton()()
-      );
+    return (Toggle()..onToggle = props.onToggle)(
+      ToggleOn()('The button is on'),
+      ToggleOff()('The button is off'),
+      ToggleButton()(),
+    );
   }
 }
 
-
 // Ignore everything below here: its just temporary dart2 compatibility stuff...
-
 
 // AF-3369 This will be removed once the transition to Dart 2 is complete.
 // ignore: mixin_of_non_class, undefined_class

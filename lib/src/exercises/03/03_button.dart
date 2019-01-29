@@ -1,7 +1,7 @@
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
-import 'package:ap_over_react/src/exercises-final/03/abstract_03_props.dart';
-import 'package:ap_over_react/src/exercises-final/03/03_context.dart';
+import 'package:ap_over_react/src/exercises/03/abstract_03_props.dart';
+import 'package:ap_over_react/src/exercises/03/03_context.dart';
 
 // ignore: uri_has_not_been_generated
 part '03_button.over_react.g.dart';

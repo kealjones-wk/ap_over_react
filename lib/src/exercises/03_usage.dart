@@ -1,13 +1,12 @@
 // Building the toggle component
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/exercises/02.dart';
-import 'package:ap_over_react/src/exercises/02/02_on.dart';
-import 'package:ap_over_react/src/exercises/02/02_off.dart';
-import 'package:ap_over_react/src/exercises/02/02_button.dart';
+import 'package:ap_over_react/src/exercises/03.dart';
+import 'package:ap_over_react/src/exercises/03/03_on.dart';
+import 'package:ap_over_react/src/exercises/03/03_off.dart';
+import 'package:ap_over_react/src/exercises/03/03_button.dart';
 
 // ignore: uri_has_not_been_generated
 part '03_usage.over_react.g.dart';
-
 
 //var ToggleContext = createContext();
 // Don't make changes to the Usage component. It's here to show you how your
@@ -25,9 +24,8 @@ class _$UsageProps extends UiProps {
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
   @override
-  Map getDefaultProps() => (newProps()
-    ..onToggle = (arg) => print('onToggle ${arg}')
-  );
+  Map getDefaultProps() =>
+      newProps()..onToggle = (arg) => print('onToggle $arg');
 
   @override
   render() {
@@ -36,7 +34,7 @@ class UsageComponent extends UiComponent<UsageProps> {
       ToggleOff()('The button is off'),
       Dom.div()(
         ToggleButton()(),
-      )
+      ),
     );
   }
 }

@@ -1,14 +1,20 @@
 import 'dart:async';
 
-import 'package:over_react/react_dom.dart' as react_dom;
+import 'package:ap_over_react/src/app_components/error_catcher.dart';
 import 'package:over_react/over_react.dart';
 
-import 'package:ap_over_react/src/exercises-final/01_usage.dart' deferred as exercise_01_final;
-import 'package:ap_over_react/src/exercises/01_usage.dart' deferred as exercise_01;
-import 'package:ap_over_react/src/exercises-final/02_usage.dart' deferred as exercise_02_final;
-import 'package:ap_over_react/src/exercises/02_usage.dart' deferred as exercise_02;
-import 'package:ap_over_react/src/exercises-final/03_usage.dart' deferred as exercise_03_final;
-import 'package:ap_over_react/src/exercises/03_usage.dart' deferred as exercise_03;
+import 'package:ap_over_react/src/exercises-final/01_usage.dart'
+    deferred as exercise_01_final;
+import 'package:ap_over_react/src/exercises/01_usage.dart'
+    deferred as exercise_01;
+import 'package:ap_over_react/src/exercises-final/02_usage.dart'
+    deferred as exercise_02_final;
+import 'package:ap_over_react/src/exercises/02_usage.dart'
+    deferred as exercise_02;
+import 'package:ap_over_react/src/exercises-final/03_usage.dart'
+    deferred as exercise_03_final;
+import 'package:ap_over_react/src/exercises/03_usage.dart'
+    deferred as exercise_03;
 
 // ignore: uri_has_not_been_generated
 part 'fullpage.over_react.g.dart';
@@ -20,7 +26,6 @@ UiFactory<FullPageProps> FullPage = _$FullPage;
 @Props()
 class _$FullPageProps extends UiProps {
   String type;
-  String id;
 }
 
 @State()
@@ -35,7 +40,6 @@ class FullPageState extends _$FullPageState with _$FullPageStateAccessorsMixin {
   static const StateMeta meta = _$metaForFullPageState;
 }
 
-
 // AF-3369 This will be removed once the transition to Dart 2 is complete.
 // ignore: mixin_of_non_class, undefined_class
 class FullPageProps extends _$FullPageProps with _$FullPagePropsAccessorsMixin {
@@ -44,23 +48,19 @@ class FullPageProps extends _$FullPageProps with _$FullPagePropsAccessorsMixin {
 }
 
 @Component()
-class FullPageComponent extends UiStatefulComponent<FullPageProps, FullPageState> {
-
+class FullPageComponent
+    extends UiStatefulComponent<FullPageProps, FullPageState> {
   @override
-  getInitialState() => (newState()
-    ..componentFactory = null
-  );
+  getInitialState() => newState()..componentFactory = null;
 
   void updateFactory() {
-    getExerciseClass().then((UiFactory cfactory){
-      setState((newState()
-        ..componentFactory = cfactory
-      ));
+    getExerciseClass().then((UiFactory cfactory) {
+      setState(newState()..componentFactory = cfactory);
     });
   }
 
   @override
-  componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(prevProps, prevState) {
     FullPageProps tprevProps = typedPropsFactory(prevProps);
     if (tprevProps.id != props.id) {
       updateFactory();
@@ -76,8 +76,9 @@ class FullPageComponent extends UiStatefulComponent<FullPageProps, FullPageState
 
   Future<UiFactory> getExerciseClass() async {
     switch (props.id) {
-      case '01': {
-          if (props.type == 'final'){
+      case '01':
+        {
+          if (props.type == 'final') {
             await exercise_01_final.loadLibrary();
             return exercise_01_final.Usage;
           } else {
@@ -86,8 +87,9 @@ class FullPageComponent extends UiStatefulComponent<FullPageProps, FullPageState
           }
         }
         break;
-      case '02': {
-          if (props.type == 'final'){
+      case '02':
+        {
+          if (props.type == 'final') {
             await exercise_02_final.loadLibrary();
             return exercise_02_final.Usage;
           } else {
@@ -96,35 +98,37 @@ class FullPageComponent extends UiStatefulComponent<FullPageProps, FullPageState
           }
         }
         break;
-      case '03': {
-          if (props.type == 'final'){
+      case '03':
+        {
+          if (props.type == 'final') {
             await exercise_03_final.loadLibrary();
             return exercise_03_final.Usage;
           } else {
-            await exercise_02.loadLibrary();
-            return exercise_02.Usage;
+            await exercise_03.loadLibrary();
+            return exercise_03.Usage;
           }
         }
         break;
       default:
-      return null;
+        return null;
     }
   }
 
   @override
   render() {
-    return (Dom.div()
-          ..style = {
-            'flex': 1,
-            'padding': 20,
-            'margin': 20,
-            'display': 'grid',
-            'alignItems': 'center',
-            'justifyContent': 'center',
-          }
-        )(
-            state.componentFactory != null ? state.componentFactory()() : null
-        );
+    return
+      (ErrorCatcher()
+        ..style = {
+          'flex': 1,
+          'padding': 20,
+          'margin': 20,
+          'display': 'grid',
+          'alignItems': 'center',
+          'justifyContent': 'center',
+        }
+      )(
+        state.componentFactory != null ? state.componentFactory()() : null,
+      );
   }
 
   /*

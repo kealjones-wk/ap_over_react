@@ -1,21 +1,29 @@
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/exercises-final/02/abstract_02_props.dart';
-
+import 'package:ap_over_react/src/exercises/03/abstract_03_props.dart';
+import 'package:ap_over_react/src/exercises/03/03_context.dart';
 // ignore: uri_has_not_been_generated
-part '02_off.over_react.g.dart';
+part '03_off.over_react.g.dart';
 
 @Factory()
 // ignore: undefined_identifier
 UiFactory<ToggleOffProps> ToggleOff = _$ToggleOff;
 
 @Props()
-class _$ToggleOffProps extends Abstract02Props {}
+class _$ToggleOffProps extends Abstract03Props {}
 
 @Component()
 class ToggleOffComponent extends UiComponent<ToggleOffProps> {
   @override
+  Map getDefaultProps() => newProps()..isOn = false;
+
+  @override
   render() {
-    return null;
+    return ToggleContext.Consumer()(
+      (value) {
+        TypedValue tValue = TypedValue.fromList(value);
+        return !tValue.isOn ? Dom.span()(props.children) : null;
+      },
+    );
   }
 }
 

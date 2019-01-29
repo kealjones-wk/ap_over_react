@@ -9,15 +9,12 @@ part '03_on.over_react.g.dart';
 UiFactory<ToggleOnProps> ToggleOn = _$ToggleOn;
 
 @Props()
-class _$ToggleOnProps extends Abstract03Props {
-}
+class _$ToggleOnProps extends Abstract03Props {}
 
 @Component()
 class ToggleOnComponent extends UiComponent<ToggleOnProps> {
   @override
-  Map getDefaultProps() => (newProps()
-    ..isOn = false
-  );
+  Map getDefaultProps() => newProps()..isOn = false;
 
   @override
   render() {
@@ -25,7 +22,7 @@ class ToggleOnComponent extends UiComponent<ToggleOnProps> {
       (value) {
         TypedValue tValue = TypedValue.fromList(value);
         return tValue.isOn ? Dom.span()(props.children) : null;
-      }
+      },
     );
   }
 }

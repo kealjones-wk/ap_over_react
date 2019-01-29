@@ -24,9 +24,8 @@ class _$UsageProps extends UiProps {
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
   @override
-  Map getDefaultProps() => (newProps()
-    ..onToggle = (arg) => print('onToggle ${arg}')
-  );
+  Map getDefaultProps() =>
+      newProps()..onToggle = (arg) => print('onToggle $arg');
 
   @override
   render() {
@@ -35,7 +34,7 @@ class UsageComponent extends UiComponent<UsageProps> {
       ToggleOff()('The button is off'),
       Dom.div()(
         ToggleButton()(),
-      )
+      ),
     );
   }
 }

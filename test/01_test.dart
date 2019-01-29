@@ -2,17 +2,16 @@
 import 'package:over_react_test/over_react_test.dart';
 import 'package:test/test.dart';
 import 'package:over_react/over_react.dart';
-import './utils.dart';
 
 import 'package:ap_over_react/src/exercises-final/01_usage.dart'; // comment out this line when you want to test your implementation
 // import 'package:ap_over_react/src/exercises/01'; // uncomment this line when you want to test your implementation
 
+import './utils.dart';
 
 main() {
   setClientConfiguration();
   ValidationUtil.WARNINGS_ENABLED = false;
   enableTestMode();
-  TestJacket<UiComponent> jacket;
 
   test('renders a toggle component', () {
       TestCallback testCB = TestCallback();
