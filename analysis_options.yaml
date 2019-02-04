@@ -12,6 +12,12 @@ analyzer:
     - "web/api/**"
     - "test/vm_tests/tool/tool_symlink/**"
     - ".dart_tool/**/**"
+  plugins:
+    over_react_analyzer_plugin_host
+
+plugins:
+  over_react_analyzer_plugin_host:
+    enabled: true
 
 # ALL lint rules are included. Unused lints should be commented
 # out with a reason. An up to date list of all options is here

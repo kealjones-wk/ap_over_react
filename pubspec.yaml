@@ -25,6 +25,12 @@ dependencies:
       name: over_react_format
       url: https://pub.workiva.org
     version: "^2.0.1"
+dev_dependencies:
+  over_react_analyzer_plugin_host:
+    git:
+      url: git@github.com:greglittlefield-wf/git_playground.git
+      ref: over_react_analyzer_plugin/master
+      path: plugin_hosts/git
 transformers:
   - over_react
   # Reminder: dart2js should come after any other transformers that touch Dart code

@@ -3,18 +3,24 @@ import 'dart:async';
 import 'package:ap_over_react/src/app_components/error_catcher.dart';
 import 'package:over_react/over_react.dart';
 
-import 'package:ap_over_react/src/exercises-final/01_usage.dart'
+import 'package:ap_over_react/src/exercises-final/01/usage.dart'
     deferred as exercise_01_final;
-import 'package:ap_over_react/src/exercises/01_usage.dart'
+import 'package:ap_over_react/src/exercises/01/usage.dart'
     deferred as exercise_01;
-import 'package:ap_over_react/src/exercises-final/02_usage.dart'
+import 'package:ap_over_react/src/exercises-final/02/usage.dart'
     deferred as exercise_02_final;
-import 'package:ap_over_react/src/exercises/02_usage.dart'
+import 'package:ap_over_react/src/exercises/02/usage.dart'
     deferred as exercise_02;
-import 'package:ap_over_react/src/exercises-final/03_usage.dart'
+import 'package:ap_over_react/src/exercises-final/03/usage.dart'
     deferred as exercise_03_final;
-import 'package:ap_over_react/src/exercises/03_usage.dart'
+import 'package:ap_over_react/src/exercises/03/usage.dart'
     deferred as exercise_03;
+import 'package:ap_over_react/src/exercises-final/03/extra/1/usage.dart'
+    deferred as exercise_03_1_final;
+//import 'package:ap_over_react/src/exercises/03/extra/1/usage.dart' deferred as exercise_03_1;
+import 'package:ap_over_react/src/exercises-final/03/extra/2/usage.dart'
+    deferred as exercise_03_2_final;
+//import 'package:ap_over_react/src/exercises/03/extra/2/usage.dart' deferred as exercise_03_2;
 
 // ignore: uri_has_not_been_generated
 part 'fullpage.over_react.g.dart';
@@ -109,6 +115,28 @@ class FullPageComponent
           }
         }
         break;
+      case '03.1':
+        {
+          if (props.type == 'final') {
+            await exercise_03_1_final.loadLibrary();
+            return exercise_03_1_final.Usage;
+          } else {
+            await exercise_03.loadLibrary();
+            return exercise_03.Usage;
+          }
+        }
+        break;
+      case '03.2':
+        {
+          if (props.type == 'final') {
+            await exercise_03_2_final.loadLibrary();
+            return exercise_03_2_final.Usage;
+          } else {
+            await exercise_03.loadLibrary();
+            return exercise_03.Usage;
+          }
+        }
+        break;
       default:
         return null;
     }
@@ -116,19 +144,18 @@ class FullPageComponent
 
   @override
   render() {
-    return
-      (ErrorCatcher()
-        ..style = {
-          'flex': 1,
-          'padding': 20,
-          'margin': 20,
-          'display': 'grid',
-          'alignItems': 'center',
-          'justifyContent': 'center',
-        }
-      )(
-        state.componentFactory != null ? state.componentFactory()() : null,
-      );
+    return (ErrorCatcher()
+      ..style = {
+        'flex': 1,
+        'padding': 20,
+        'margin': 20,
+        'display': 'grid',
+        'alignItems': 'center',
+        'justifyContent': 'center',
+      }
+    )(
+      state.componentFactory != null ? state.componentFactory()() : null,
+    );
   }
 
   /*

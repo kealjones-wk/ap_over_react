@@ -1,63 +1,15 @@
 import 'dart:html';
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/app_components/exercise_container.dart';
-
 // ignore: uri_has_not_been_generated
 part 'app.over_react.g.dart';
-
-/*
-List files = [
-  '01',
-  '02',
-  '03',
-  '04',
-  '05',
-  '06',
-  '07',
-  '08',
-  '09',
-  '10',
-  '11',
-  '12',
-];
-
-List pages = files.reduce((p, filename, index, fullArray) {
-  var finalExercise = require('./exercises-final/${filename}');
-  Object.assign(finalExercise, Map.from({
-    previous: fullArray[index - 1],
-    next: fullArray[index + 1],
-    isolatedPath: '/isolated/exercises-final/${filename}',
-  }));
-  var exercise = require('./exercises/${filename}');
-  Object.assign(exercise, Map.from({
-    previous: fullArray[index - 1],
-    next: fullArray[index + 1],
-    isolatedPath: '/isolated/exercises/${filename}',
-  }));
-  p[filename] = Map.from({
-    exercise: exercise,
-    finalExercise: finalExercise,
-    title: finalExercise.default.title
-  });
-  return p
-}, {})
-
-const filesAndTitles = files.map(filename => ({
-  title: pages[filename].title,
-  filename,
-}));
-*/
-
-
 
 @Factory()
 // ignore: undefined_identifier
 UiFactory<AppProps> App = _$App;
 
 @Props()
-class _$AppProps extends UiProps {
-
-}
+class _$AppProps extends UiProps {}
 
 // AF-3369 This will be removed once the transition to Dart 2 is complete.
 // ignore: mixin_of_non_class, undefined_class
@@ -68,7 +20,7 @@ class AppProps extends _$AppProps with _$AppPropsAccessorsMixin {
 
 @State()
 class _$AppState extends UiState {
-  int exerciseId;
+  String exerciseId;
 }
 
 // AF-3369 This will be removed once the transition to Dart 2 is complete.
@@ -81,25 +33,39 @@ class AppState extends _$AppState with _$AppStateAccessorsMixin {
 @Component()
 class AppComponent extends UiStatefulComponent<AppProps, AppState> {
 
-  int defaultExerciseId = 1;
+  String defaultExerciseId = '01';
+
+  List<String> exerciseList = [
+    '01',
+    '02',
+    '03',
+    '03.1',
+    '03.2',
+  ];
 
   @override
   Map getInitialState() => newState()
     ..exerciseId = exerciseIdFromUrl ?? defaultExerciseId;
 
-  int get exerciseIdFromUrl {
-    String exerciseId = Uri.base.queryParameters['id'];
+  String get exerciseIdFromUrl {
+    var exerciseId = Uri.base.queryParameters['id'];
     if (exerciseId != null){
-      return int.parse(exerciseId);
+      if (exerciseId.length == 3 && exerciseId.contains('.') || exerciseId.length <= 1){
+        return formatExerciseId(exerciseId);
+      }
+      return exerciseId;
     }
     return defaultExerciseId;
   }
 
   String formatExerciseId(id) {
+    if (id.length == 3 && id.contains('.')){
+      return id.toString().padLeft(4,'0');
+    }
     return id.toString().padLeft(2,'0');
   }
 
-  void goToExercise(int id){
+  void goToExercise(String id){
     setState(newState()
       ..exerciseId = id
     );
@@ -115,13 +81,17 @@ class AppComponent extends UiStatefulComponent<AppProps, AppState> {
           'textAlign': 'center',
           }
         )(
-          new List.generate(3, (int i){
-            return (Dom.a()..className='${(i+1) == exerciseIdFromUrl ? "active" : ""}'..key=i..onClick = (_){
-              goToExercise(i+1);
-            })(formatExerciseId(i+1));
+          exerciseList.map((String exerciseId){
+            return (Dom.a()
+                ..className = '${exerciseId == exerciseIdFromUrl ? "active" : ""}'
+                ..key = exerciseId
+                ..onClick = (_){
+                  goToExercise(exerciseId);
+                }
+            )(formatExerciseId(exerciseId));
           })
         ),
-        (ExerciseContainer()..id=formatExerciseId(state.exerciseId))()
+        (ExerciseContainer()..id = formatExerciseId(state.exerciseId))()
       );
   }
 }
