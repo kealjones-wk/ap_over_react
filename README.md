@@ -6,7 +6,7 @@ even though it is not a 1 to 1 the concepts are the same and if you ever get stu
 how it was done.
 
 ## Requires Dart 2
-Although this is currently built with dart1 and dart2 compatible components, this project is meant for dart 2.
+Yep, only dart 2 sorry.
 
 ## Get Started
 1. First, you'll need to run `pub get`.

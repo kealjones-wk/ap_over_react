@@ -38,18 +38,3 @@ class ErrorCatcherComponent
     );
   }
 }
-
-// AF-3369 This will be removed once the transition to Dart 2 is complete.
-// ignore: mixin_of_non_class, undefined_class
-class ErrorCatcherProps extends _$ErrorCatcherProps
-    with _$ErrorCatcherPropsAccessorsMixin {
-  // ignore: undefined_identifier, undefined_class, const_initialized_with_non_constant_value
-  static const PropsMeta meta = _$metaForErrorCatcherProps;
-}
-// AF-3369 This will be removed once the transition to Dart 2 is complete.
-// ignore: mixin_of_non_class, undefined_class
-class ErrorCatcherState extends _$ErrorCatcherState
-    with _$ErrorCatcherStateAccessorsMixin {
-  // ignore: undefined_identifier, undefined_class, const_initialized_with_non_constant_value
-  static const StateMeta meta = _$metaForErrorCatcherState;
-}

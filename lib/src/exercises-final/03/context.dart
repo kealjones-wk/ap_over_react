@@ -1,9 +1,11 @@
 import 'package:ap_over_react/src/polyfills/context.dart';
-import 'package:ap_over_react/src/shared/typed_value.dart';
+import 'package:ap_over_react/src/shared/shared_props.dart'
+    as SharedToggleProps;
 
-TypedValue tDefaultValue = TypedValue(
-    isOn: false,
-    onClick: (_) {
-      print('default OnClick');
-    });
+SharedToggleProps.BaseToggleProps tDefaultValue =
+    SharedToggleProps.BaseToggleProps()
+      ..isOn = false
+      ..toggle = (_) {
+        print('default OnClick');
+      };
 Context ToggleContext = createContext(tDefaultValue);

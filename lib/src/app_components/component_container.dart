@@ -12,14 +12,6 @@ class _$ComponentContainerProps extends UiProps {
   String label;
 }
 
-// AF-3369 This will be removed once the transition to Dart 2 is complete.
-// ignore: mixin_of_non_class, undefined_class
-class ComponentContainerProps extends _$ComponentContainerProps
-    with _$ComponentContainerPropsAccessorsMixin {
-  // ignore: undefined_identifier, undefined_class, const_initialized_with_non_constant_value
-  static const PropsMeta meta = _$metaForComponentContainerProps;
-}
-
 @Component()
 class ComponentContainerComponent extends UiComponent<ComponentContainerProps> {
   @override
@@ -37,22 +29,5 @@ class ComponentContainerComponent extends UiComponent<ComponentContainerProps> {
         }
       )(props.children),
     );
-    /*
-    <div style={{display: 'flex', flexDirection: 'column'}}>
-      <h2 style={{textAlign: 'center'}}>{label}</h2>
-      <div
-        style={{
-          flex: 1,
-          padding: 20,
-          border: '1px solid',
-          display: 'grid',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <ErrorCatcher {...props} />
-      </div>
-    </div>
-  */
   }
 }

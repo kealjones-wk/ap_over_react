@@ -39,7 +39,10 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   getStateAndHelpers() {
     return BaseToggleProps()
       ..isOn = state.isOn
-      ..toggle = toggle;
+      ..toggle = toggle
+      ..togglerProps = domProps()
+          ..aria.pressed = state.isOn
+          ..onClick = toggle;
   }
 
   @override

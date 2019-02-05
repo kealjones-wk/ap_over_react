@@ -56,7 +56,6 @@ class ProviderBaseComponent extends react.Component {
   }
 }
 
-
 class ConsumerBaseComponent extends react.Component {
   ConsumerBaseComponent(this.contextKey);
 

@@ -1,24 +1,12 @@
 import 'package:ap_over_react/src/polyfills/context.dart';
+import 'package:ap_over_react/src/shared/shared_props.dart'
+    as SharedToggleProps;
 
-class TypedValue {
-  TypedValue({this.isOn, this.onClick});
+SharedToggleProps.BaseToggleProps tDefaultValue =
+    SharedToggleProps.BaseToggleProps()
+      ..isOn = false
+      ..toggle = (_) {
+        print('default OnClick');
+      };
 
-  TypedValue.fromList(List<dynamic> list) {
-    this.isOn = list[0];
-    this.onClick = list[1];
-  }
-
-  bool isOn;
-  Function onClick;
-
-  List<dynamic> toList() {
-    return [this.isOn, this.onClick];
-  }
-}
-
-TypedValue tDefaultValue = TypedValue(
-    isOn: false,
-    onClick: (_) {
-      print('default OnClick');
-    });
-Context ToggleContext = createContext(tDefaultValue.toList());
+Context ToggleContext = createContext(tDefaultValue);

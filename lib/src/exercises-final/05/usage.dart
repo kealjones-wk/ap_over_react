@@ -31,13 +31,14 @@ class UsageComponent extends UiComponent<UsageProps> {
     return (Toggle()..onToggle = props.onToggle)(
       (BaseToggleProps value) {
         return Dom.div()(
-          value.isOn ? 'The button is on' : 'The button is off',
           (Switch()
+            ..addProps(value.togglerProps)
             ..isOn = value.isOn
             ..onClick = value.toggle
           )(),
           Dom.hr()(),
           (Dom.button()
+            ..addProps(value.togglerProps)
             ..aria.label = 'custom-button'
             ..onClick = value.toggle
           )(

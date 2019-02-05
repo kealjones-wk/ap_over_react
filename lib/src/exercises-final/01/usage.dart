@@ -15,21 +15,10 @@ class _$UsageProps extends UiProps {
 
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
-  @override
-  Map getDefaultProps() =>
-      newProps()..onToggle = (arg) => print('onToggle $arg');
+  void onToggle(args) => print('onToggle $args');
 
   @override
   render() {
-    return (Toggle()..onToggle = props.onToggle)();
+    return (Toggle()..onToggle = onToggle)();
   }
-}
-
-// Ignore everything below here: its just temporary dart2 compatibility stuff...
-
-// AF-3369 This will be removed once the transition to Dart 2 is complete.
-// ignore: mixin_of_non_class, undefined_class
-class UsageProps extends _$UsageProps with _$UsagePropsAccessorsMixin {
-  // ignore: undefined_identifier, undefined_class, const_initialized_with_non_constant_value
-  static const PropsMeta meta = _$metaForUsageProps;
 }

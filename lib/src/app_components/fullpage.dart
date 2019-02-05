@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:ap_over_react/src/app_components/error_catcher.dart';
 import 'package:over_react/over_react.dart';
+import 'package:ap_over_react/src/shared/shared_props.dart';
 
 import 'package:ap_over_react/src/exercises-final/01/usage.dart'
     deferred as exercise_01_final;
@@ -22,6 +23,15 @@ import 'package:ap_over_react/src/exercises-final/03/extra/2/usage.dart'
     deferred as exercise_03_2_final;
 //import 'package:ap_over_react/src/exercises/03/extra/2/usage.dart' deferred as exercise_03_2;
 
+import 'package:ap_over_react/src/exercises-final/04/usage.dart'
+    deferred as exercise_04_final;
+//import 'package:ap_over_react/src/exercises/04/usage.dart' deferred as exercise_04;
+
+
+import 'package:ap_over_react/src/exercises-final/05/usage.dart'
+    deferred as exercise_05_final;
+//import 'package:ap_over_react/src/exercises/05/usage.dart' deferred as exercise_05;
+
 // ignore: uri_has_not_been_generated
 part 'fullpage.over_react.g.dart';
 
@@ -37,20 +47,6 @@ class _$FullPageProps extends UiProps {
 @State()
 class _$FullPageState extends UiState {
   UiFactory componentFactory;
-}
-
-// AF-3369 This will be removed once the transition to Dart 2 is complete.
-// ignore: mixin_of_non_class, undefined_class
-class FullPageState extends _$FullPageState with _$FullPageStateAccessorsMixin {
-  // ignore: undefined_identifier, undefined_class, const_initialized_with_non_constant_value
-  static const StateMeta meta = _$metaForFullPageState;
-}
-
-// AF-3369 This will be removed once the transition to Dart 2 is complete.
-// ignore: mixin_of_non_class, undefined_class
-class FullPageProps extends _$FullPageProps with _$FullPagePropsAccessorsMixin {
-  // ignore: undefined_identifier, undefined_class, const_initialized_with_non_constant_value
-  static const PropsMeta meta = _$metaForFullPageProps;
 }
 
 @Component()
@@ -137,6 +133,28 @@ class FullPageComponent
           }
         }
         break;
+      case '04':
+        {
+          if (props.type == 'final') {
+            await exercise_04_final.loadLibrary();
+            return exercise_04_final.Usage;
+          } else {
+            await exercise_03.loadLibrary();
+            return exercise_03.Usage;
+          }
+        }
+        break;
+      case '05':
+        {
+          if (props.type == 'final') {
+            await exercise_05_final.loadLibrary();
+            return exercise_05_final.Usage;
+          } else {
+            await exercise_03.loadLibrary();
+            return exercise_03.Usage;
+          }
+        }
+        break;
       default:
         return null;
     }
@@ -157,45 +175,4 @@ class FullPageComponent
       state.componentFactory != null ? state.componentFactory()() : null,
     );
   }
-
-  /*
-  <div>
-      <div
-        style={{
-          marginLeft: 10,
-          marginRight: 10,
-          marginTop: 10,
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Link to={`/${exerciseId}`}>
-          <span role='img' aria-label='back'>
-            👈
-          </span>
-          Exercise Page
-        </Link>
-        <Link to={isolatedPath}>isolated</Link>
-      </div>
-      <div style={{textAlign: 'center'}}>
-        <h1>'Exercise ${props.id}'</h1>
-      </div>
-      <div
-        style={{
-          flex: 1,
-          padding: 20,
-          margin: 20,
-          border: '1px solid',
-          display: 'grid',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <FullPage>
-          <Usage />
-        </FullPage>
-      </div>
-      <NavigationFooter exerciseId={exerciseId} type={type} />
-    </div>
-  )*/
 }
