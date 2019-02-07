@@ -1,4 +1,5 @@
-[Work In Progress] Project is stable but currently only has a few of the exercises (3) converted, track the remaining here: https://github.com/kealjones-wk/ap_over_react/pull/1
+[Work In Progress] Project is stable but currently only has a few of the exercises.
+
 # AP OverReact: Advanced Patterns in OverReact
 
 These exercises are OverReact versions of the React exercises from https://egghead.io/courses/advanced-react-component-patterns.
