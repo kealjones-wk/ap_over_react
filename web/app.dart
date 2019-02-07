@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/app_components/exercise_container.dart';
+import 'package:ap_over_react/src/shared/exercise_titles.dart';
 // ignore: uri_has_not_been_generated
 part 'app.over_react.g.dart';
 
@@ -35,30 +36,6 @@ class AppComponent extends UiStatefulComponent<AppProps, AppState> {
 
   String defaultExerciseId = '01';
 
-  List<String> exerciseList = [
-    '01',
-    '02',
-    '03',
-    '03.1',
-    '03.2',
-    '04',
-    '05',
-    '06',
-    '07',
-    '08',
-    '09',
-    '10',
-    '10.1',
-    '10.2',
-    '10.3',
-    '11',
-    '11.1',
-    '11.2',
-    '11.3',
-    '11.4',
-    '12',
-  ];
-
   @override
   Map getInitialState() => newState()
     ..exerciseId = exerciseIdFromUrl ?? defaultExerciseId;
@@ -90,7 +67,7 @@ class AppComponent extends UiStatefulComponent<AppProps, AppState> {
 
   @override
   render() {
-      return Dom.div()(
+      return (Dom.div()..style = {'display': 'flex', 'flexDirection': 'column', 'height': '100vh'})(
         (Dom.nav()
         ..style = {
           'padding': 20,
