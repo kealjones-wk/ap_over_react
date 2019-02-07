@@ -1,3 +1,5 @@
+// Compound Components
+
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/02/toggle.dart';
 import 'package:ap_over_react/src/exercises-final/02/button.dart';
@@ -19,11 +21,12 @@ class _$UsageProps extends UiProps {
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
   @override
-  void onToggle(args) => print('onToggle $args');
+  Map getDefaultProps() =>
+      newProps()..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {
-    return (Toggle()..onToggle = onToggle)(
+    return (Toggle()..onToggle = props.onToggle)(
       ToggleOn()('The button is on'),
       ToggleOff()('The button is off'),
       ToggleButton()(),

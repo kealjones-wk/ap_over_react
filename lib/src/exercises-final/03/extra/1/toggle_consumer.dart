@@ -3,7 +3,6 @@
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/03/context.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:ap_over_react/src/shared/shared_props.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle_consumer.over_react.g.dart';

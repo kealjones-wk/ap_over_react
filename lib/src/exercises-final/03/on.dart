@@ -22,7 +22,7 @@ class ToggleOnComponent extends UiComponent<ToggleOnProps> {
     return ToggleContext.Consumer()(
       (BaseToggleProps value) {
         return value.isOn ? Dom.span()(props.children) : null;
-      },
+      }
     );
   }
 }

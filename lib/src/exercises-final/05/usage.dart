@@ -1,7 +1,7 @@
-// Flexible Compound Components with context
+// Prop Collections
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/exercises-final/04/toggle.dart';
+import 'package:ap_over_react/src/exercises-final/05/toggle.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
@@ -24,7 +24,7 @@ class _$UsageProps extends UiProps {
 class UsageComponent extends UiComponent<UsageProps> {
   @override
   Map getDefaultProps() =>
-      newProps()..onToggle = (arg) => print('onToggle $arg');
+      newProps()..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {
@@ -34,15 +34,13 @@ class UsageComponent extends UiComponent<UsageProps> {
           (Switch()
             ..addProps(value.togglerProps)
             ..isOn = value.isOn
-            ..onClick = value.toggle
           )(),
           Dom.hr()(),
           (Dom.button()
             ..addProps(value.togglerProps)
             ..aria.label = 'custom-button'
-            ..onClick = value.toggle
           )(
-            value.isOn ? 'on' : 'off',
+            value.isOn ? 'on' : 'off'
           ),
         );
       },

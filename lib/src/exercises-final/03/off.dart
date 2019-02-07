@@ -20,7 +20,7 @@ class ToggleOffComponent extends UiComponent<ToggleOffProps> {
   render() {
     return ToggleContext.Consumer()(
       (BaseToggleProps value) {
-        return !value.isOn ? Dom.span()(props.children) : null;
+        return value.isOn ? null : Dom.span()(props.children);
       },
     );
   }

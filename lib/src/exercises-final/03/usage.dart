@@ -1,4 +1,4 @@
-// Flexible Compound Components with context
+// Flexible Compound Components
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/03/toggle.dart';
@@ -25,7 +25,7 @@ class _$UsageProps extends UiProps {
 class UsageComponent extends UiComponent<UsageProps> {
   @override
   Map getDefaultProps() =>
-      newProps()..onToggle = (arg) => print('onToggle $arg');
+      newProps()..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {

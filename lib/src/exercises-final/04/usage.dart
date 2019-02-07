@@ -1,4 +1,4 @@
-// Flexible Compound Components with context
+// Render Props
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/04/toggle.dart';
@@ -24,7 +24,7 @@ class _$UsageProps extends UiProps {
 class UsageComponent extends UiComponent<UsageProps> {
   @override
   Map getDefaultProps() =>
-      newProps()..onToggle = (arg) => print('onToggle $arg');
+      newProps()..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {
@@ -41,7 +41,7 @@ class UsageComponent extends UiComponent<UsageProps> {
             ..aria.label = 'custom-button'
             ..onClick = value.toggle
           )(
-            value.isOn ? 'on' : 'off',
+            value.isOn ? 'on' : 'off'
           ),
         );
       },

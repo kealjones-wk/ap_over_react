@@ -20,6 +20,7 @@ class ToggleButtonComponent extends UiComponent<ToggleButtonProps> {
     return ToggleContext.Consumer()(
       (BaseToggleProps value) {
         return (Switch()
+          ..addProps(copyUnconsumedProps())
           ..isOn = value.isOn
           ..onClick = value.toggle
         )();

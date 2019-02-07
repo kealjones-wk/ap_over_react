@@ -3,25 +3,19 @@ import 'dart:async';
 import 'package:ap_over_react/src/app_components/error_catcher.dart';
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
+import 'package:ap_over_react/src/app_components/not_ready.dart';
 
-import 'package:ap_over_react/src/exercises-final/01/usage.dart'
-    deferred as exercise_01_final;
-import 'package:ap_over_react/src/exercises/01/usage.dart'
-    deferred as exercise_01;
-import 'package:ap_over_react/src/exercises-final/02/usage.dart'
-    deferred as exercise_02_final;
-import 'package:ap_over_react/src/exercises/02/usage.dart'
-    deferred as exercise_02;
-import 'package:ap_over_react/src/exercises-final/03/usage.dart'
-    deferred as exercise_03_final;
-import 'package:ap_over_react/src/exercises/03/usage.dart'
-    deferred as exercise_03;
-import 'package:ap_over_react/src/exercises-final/03/extra/1/usage.dart'
-    deferred as exercise_03_1_final;
+import 'package:ap_over_react/src/exercises-final/01/usage.dart' deferred as exercise_01_final;
+import 'package:ap_over_react/src/exercises/01/usage.dart' deferred as exercise_01;
+import 'package:ap_over_react/src/exercises-final/02/usage.dart' deferred as exercise_02_final;
+import 'package:ap_over_react/src/exercises/02/usage.dart' deferred as exercise_02;
+import 'package:ap_over_react/src/exercises-final/03/usage.dart' deferred as exercise_03_final;
+import 'package:ap_over_react/src/exercises/03/usage.dart' deferred as exercise_03;
+import 'package:ap_over_react/src/exercises-final/03/extra/1/usage.dart' deferred as exercise_03_1_final;
 //import 'package:ap_over_react/src/exercises/03/extra/1/usage.dart' deferred as exercise_03_1;
-import 'package:ap_over_react/src/exercises-final/03/extra/2/usage.dart'
-    deferred as exercise_03_2_final;
+import 'package:ap_over_react/src/exercises-final/03/extra/2/usage.dart' deferred as exercise_03_2_final;
 //import 'package:ap_over_react/src/exercises/03/extra/2/usage.dart' deferred as exercise_03_2;
+
 
 import 'package:ap_over_react/src/exercises-final/04/usage.dart'
     deferred as exercise_04_final;
@@ -156,7 +150,7 @@ class FullPageComponent
         }
         break;
       default:
-        return null;
+        return NotReady;
     }
   }
 

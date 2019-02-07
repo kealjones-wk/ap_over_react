@@ -15,10 +15,12 @@ class _$UsageProps extends UiProps {
 
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
-  void onToggle(args) => print('onToggle $args');
+  @override
+  Map getDefaultProps() =>
+      newProps()..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {
-    return (Toggle()..onToggle = onToggle)();
+    return (Toggle()..onToggle = props.onToggle)();
   }
 }

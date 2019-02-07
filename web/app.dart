@@ -42,7 +42,21 @@ class AppComponent extends UiStatefulComponent<AppProps, AppState> {
     '03.1',
     '03.2',
     '04',
-    '05'
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '10.1',
+    '10.2',
+    '10.3',
+    '11',
+    '11.1',
+    '11.2',
+    '11.3',
+    '11.4',
+    '12',
   ];
 
   @override
