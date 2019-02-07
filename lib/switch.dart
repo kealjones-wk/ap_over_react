@@ -17,9 +17,6 @@ UiFactory<SwitchProps> Switch = _$Switch;
 class _$SwitchProps extends UiProps {
   /// Wether the switch should appear on or off.
   bool isOn;
-
-  /// Custom additional classname for the switch.
-  String className;
 }
 
 // AF-3369 This will be removed once the transition to Dart 2 is complete.
@@ -31,18 +28,16 @@ class SwitchProps extends _$SwitchProps with _$SwitchPropsAccessorsMixin {
 
 @Component()
 class SwitchComponent extends UiComponent<SwitchProps> {
-
   String get btnClassNames => [
-      props.className,
-      'toggle-btn',
-      props.isOn ? 'toggle-btn-on' : 'toggle-btn-off',
-    ].join(' ');
+        props.className,
+        'toggle-btn',
+        props.isOn ? 'toggle-btn-on' : 'toggle-btn-off',
+      ].join(' ');
 
   @override
-  Map getDefaultProps() => (newProps()
+  Map getDefaultProps() => newProps()
     ..isOn = false
-    ..className = ''
-  );
+    ..className = '';
 
   @override
   render() {
@@ -58,7 +53,7 @@ class SwitchComponent extends UiComponent<SwitchProps> {
         ..addProps(copyUnconsumedDomProps())
         ..className = btnClassNames
         ..aria.label = 'Toggle'
-      )()
+      )(),
     );
   }
 }

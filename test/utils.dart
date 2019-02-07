@@ -2,14 +2,11 @@ import 'package:ap_over_react/switch.dart';
 import 'package:over_react_test/over_react_test.dart';
 import 'package:test/test.dart';
 import 'package:over_react/over_react.dart';
-import 'dart:html';
-import 'package:ap_over_react/switch.dart';
-import 'package:react/react.dart' as react;
 
-var toggleButton;
-var toggle;
-var rootInstance;
-var switchInstance;
+dynamic toggleButton;
+dynamic toggle;
+dynamic rootInstance;
+dynamic switchInstance;
 
 findSwitchInstances(rootInstance) {
   return getComponentByTestId(rootInstance, 'switch');
@@ -21,8 +18,8 @@ validateSwitchInstance(switchInstance) {
   }
   try {
     var switchProps = Switch(getProps(switchInstance));
-    expect(switchProps.isOn, TypeMatcher<bool>());
-    expect(switchProps.onClick, TypeMatcher<Callback1Arg>());
+    expect(switchProps.isOn, const TypeMatcher<bool>());
+    expect(switchProps.onClick, const TypeMatcher<Callback1Arg>());
   } catch (error) {
     throw new ArgumentError('🚨  The Switch component is not being passed the right props. 🚨');
   }

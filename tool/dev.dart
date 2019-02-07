@@ -14,6 +14,9 @@ main(List<String> args) async {
   // config.docs
   // config.examples
   // config.format
+  config.format.exclude = [
+    'tool/over_react_format/'
+    ];
   config.test.platforms = [
       'chrome'
     ];

@@ -8,18 +8,23 @@ environment:
 dependencies:
   test: ^1.5.2
   over_react:
-    git:
-      url: git@github.com:Workiva/over_react.git
-      ref: builder_generate_public_class
   over_react_test:
-    git:
-      url: git@github.com:kealjones-wk/over_react_test.git
-      ref: 42d7f25267bc3dcb447f4816346c0ebdfb9a853d
   build_runner: ^1.1.2
   build_test: ^0.10.3
   build_web_compilers: ^1.0.0
   dart_dev: ^2.0.2
-  js: ^0.6.0
+  dart_style:
+  over_react_format:
+    hosted:
+      name: over_react_format
+      url: https://pub.workiva.org
+    version: "^2.0.1"
+dev_dependencies:
+  over_react_analyzer_plugin_host:
+    git:
+      url: git@github.com:greglittlefield-wf/git_playground.git
+      ref: over_react_analyzer_plugin/master
+      path: plugin_hosts/git
 transformers:
   - over_react
   # Reminder: dart2js should come after any other transformers that touch Dart code
@@ -27,3 +32,12 @@ transformers:
   - test/pub_serve:
       $include: test/**_test{.*,}.dart
   - $dart2js
+dependency_overrides:
+  over_react:
+    git:
+      url: git@github.com:Workiva/over_react.git
+      ref: dart2_only
+  over_react_test:
+    git:
+      url: git@github.com:Workiva/over_react_test.git
+      ref: dart2_only_boilerplate
