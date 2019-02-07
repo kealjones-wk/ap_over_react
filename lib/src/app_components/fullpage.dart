@@ -15,15 +15,9 @@ import 'package:ap_over_react/src/exercises-final/03/extra/1/usage.dart' deferre
 //import 'package:ap_over_react/src/exercises/03/extra/1/usage.dart' deferred as exercise_03_1;
 import 'package:ap_over_react/src/exercises-final/03/extra/2/usage.dart' deferred as exercise_03_2_final;
 //import 'package:ap_over_react/src/exercises/03/extra/2/usage.dart' deferred as exercise_03_2;
-
-
-import 'package:ap_over_react/src/exercises-final/04/usage.dart'
-    deferred as exercise_04_final;
+import 'package:ap_over_react/src/exercises-final/04/usage.dart' deferred as exercise_04_final;
 //import 'package:ap_over_react/src/exercises/04/usage.dart' deferred as exercise_04;
-
-
-import 'package:ap_over_react/src/exercises-final/05/usage.dart'
-    deferred as exercise_05_final;
+import 'package:ap_over_react/src/exercises-final/05/usage.dart' deferred as exercise_05_final;
 //import 'package:ap_over_react/src/exercises/05/usage.dart' deferred as exercise_05;
 
 // ignore: uri_has_not_been_generated
