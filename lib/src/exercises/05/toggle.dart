@@ -37,10 +37,16 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   BaseToggleProps getStateAndHelpers() {
     return BaseToggleProps()
       ..isOn = state.isOn
-      ..toggle = toggle
-      ..togglerProps = (domProps()
-          ..aria.pressed = state.isOn
-          ..onClick = toggle);
+      ..toggle = toggle;
+      // In our last usage example, you'll notice that we had some
+      // common props (`onClick`, and we're also missing `aria-pressed`
+      // value on the `button`). Because most users will want these
+      // props applied to the button they render, we can add a collection
+      // of props as a convenience for them.
+      //
+      // 🐨 Add a `togglerProps` domProps() object that has an `aria.pressed` (should
+      // be set to the value of the `isOn` state), and an `onClick` assigned
+      // to the toggle function.
   }
 
   @override

@@ -1,7 +1,7 @@
 // 05: Prop Collections
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/exercises-final/05/toggle.dart';
+import 'package:ap_over_react/src/exercises/05/toggle.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
