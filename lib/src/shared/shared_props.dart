@@ -12,6 +12,7 @@ abstract class _$TogglePropsMixin {
   bool isOn;
   Callback1Arg toggle;
   DomProps togglerProps;
+  Function getTogglerProps;
   dynamic ref;
 }
 
