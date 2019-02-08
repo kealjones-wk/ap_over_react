@@ -1,6 +1,6 @@
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:ap_over_react/src/exercises/03/context.dart';
+// import 'package:ap_over_react/src/exercises/03/context.dart';
 // ignore: uri_has_not_been_generated
 part 'off.over_react.g.dart';
 
@@ -18,10 +18,6 @@ class ToggleOffComponent extends UiComponent<ToggleOffProps> {
 
   @override
   render() {
-    return ToggleContext.Consumer()(
-      (BaseToggleProps value) {
-        return !value.isOn ? Dom.span()(props.children) : null;
-      },
-    );
+    return props.isOn ? null : Dom.span()(props.children);
   }
 }

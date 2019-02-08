@@ -2,6 +2,7 @@
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
+import 'package:ap_over_react/src/shared/shared_props.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
@@ -41,10 +42,6 @@ part 'toggle.over_react.g.dart';
 // make sure that you don't have the extra space in there
 //   (newlines are ok, like in the above example)
 
-// 🐨 create a ToggleContext with React.createContext here
-
-///var ToggleContext = createContext();
-
 @Factory()
 // ignore: undefined_identifier
 UiFactory<ToggleProps> Toggle = _$Toggle;
@@ -63,20 +60,9 @@ class _$ToggleState extends UiState {
 
 @Component()
 class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
-  // In OverReact we dont yet support functional components (maybe soon!).
-  // So this tutorial is a little more verbose than the video will go though.
-  // SubComponents are handy because it makes the relationship between the
-  // parent Toggle component and the child component more explicit
-  // 🐨 You'll need to create three such components here: ToggleOn, ToggleOff, and ToggleButton
-  //    The button will be responsible for rendering the <Switch /> (with the right props)
-  // 💰 Combined with changes you'll make in the `render` method, these should
-  //    be able to accept `on`, `toggle`, and `children` as props.
-  //    Note that they will _not_ have access to Toggle instance properties
-  //    like `this.state.on` or `this.toggle`. The base files for the OverReact components
-  //    have been setup and imported to the usage file already. You just need to go and update them:
-  //    src/exercises/02/button.dart
-  //    src/exercises/02/on.dart
-  //    src/exercises/02/off.dart
+  // 🐨 each of these compound components will need to be changed to use
+  // ToggleContext.Consumer and rather than getting `on` and `toggle`
+  // from props, it'll get it from the ToggleContext.Consumer value.
   @override
   Map getInitialState() => newState()..isOn = false;
 
@@ -86,20 +72,27 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   @override
   render() {
-    // we're trying to let people render the components they want within the Toggle component.
-    // But the ToggleOn, ToggleOff, and ToggleButton components will need access to the internal `isOn` state as
-    // well as the internal `toggle` function for them to work properly. So here we can
-    // take all props.children and make a copy of them that has those props.
-    //
-    // To do this, you can use:
-    // 1. props.children.map
-    // 2. cloneElement: https://pub.dartlang.org/documentation/over_react/1.24.1/over_react/cloneElement.html
-    //
-    // 🐨 you'll want to completely replace the code below with the above logic.
-    return false;
-    /*(Switch()
-      ..isOn = state.isOn
-      ..onClick = toggle
-    )();*/
+    // Because this.props.children is _immediate_ children only, we need
+    // to 🐨 remove this map function and render our context provider with
+    // this.props.children as the children of the provider. Then we'll
+    // expose the `on` state and `toggle` method as properties in the context
+    // value (the value prop).
+    int indexKey = 0;
+    return Dom.div()(
+      props.children.map((child){
+        return cloneElement(child, BaseToggleProps()
+          ..isOn = state.isOn
+          ..toggle = toggle
+          ..key = indexKey++
+        );
+      })
+    );
   }
 }
+
+// 💯 Extra credit: rather than having a default value, make it so the consumer
+// will throw an error if there's no context value to make sure people don't
+// attempt to render one of the compound components outside the Toggle.
+// 💯 Extra credit: avoid unnecessary re-renders of the consumers by not
+// creating a new `value` object ever render and instead passing an object
+// which only changes when the state changes.
