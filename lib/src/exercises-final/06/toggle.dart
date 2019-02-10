@@ -1,4 +1,4 @@
-// Flexible Compound Components with context
+// Prop Getters
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
@@ -31,18 +31,22 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   void toggle(_) {
     setState(
       newState()..isOn = !state.isOn,
-          () => props.onToggle(state.isOn),
+          () {
+        print('toggle');
+            //props.onToggle(state.isOn)
+          },
     );
   }
 
-  dynamic _callAll(dynamic fns){
-    return mouseEventCallbacks.chainFromList(fns);
-  }
-
-  DomProps getTogglerProps([DomProps props]) {
-    return domProps()
+  BaseToggleProps getTogglerProps([BaseToggleProps props]) {
+    var propsToSendBack = BaseToggleProps()
       ..aria.pressed = state.isOn
-      ..onClick = _callAll([toggle, props?.onClick]);
+      ..onClick = mouseEventCallbacks.chainFromList([toggle, props?.onClick]);
+
+    if (props != null) {
+      propsToSendBack.addAll(props);
+    }
+    return propsToSendBack;
   }
 
   BaseToggleProps getStateAndHelpers(){

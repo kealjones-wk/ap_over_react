@@ -1,4 +1,4 @@
-// Prop Collections
+// Prop Getters
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/06/toggle.dart';
@@ -18,48 +18,44 @@ UiFactory<UsageProps> Usage = _$Usage;
 @Props()
 class _$UsageProps extends UiProps {
   Callback1Arg onToggle;
+  Callback1Arg onButtonClick;
 }
 
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
 
-
   @override
-  Map getDefaultProps() =>
-      newProps()..onToggle = (args) => print('onToggle $args');
+  Map getDefaultProps() => newProps()
+        ..onButtonClick = (_) { print('onButtonClick'); }
+        ..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {
-
-
     return (Toggle()
       ..onToggle = props.onToggle
     )(
       (BaseToggleProps value) {
+
+        print(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn));
+
         return Dom.div()(
           (Switch()
-            ..addProps(value.getTogglerProps())
-            ..isOn = value.isOn
+            //..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
+              ..isOn = true
           )(),
           Dom.hr()(),
           (Dom.button()
             ..addProps(value.getTogglerProps(
-                domProps()
+                BaseToggleProps()
                   ..id = 'custom-button-id'
-                  ..onClick = printOnClick
-                  ..label = 'custom-button'
-              )
-            )
-            ..aria.label = 'custom-button'
+                  ..onClick = props.onButtonClick
+                  /*..aria.label = 'custom-button'*/
+            ))
           )(
               value.isOn ? 'on' : 'off'
           ),
         );
       },
     );
-  }
-
-  void printOnClick(_){
-    print('clicked!');
   }
 }
