@@ -36,12 +36,11 @@ class UsageComponent extends UiComponent<UsageProps> {
     )(
       (BaseToggleProps value) {
 
-        print(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn));
+        BaseToggleProps togglerProps = value.getTogglerProps(BaseToggleProps()..isOn = value.isOn);
 
         return Dom.div()(
           (Switch()
-            //..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
-              ..isOn = true
+            ..addProps(togglerProps)
           )(),
           Dom.hr()(),
           (Dom.button()
@@ -49,7 +48,7 @@ class UsageComponent extends UiComponent<UsageProps> {
                 BaseToggleProps()
                   ..id = 'custom-button-id'
                   ..onClick = props.onButtonClick
-                  /*..aria.label = 'custom-button'*/
+                  ..aria.label = 'custom-button'
             ))
           )(
               value.isOn ? 'on' : 'off'

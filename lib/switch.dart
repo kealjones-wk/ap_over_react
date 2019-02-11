@@ -13,7 +13,7 @@ part 'switch.over_react.g.dart';
 // ignore: undefined_identifier
 UiFactory<SwitchProps> Switch = _$Switch;
 
-@Props()
+@Props(keyNamespace: '')
 class _$SwitchProps extends UiProps {
   /// Wether the switch should appear on or off.
   bool isOn;
