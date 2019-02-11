@@ -12,7 +12,9 @@ UiFactory<ToggleProps> Toggle = _$Toggle;
 
 @Props(keyNamespace: '')
 class _$ToggleProps extends AbstractToggleProps {
+  bool initialOn;
   Callback1Arg onToggle;
+  Callback1Arg onToggleReset;
 }
 
 @State()
