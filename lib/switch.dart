@@ -41,7 +41,7 @@ class SwitchComponent extends UiComponent<SwitchProps> {
 
   @override
   render() {
-    return (Dom.div()..addTestId('switch'))(
+    return (Dom.div()..addTestId('switch')..addProps(copyUnconsumedDomProps()))(
       (Dom.input()
         ..addTestId('switch.input')
         ..className = 'toggle-input'
