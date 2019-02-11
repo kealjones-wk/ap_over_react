@@ -1,7 +1,7 @@
 // Prop Getters
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/exercises-final/09/toggle.dart';
+import 'package:ap_over_react/src/exercises-final/08/toggle.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
@@ -48,10 +48,6 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
   }
 
   toggleStateReducer(newState, changes) {
-    if (changes['type'] == 'forced') {
-      return BaseToggleProps()
-          ..addAll(changes);
-    }
     if (state.timesClicked >= 4) {
       return BaseToggleProps()
           ..addAll(changes)
@@ -66,7 +62,6 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
       ..stateReducer = toggleStateReducer
       ..onToggle = handleToggle
       ..onToggleReset = handleReset
-      ..ref = (ref) { props.ref = ref; }
     )(
       (BaseToggleProps value) {
         return Dom.div()(
@@ -76,8 +71,6 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
           state.timesClicked > 4 ? (
             (Dom.div()..addTestId('notice'))(
               'Whoa, you clicked too much!',
-              Dom.br()(),
-              (Dom.button()..onClick = (_) { value.toggle({'type': 'forced'}); })('Force Toggle'),
               Dom.br()()
             )
           ) : state.timesClicked > 0 ? (

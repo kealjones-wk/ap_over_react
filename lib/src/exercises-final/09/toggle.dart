@@ -1,8 +1,7 @@
-// 05: Prop Collections
+// Prop Getters
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:ap_over_react/switch.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
@@ -11,14 +10,12 @@ part 'toggle.over_react.g.dart';
 // ignore: undefined_identifier
 UiFactory<ToggleProps> Toggle = _$Toggle;
 
-@Props()
+@Props(keyNamespace: '')
 class _$ToggleProps extends AbstractToggleProps {
-  /// Callback that returns `state.isOn` when the toggle switches;
+  bool initialOn;
   Callback1Arg onToggle;
   Callback1Arg onToggleReset;
-  bool initialOn;
   Callback2Arg stateReducer;
-
 }
 
 @State(keyNamespace: '')
@@ -29,10 +26,11 @@ class _$ToggleState extends UiState {
 
 @Component()
 class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
+
   @override
   Map getDefaultProps() => newProps()
       ..initialOn = false
-      ..onToggleReset = (_){}
+      ..onToggleReset = (_) {}
       ..stateReducer = (state, changes) => changes;
 
   static const stateChangeTypes = {
@@ -41,10 +39,10 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   };
 
   @override
-  getInitialState() => newState()..isOn = props.initialOn;
+  Map getInitialState() => newState()..isOn = props.initialOn;
 
   internalSetState(changes, callback) {
-    setState(() {
+    getNewState(changes) {
        // handle function setState call
       Map changesObject = (changes is Function) ? changes(state) : changes;
 
@@ -52,50 +50,51 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       Map reducedChanges = props.stateReducer(state, changesObject) ?? {};
 
       // remove the type so it's not set into state
-      if (reducedChanges.containsKey('type')) reducedChanges.remove('type');
+      if (reducedChanges.containsKey('type')) {
+        reducedChanges.remove('type');
+      }
 
-      ToggleState onlyChanges = newState()..addAll(reducedChanges);
-
+      Map onlyChanges = reducedChanges;
+      print(onlyChanges);
       // return null if there are no changes to be made
       return onlyChanges.isNotEmpty ? onlyChanges : null;
-    }, callback);
+    }
+    setState(getNewState(changes), callback);
   }
 
-  reset(_) {
+  void reset() {
     internalSetState(
-      BaseToggleProps()..addAll(getInitialState())..addAll({'type':stateChangeTypes['reset']}),
-      () => props.onToggleReset(state.isOn)
+      getInitialState()..addAll({'type': stateChangeTypes['reset']}),
+      () => props.onToggleReset(state.isOn),
     );
   }
 
-  toggle([Map args = const {}]) {
-    print('toggle');
+  void toggle([Map map]) {
+    String type = stateChangeTypes['toggle'];
+    if (map != null && map.containsKey('type')){
+      type = map['type'];
+    }
     internalSetState(
-      {
-        'isOn': !state.isOn,
-        'type': args.containsKey('type') ? args['type'] : stateChangeTypes['toggle']
-      },
-      () => props.onToggle(state.isOn)
+      BaseToggleProps()..addAll({'type': type })..isOn = !state.isOn,
+      () => props.onToggle(state.isOn),
     );
   }
 
   BaseToggleProps getTogglerProps([BaseToggleProps additionalProps]) {
     additionalProps ??= BaseToggleProps();
 
-    var propsToSendBack = BaseToggleProps()
+    return BaseToggleProps()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = (_) => toggle;// mouseEventCallbacks.chainFromList([(_) => toggle, additionalProps.onClick]);
-
-    return propsToSendBack;
+      ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
-  BaseToggleProps getStateAndHelpers() {
+  BaseToggleProps getStateAndHelpers(){
     return BaseToggleProps()
-      ..isOn = state.isOn
-      ..toggle = ((_) => toggle())
-      ..reset = reset
-      ..getTogglerProps = getTogglerProps;
+        ..isOn = state.isOn
+        ..toggle = toggle
+        ..reset = reset
+        ..getTogglerProps = getTogglerProps;
   }
 
   @override

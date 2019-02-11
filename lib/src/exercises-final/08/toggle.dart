@@ -15,9 +15,10 @@ class _$ToggleProps extends AbstractToggleProps {
   bool initialOn;
   Callback1Arg onToggle;
   Callback1Arg onToggleReset;
+  Callback2Arg stateReducer;
 }
 
-@State()
+@State(keyNamespace: '')
 class _$ToggleState extends UiState {
   // Wether the toggle is On or Off
   bool isOn;
@@ -29,20 +30,35 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   @override
   Map getDefaultProps() => newProps()
       ..initialOn = false
-      ..onToggleReset = (_) {};
+      ..onToggleReset = (_) {}
+      ..stateReducer = (state, changes) => changes;
 
   @override
   Map getInitialState() => newState()..isOn = props.initialOn;
 
+  internalSetState(changes, callback) {
+    getNewState(changes) {
+       // handle function setState call
+      Map changesObject = (changes is Function) ? changes(state) : changes;
+
+      // apply state reducer
+      Map onlyChanges = props.stateReducer(state, changesObject) ?? {};
+
+      // return null if there are no changes to be made
+      return onlyChanges.isNotEmpty ? onlyChanges : null;
+    }
+    setState(getNewState(changes), callback);
+  }
+
   void reset() {
-    setState(
+    internalSetState(
       getInitialState(),
       () => props.onToggleReset(state.isOn),
     );
   }
 
   void toggle() {
-    setState(
+    internalSetState(
       newState()..isOn = !state.isOn,
       () => props.onToggle(state.isOn),
     );
