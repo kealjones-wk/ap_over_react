@@ -11,12 +11,12 @@ UiFactory<ToggleProps> Toggle = _$Toggle;
 
 @Props()
 class _$ToggleProps extends AbstractToggleProps {
-
+  Callback1Arg onToggle;
 }
 
 @State()
 class _$ToggleState extends UiState {
-
+  bool isOn;
 }
 
 @Component()
@@ -46,5 +46,8 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 //    by calling it with the Wrapper and the Component to forward all the
 //    static properties from the Component to the Wrapper
 //    💰 `return hoistReactStatics(React.forwardRef(Wrapper), Component)`
+  @override
+  render() {
 
+  }
 }

@@ -12,12 +12,12 @@ UiFactory<ToggleProps> Toggle = _$Toggle;
 
 @Props()
 class _$ToggleProps extends AbstractToggleProps {
-
+  Callback1Arg onToggle;
 }
 
 @State()
 class _$ToggleState extends UiState {
-
+  bool isOn;
 }
 
 // 🐨 create your React context here with React.createContext
