@@ -1,7 +1,7 @@
 // Prop Getters
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/exercises-final/06/toggle.dart';
+import 'package:ap_over_react/src/exercises-final/07/toggle.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
@@ -15,10 +15,10 @@ part 'usage.over_react.g.dart';
 // ignore: undefined_identifier
 UiFactory<UsageProps> Usage = _$Usage;
 
-@Props()
+@Props(keyNamespace: '')
 class _$UsageProps extends UiProps {
   Callback1Arg onToggle;
-  Callback1Arg onButtonClick;
+  Callback1Arg onToggleReset;
 }
 
 @Component()
@@ -26,13 +26,15 @@ class UsageComponent extends UiComponent<UsageProps> {
 
   @override
   Map getDefaultProps() => newProps()
-        ..onButtonClick = (_) { print('onButtonClick'); }
-        ..onToggle = (args) => print('onToggle $args');
+        ..onToggle = (args) { print('onToggle $args'); }
+        ..onToggleReset = (args) { print('onToggleReset $args'); };
 
   @override
   render() {
     return (Toggle()
+      ..initialOn = false
       ..onToggle = props.onToggle
+      ..onToggleReset = props.onToggleReset
     )(
       (BaseToggleProps value) {
         return Dom.div()(
@@ -40,16 +42,7 @@ class UsageComponent extends UiComponent<UsageProps> {
             ..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
           )(),
           Dom.hr()(),
-          (Dom.button()
-            ..addProps(value.getTogglerProps(
-                BaseToggleProps()
-                  ..id = 'custom-button-id'
-                  ..onClick = props.onButtonClick
-                  ..aria.label = 'custom-button'
-            ))
-          )(
-              value.isOn ? 'on' : 'off'
-          ),
+          (Dom.button()..onClick = (_) { value.reset(); } )('Reset'),
         );
       },
     );

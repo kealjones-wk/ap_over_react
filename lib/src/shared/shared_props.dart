@@ -10,8 +10,8 @@ abstract class _$TogglePropsMixin {
   Map get props;
 
   bool isOn;
-  Callback1Arg toggle;
-  Callback1Arg reset;
+  Function toggle;
+  Function reset;
   DomProps togglerProps;
   dynamic getTogglerProps;
   dynamic ref;

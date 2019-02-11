@@ -21,7 +21,7 @@ class _$ToggleProps extends AbstractToggleProps {
 
 }
 
-@State()
+@State(keyNamespace: '')
 class _$ToggleState extends UiState {
   // Wether the toggle is On or Off
   bool isOn;
@@ -52,9 +52,9 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       Map reducedChanges = props.stateReducer(state, changesObject) ?? {};
 
       // remove the type so it's not set into state
-      reducedChanges.remove('type');
+      if (reducedChanges.containsKey('type')) reducedChanges.remove('type');
 
-      BaseToggleProps onlyChanges = BaseToggleProps()..addAll(reducedChanges);
+      ToggleState onlyChanges = newState()..addAll(reducedChanges);
 
       // return null if there are no changes to be made
       return onlyChanges.isNotEmpty ? onlyChanges : null;
@@ -63,30 +63,37 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   reset(_) {
     internalSetState(
-      getInitialState()..addAll({'type':stateChangeTypes['reset']}),
+      BaseToggleProps()..addAll(getInitialState())..addAll({'type':stateChangeTypes['reset']}),
       () => props.onToggleReset(state.isOn)
     );
   }
 
-  toggle(map) {
-    String type = map['type'] ?? stateChangeTypes['toggle'];
+  toggle([Map args = const {}]) {
+    print('toggle');
     internalSetState(
-      (BaseToggleProps()..isOn = !state.isOn)..addProp('type', type),
-      () => props.onToggleReset(state.isOn)
+      {
+        'isOn': !state.isOn,
+        'type': args.containsKey('type') ? args['type'] : stateChangeTypes['toggle']
+      },
+      () => props.onToggle(state.isOn)
     );
   }
 
-  BaseToggleProps getTogglerProps(props) {
-    return BaseToggleProps()
-      ..addAll(props)
-      ..onClick = mouseEventCallbacks.chainFromList([props.onClick, (_) => toggle])
-      ..aria.pressed = state.isOn;
+  BaseToggleProps getTogglerProps([BaseToggleProps additionalProps]) {
+    additionalProps ??= BaseToggleProps();
+
+    var propsToSendBack = BaseToggleProps()
+      ..addAll(additionalProps)
+      ..aria.pressed = state.isOn
+      ..onClick = (_) => toggle;// mouseEventCallbacks.chainFromList([(_) => toggle, additionalProps.onClick]);
+
+    return propsToSendBack;
   }
 
   BaseToggleProps getStateAndHelpers() {
     return BaseToggleProps()
       ..isOn = state.isOn
-      ..toggle = toggle
+      ..toggle = ((_) => toggle())
       ..reset = reset
       ..getTogglerProps = getTogglerProps;
   }

@@ -70,9 +70,10 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
         ..onReset = handleReset
       )(
       (BaseToggleProps value) {
+        print(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn));
         return Dom.div()(
           (Switch()
-            ..addAll(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
+            ..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
           )(),
             state.timesClicked > 4 ? (
               (Dom.div()..addTestId('notice'))(
