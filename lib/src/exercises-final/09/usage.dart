@@ -72,8 +72,8 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
       (BaseToggleProps value) {
         return Dom.div()(
           (Switch()
-            ..getTogglerProps(BaseToggleProps()..isOn = value.isOn
-          )(
+            ..addAll(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
+          )(),
             state.timesClicked > 4 ? (
               (Dom.div()..addTestId('notice'))(
                 Dom.br()(),
@@ -90,8 +90,6 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
               (Dom.button()..onClick = value.reset)(
                 'Reset'
               )
-            )
-          ),
         );
       }
     );

@@ -13,7 +13,7 @@ abstract class _$TogglePropsMixin {
   Callback1Arg toggle;
   Callback1Arg reset;
   DomProps togglerProps;
-  Function getTogglerProps;
+  dynamic getTogglerProps;
   dynamic ref;
 }
 

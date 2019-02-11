@@ -41,7 +41,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   };
 
   @override
-  Map getInitialState() => newState()..isOn = props.initialOn;
+  getInitialState() => newState()..isOn = props.initialOn;
 
   internalSetState(changes, callback) {
     setState(() {
@@ -52,21 +52,23 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       Map reducedChanges = props.stateReducer(state, changesObject) ?? {};
 
       // remove the type so it's not set into state
-      Map onlyChanges = reducedChanges..remove('type');
+      reducedChanges.remove('type');
+
+      BaseToggleProps onlyChanges = BaseToggleProps()..addAll(reducedChanges);
 
       // return null if there are no changes to be made
       return onlyChanges.isNotEmpty ? onlyChanges : null;
     }, callback);
   }
 
-  void reset() {
+  reset(_) {
     internalSetState(
       getInitialState()..addAll({'type':stateChangeTypes['reset']}),
       () => props.onToggleReset(state.isOn)
     );
   }
 
-  void toggle(Map map) {
+  toggle(map) {
     String type = map['type'] ?? stateChangeTypes['toggle'];
     internalSetState(
       (BaseToggleProps()..isOn = !state.isOn)..addProp('type', type),
@@ -76,25 +78,21 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   BaseToggleProps getTogglerProps(props) {
     return BaseToggleProps()
-      ..addProps(props)
+      ..addAll(props)
       ..onClick = mouseEventCallbacks.chainFromList([props.onClick, (_) => toggle])
       ..aria.pressed = state.isOn;
   }
 
-  getStateAndHelpers() {
+  BaseToggleProps getStateAndHelpers() {
     return BaseToggleProps()
       ..isOn = state.isOn
-      ..toggle = this.toggle
-      ..reset = this.reset
+      ..toggle = toggle
+      ..reset = reset
       ..getTogglerProps = getTogglerProps;
-    }
   }
 
   @override
   render() {
-    return (Switch()
-        ..isOn = getState().isOn
-        ..onClick = toggle
-      )();
+    return props.children.single(getStateAndHelpers());
   }
 }
