@@ -21,13 +21,13 @@ import 'package:ap_over_react/src/exercises-final/09/usage.dart' deferred as exe
 import 'package:ap_over_react/src/exercises-final/10/usage.dart' deferred as exercise_10_final;
 //import 'package:ap_over_react/src/exercises/10/usage.dart' deferred as exercise_10;
 import 'package:ap_over_react/src/exercises-final/11/usage.dart' deferred as exercise_11_final;
-//import 'package:ap_over_react/src/exercises/11/usage.dart' deferred as exercise_11;
+import 'package:ap_over_react/src/exercises/11/usage.dart' deferred as exercise_11;
 //import 'package:ap_over_react/src/exercises/05/usage.dart' deferred as exercise_05;
 import 'package:ap_over_react/src/exercises-final/06/usage.dart' deferred as exercise_06_final;
 import 'package:ap_over_react/src/exercises/06/usage.dart' deferred as exercise_06;
 
 import 'package:ap_over_react/src/exercises-final/12/usage.dart' deferred as exercise_12_final;
-//import 'package:ap_over_react/src/exercises/12/usage.dart' deferred as exercise_11;
+import 'package:ap_over_react/src/exercises/12/usage.dart' deferred as exercise_12;
 
 // ignore: uri_has_not_been_generated
 part 'fullpage.over_react.g.dart';
@@ -189,7 +189,8 @@ class FullPageComponent
             await exercise_11_final.loadLibrary();
             return exercise_11_final.Usage;
           } else {
-            return NotReady;
+            await exercise_11.loadLibrary();
+            return exercise_11.Usage;
           }
         }
         break;
@@ -199,7 +200,8 @@ class FullPageComponent
             await exercise_12_final.loadLibrary();
             return exercise_12_final.Usage;
           } else {
-            return NotReady;
+            await exercise_12.loadLibrary();
+            return exercise_12.Usage;
           }
         }
         break;

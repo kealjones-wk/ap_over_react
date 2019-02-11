@@ -1,10 +1,10 @@
-// 11: The provider pattern
+// 11: Prop Collections
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/polyfills/fragment.dart';
 import 'package:ap_over_react/src/polyfills/fragment_2.dart';
-import 'package:ap_over_react/src/exercises/11/context.dart';
-import 'package:ap_over_react/src/exercises/11/layer_3.dart';
+import 'package:ap_over_react/src/exercises-final/11/context.dart';
+import 'package:ap_over_react/src/exercises-final/11/layer_3.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
