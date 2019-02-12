@@ -25,6 +25,8 @@ import 'package:ap_over_react/src/exercises-final/08/usage.dart' deferred as exe
 import 'package:ap_over_react/src/exercises-final/09/usage.dart' deferred as exercise_09_final;
 //import 'package:ap_over_react/src/exercises/09/usage.dart' deferred as exercise_09;
 import 'package:ap_over_react/src/exercises-final/10/usage.dart' deferred as exercise_10_final;
+import 'package:ap_over_react/src/exercises-final/10/extra/1/usage.dart' deferred as exercise_10_1_final;
+import 'package:ap_over_react/src/exercises-final/10/extra/2/usage.dart' deferred as exercise_10_2_final;
 //import 'package:ap_over_react/src/exercises/10/usage.dart' deferred as exercise_10;
 import 'package:ap_over_react/src/exercises-final/11/usage.dart' deferred as exercise_11_final;
 import 'package:ap_over_react/src/exercises/11/usage.dart' deferred as exercise_11;
@@ -203,6 +205,26 @@ class FullPageComponent
           if (props.type == 'final') {
             await exercise_10_final.loadLibrary();
             return exercise_10_final.Usage;
+          } else {
+            return NotReady;
+          }
+        }
+        break;
+      case '10.1':
+        {
+          if (props.type == 'final') {
+            await exercise_10_1_final.loadLibrary();
+            return exercise_10_1_final.Usage;
+          } else {
+            return NotReady;
+          }
+        }
+        break;
+      case '10.2':
+        {
+          if (props.type == 'final') {
+            await exercise_10_2_final.loadLibrary();
+            return exercise_10_2_final.Usage;
           } else {
             return NotReady;
           }
