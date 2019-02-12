@@ -32,6 +32,7 @@ class _$ToggleProps extends AbstractToggleProps {
   bool initialOn;
   Callback1Arg onToggle;
   Callback1Arg onToggleReset;
+  Callback2Arg stateReducer;
 }
 
 @State(keyNamespace: '')
@@ -49,11 +50,8 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       ..onToggleReset = (_) {};
       // 🐨 let's add a default stateReducer here. It should return
       // the changes object as it is passed.
-
-
   @override
   Map getInitialState() => newState()..isOn = props.initialOn;
-
   // 🐨 let's add a method here called `internalSetState`. It will simulate
   // the same API as `setState(updater, callback)`:
   // - updater: (changes object or function that returns the changes object)
@@ -72,17 +70,19 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   // to this.internalSetState
 
   void reset() {
-    getInitialState();
-    props.onToggleReset(state.isOn);
+    setState(
+      getInitialState(),
+      () => props.onToggleReset(state.isOn),
+    );
   }
 
   void toggle() {
-    setState(
-      newState()..isOn = !state.isOn,
-      () => props.onToggle(state.isOn),
-    );
-  }
-  
+      setState(
+        newState()..isOn = !state.isOn,
+        () => props.onToggle(state.isOn),
+      );
+    }
+
   BaseToggleProps getTogglerProps([BaseToggleProps additionalProps]) {
     additionalProps ??= BaseToggleProps();
 
