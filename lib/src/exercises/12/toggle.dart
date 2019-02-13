@@ -1,6 +1,7 @@
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
+import 'package:ap_over_react/src/app_components/not_ready.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
@@ -48,6 +49,14 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 //    💰 `return hoistReactStatics(React.forwardRef(Wrapper), Component)`
   @override
   render() {
+    //Before working on the Toggle component in this exercise, it will cause errors
+    //When the component is functional (not necessarily complete), it will render
+    try {
+      //Remove the error before starting
+      return throw Error();
+    } catch (_) {
+      return (NotReady())();
+    }
 
   }
 }

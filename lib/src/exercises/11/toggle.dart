@@ -2,6 +2,7 @@ import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
 import 'package:ap_over_react/src/exercises/11/context.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
+import 'package:ap_over_react/src/app_components/not_ready.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
@@ -36,13 +37,19 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   @override
   render() {
-    return (
-        props.children.single(
-          BaseToggleProps()
-            ..isOn = state.isOn
-            ..toggle = toggle
-        )
-    )();
+    //Before working on the Toggle component in this exercise, it will cause errors
+    //When the component is functional (not necessarily complete), it will render
+    try {
+      return (
+          props.children.single(
+              BaseToggleProps()
+                ..isOn = state.isOn
+                ..toggle = toggle
+          )
+      )();
+    } catch (_) {
+      return (NotReady())();
+    }
   }
 }
 
