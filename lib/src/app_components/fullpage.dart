@@ -33,6 +33,7 @@ import 'package:ap_over_react/src/exercises-final/11/usage.dart' deferred as exe
 import 'package:ap_over_react/src/exercises-final/11/extra/1/usage.dart' deferred as exercise_11_1_final;
 import 'package:ap_over_react/src/exercises-final/11/extra/2/usage.dart' deferred as exercise_11_2_final;
 import 'package:ap_over_react/src/exercises-final/11/extra/3/usage.dart' deferred as exercise_11_3_final;
+import 'package:ap_over_react/src/exercises-final/11/extra/4/usage.dart' deferred as exercise_11_4_final;
 import 'package:ap_over_react/src/exercises/11/usage.dart' deferred as exercise_11;
 //import 'package:ap_over_react/src/exercises/05/usage.dart' deferred as exercise_05;
 
@@ -280,6 +281,16 @@ class FullPageComponent
           if (props.type == 'final') {
             await exercise_11_3_final.loadLibrary();
             return exercise_11_3_final.Usage;
+          } else {
+            return NotReady;
+          }
+        }
+        break;
+      case '11.4':
+        {
+          if (props.type == 'final') {
+            await exercise_11_4_final.loadLibrary();
+            return exercise_11_4_final.Usage;
           } else {
             return NotReady;
           }
