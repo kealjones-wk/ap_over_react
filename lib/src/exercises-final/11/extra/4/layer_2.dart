@@ -29,8 +29,8 @@ class Layer2Component extends UiComponent<Layer2Props> {
         print('value');
         print(value);
         return Fragment()(
-          //ToggleComponent.On('The button is on')(),
-          //ToggleComponent.Off('The button is off')(),
+          ToggleComponent.On('The button is on')(),
+          ToggleComponent.Off('The button is off')(),
           Layer3()()
         );
       }
