@@ -1,7 +1,7 @@
-// 05: Prop Collections
+// 10: Control Props Primer
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/exercises/10/toggle.dart';
+import 'package:ap_over_react/src/exercises-final/10/extra/2/toggle.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
@@ -15,14 +15,15 @@ part 'usage.over_react.g.dart';
 // ignore: undefined_identifier
 UiFactory<UsageProps> Usage = _$Usage;
 
-@Props()
+@Props(keyNamespace: '')
 class _$UsageProps extends UiProps {
   Callback1Arg onToggle;
+  Callback1Arg onStateChange;
   dynamic toggle1Ref;
   dynamic toggle2Ref;
 }
 
-@State()
+@State(keyNamespace: '')
 class _$UsageState extends UiState {
   // Wether the toggle is On or Off
   bool bothOn;
@@ -34,6 +35,14 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
   Map getInitialState() => newState()..bothOn = false;
 
   handleToggle(isOn) => setState(newState()..bothOn = isOn);
+  handleStateChange(isOn) => setState(newState()..bothOn = isOn);
+
+  @override
+  Map getDefaultProps() => newProps()
+    ..onStateChange = (_) { print('onStateChange'); }
+    ..onToggle = (args) => print('onToggle $args');
+
+
 
   @override
   render() {
@@ -44,11 +53,13 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
       (Toggle()
         ..isOn = state.bothOn
         ..onToggle = handleToggle
+        ..onStateChange = handleStateChange
         ..ref = (ref) { toggle1Ref = ref; }
       )(),
       (Toggle()
         ..isOn = state.bothOn
         ..onToggle = handleToggle
+        ..onStateChange = handleStateChange
         ..ref = (ref) { toggle2Ref = ref; }
       )(),
     );
