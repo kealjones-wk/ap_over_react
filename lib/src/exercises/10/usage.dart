@@ -1,6 +1,9 @@
-// Building the toggle component
+// 05: Prop Collections
+
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises/10/toggle.dart';
+import 'package:ap_over_react/src/shared/shared_props.dart';
+import 'package:ap_over_react/switch.dart';
 
 // ignore: uri_has_not_been_generated
 part 'usage.over_react.g.dart';
@@ -51,4 +54,3 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
     );
   }
 }
-
