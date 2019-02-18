@@ -24,16 +24,10 @@ class _$Layer2Props extends AbstractToggleProps {}
 class Layer2Component extends UiComponent<Layer2Props> {
   @override
   render() {
-    return ToggleConsumer()(
-      (BaseToggleProps value) {
-        print('value');
-        print(value);
-        return Fragment()(
-          ToggleComponent.On('The button is on')(),
-          ToggleComponent.Off('The button is off')(),
-          Layer3()()
-        );
-      }
+    return Fragment()(
+      ToggleComponent.On('The button is on'),
+      ToggleComponent.Off('The button is off'),
+      Layer3()()
     );
   }
 }

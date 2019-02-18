@@ -37,7 +37,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     return ToggleConsumer()(
        (BaseToggleProps value) {
         if (value.isOn) {
-          return children;
+          return Dom.span()(children);
         } else {
           return null;
         }
@@ -51,7 +51,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
         if (value.isOn) {
           return null;
         } else {
-          return children;
+          return Dom.span()(children);
         }
       }
     );
@@ -77,7 +77,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   @override
   render() {
-    final dynamic children = props.children;
+    final dynamic children = props.children.single;
     final ui = children is Function ? children(state) : children;
 
     return ToggleContext.Provider(

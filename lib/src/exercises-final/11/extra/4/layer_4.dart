@@ -23,8 +23,6 @@ class _$Layer4Props extends AbstractToggleProps {}
 class Layer4Component extends UiComponent<Layer4Props> {
   @override
   render() {
-    print('props');
-    print(props);
-    ToggleComponent.Button()();
+    return ToggleComponent.Button();
   }
 }
