@@ -34,13 +34,16 @@ import 'package:ap_over_react/src/exercises/06/usage.dart'
     deferred as exercise_06;
 import 'package:ap_over_react/src/exercises-final/07/usage.dart'
     deferred as exercise_07_final;
-//import 'package:ap_over_react/src/exercises/07/usage.dart' deferred as exercise_07;
+import 'package:ap_over_react/src/exercises/07/usage.dart'
+    deferred as exercise_07;
 import 'package:ap_over_react/src/exercises-final/08/usage.dart'
     deferred as exercise_08_final;
-//import 'package:ap_over_react/src/exercises/08/usage.dart' deferred as exercise_08;
+import 'package:ap_over_react/src/exercises/08/usage.dart'
+    deferred as exercise_08;
 import 'package:ap_over_react/src/exercises-final/09/usage.dart'
     deferred as exercise_09_final;
-//import 'package:ap_over_react/src/exercises/09/usage.dart' deferred as exercise_09;
+import 'package:ap_over_react/src/exercises/09/usage.dart'
+    deferred as exercise_09;
 import 'package:ap_over_react/src/exercises-final/10/usage.dart'
     deferred as exercise_10_final;
 import 'package:ap_over_react/src/exercises-final/10/extra/1/usage.dart'
@@ -220,7 +223,8 @@ class FullPageComponent
             await exercise_07_final.loadLibrary();
             return exercise_07_final.Usage;
           } else {
-            return NotReady;
+            await exercise_07.loadLibrary();
+            return exercise_07.Usage;
           }
         }
         break;
@@ -230,7 +234,8 @@ class FullPageComponent
             await exercise_08_final.loadLibrary();
             return exercise_08_final.Usage;
           } else {
-            return NotReady;
+            await exercise_08.loadLibrary();
+            return exercise_08.Usage;
           }
         }
         break;
@@ -240,7 +245,8 @@ class FullPageComponent
             await exercise_09_final.loadLibrary();
             return exercise_09_final.Usage;
           } else {
-            return NotReady;
+            await exercise_09.loadLibrary();
+            return exercise_09.Usage;
           }
         }
         break;
