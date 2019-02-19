@@ -54,12 +54,6 @@ import 'package:ap_over_react/src/exercises-final/10/extra/3/usage.dart'
     deferred as exercise_10_3_final;
 import 'package:ap_over_react/src/exercises/10/usage.dart'
     deferred as exercise_10;
-import 'package:ap_over_react/src/exercises/10/extra/1/usage.dart'
-    deferred as exercise_10_1;
-import 'package:ap_over_react/src/exercises/10/extra/2/usage.dart'
-    deferred as exercise_10_2;
-import 'package:ap_over_react/src/exercises/10/extra/3/usage.dart'
-    deferred as exercise_10_3;
 import 'package:ap_over_react/src/exercises-final/11/usage.dart'
     deferred as exercise_11_final;
 import 'package:ap_over_react/src/exercises-final/11/extra/1/usage.dart'
@@ -72,12 +66,6 @@ import 'package:ap_over_react/src/exercises-final/11/extra/4/usage.dart'
     deferred as exercise_11_4_final;
 import 'package:ap_over_react/src/exercises/11/usage.dart'
     deferred as exercise_11;
-import 'package:ap_over_react/src/exercises/11/extra/1/usage.dart'
-    deferred as exercise_11_1;
-import 'package:ap_over_react/src/exercises/11/extra/2/usage.dart'
-    deferred as exercise_11_2;
-import 'package:ap_over_react/src/exercises/11/extra/3/usage.dart'
-    deferred as exercise_11_3;
 import 'package:ap_over_react/src/exercises-final/12/usage.dart'
     deferred as exercise_12_final;
 import 'package:ap_over_react/src/exercises/12/usage.dart'
@@ -267,8 +255,8 @@ class FullPageComponent
             await exercise_10_1_final.loadLibrary();
             return exercise_10_1_final.Usage;
           } else {
-            await exercise_10_1.loadLibrary();
-            return exercise_10_1.Usage;
+            await exercise_10.loadLibrary();
+            return exercise_10.Usage;
           }
         }
         break;
@@ -278,8 +266,8 @@ class FullPageComponent
             await exercise_10_2_final.loadLibrary();
             return exercise_10_2_final.Usage;
           } else {
-            await exercise_10_2.loadLibrary();
-            return exercise_10_2.Usage;
+            await exercise_10.loadLibrary();
+            return exercise_10.Usage;
           }
         }
         break;
@@ -289,8 +277,8 @@ class FullPageComponent
             await exercise_10_3_final.loadLibrary();
             return exercise_10_3_final.Usage;
           } else {
-            await exercise_10_3.loadLibrary();
-            return exercise_10_3.Usage;
+            await exercise_10.loadLibrary();
+            return exercise_10.Usage;
           }
         }
         break;
@@ -311,8 +299,8 @@ class FullPageComponent
             await exercise_11_1_final.loadLibrary();
             return exercise_11_1_final.Usage;
           } else {
-            await exercise_11_1.loadLibrary();
-            return exercise_11_1.Usage;
+            await exercise_11.loadLibrary();
+            return exercise_11.Usage;
           }
         }
         break;
@@ -322,8 +310,8 @@ class FullPageComponent
             await exercise_11_2_final.loadLibrary();
             return exercise_11_2_final.Usage;
           } else {
-            await exercise_11_2.loadLibrary();
-            return exercise_11_2.Usage;
+            await exercise_11.loadLibrary();
+            return exercise_11.Usage;
           }
         }
         break;
@@ -333,8 +321,8 @@ class FullPageComponent
             await exercise_11_3_final.loadLibrary();
             return exercise_11_3_final.Usage;
           } else {
-            await exercise_11_3.loadLibrary();
-            return exercise_11_3.Usage;
+            await exercise_11.loadLibrary();
+            return exercise_11.Usage;
           }
         }
         break;
