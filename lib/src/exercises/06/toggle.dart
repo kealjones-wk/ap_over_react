@@ -1,7 +1,6 @@
 // 06: prop getters
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/switch.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 
 // ignore: uri_has_not_been_generated
@@ -21,8 +20,6 @@ part 'toggle.over_react.g.dart';
 //    return mouseEventCallbacks.chainFromList(fns);
 //  }
 
-// Flexible Compound Components with context
-
 @Factory()
 // ignore: undefined_identifier
 UiFactory<ToggleProps> Toggle = _$Toggle;
@@ -35,7 +32,7 @@ class _$ToggleProps extends AbstractToggleProps {
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 

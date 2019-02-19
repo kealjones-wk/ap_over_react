@@ -5,6 +5,7 @@ import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/src/exercises-final/11/extra/4/context.dart';
 import 'package:ap_over_react/src/exercises-final/11/extra/4/toggle_consumer.dart';
 import 'package:ap_over_react/switch.dart';
+
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
 
@@ -20,7 +21,7 @@ class _$ToggleProps extends AbstractToggleProps {
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
   Callback1Arg toggle;
 }

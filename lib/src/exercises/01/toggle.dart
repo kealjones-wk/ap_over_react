@@ -14,12 +14,14 @@ UiFactory<ToggleProps> Toggle = _$Toggle;
 
 @Props()
 class _$ToggleProps extends UiProps {
-
+  /// Callback that returns `state.isOn` when the toggle switches;
+  Callback1Arg onToggle;
 }
 
 @State()
 class _$ToggleState extends UiState {
-
+  // Whether the toggle is On or Off
+  bool isOn;
 }
 
 @Component()

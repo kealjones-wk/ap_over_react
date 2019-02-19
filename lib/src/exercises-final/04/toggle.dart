@@ -1,7 +1,6 @@
 // 04: render props
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/exercises-final/03/context.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 
 // ignore: uri_has_not_been_generated
@@ -19,7 +18,7 @@ class _$ToggleProps extends AbstractToggleProps {
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 

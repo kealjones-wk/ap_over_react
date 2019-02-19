@@ -18,13 +18,17 @@ UiFactory<UsageProps> Usage = _$Usage;
 @Props()
 class _$UsageProps extends UiProps {
   Callback1Arg onToggle;
+  Callback1Arg onButtonClick;
 }
 
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
   @override
-  Map getDefaultProps() =>
-      newProps()..onToggle = (args) => print('onToggle $args');
+  Map getDefaultProps() => newProps()
+    ..onButtonClick = (_) {
+      print('onButtonClick');
+    }
+    ..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {

@@ -2,9 +2,6 @@
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/03/toggle.dart';
-import 'package:ap_over_react/src/exercises-final/03/on.dart';
-import 'package:ap_over_react/src/exercises-final/03/off.dart';
-import 'package:ap_over_react/src/exercises-final/03/button.dart';
 
 // ignore: uri_has_not_been_generated
 part 'usage.over_react.g.dart';
@@ -30,10 +27,10 @@ class UsageComponent extends UiComponent<UsageProps> {
   @override
   render() {
     return (Toggle()..onToggle = props.onToggle)(
-      ToggleOn()('The button is on'),
-      ToggleOff()('The button is off'),
+      ToggleComponent.On('The button is on'),
+      ToggleComponent.Off('The button is off'),
       Dom.div()(
-        ToggleButton()(),
+        ToggleComponent.Button(),
       ),
     );
   }

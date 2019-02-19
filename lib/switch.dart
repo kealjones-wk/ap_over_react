@@ -15,7 +15,7 @@ UiFactory<SwitchProps> Switch = _$Switch;
 
 @Props(keyNamespace: '')
 class _$SwitchProps extends UiProps {
-  /// Wether the switch should appear on or off.
+  /// Whether the switch should appear on or off.
   bool isOn;
 }
 

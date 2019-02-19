@@ -23,7 +23,7 @@ class _$UsageProps extends UiProps {
 
 @State(keyNamespace: '')
 class _$UsageState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool bothOn;
 }
 
