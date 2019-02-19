@@ -1,4 +1,4 @@
-// Prop Getters
+// 09: state reducer with types
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises/09/toggle.dart';

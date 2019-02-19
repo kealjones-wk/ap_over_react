@@ -1,4 +1,4 @@
-// 10: Control Props Primer
+// 10: control props
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/10/extra/1/toggle.dart';

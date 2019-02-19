@@ -1,6 +1,6 @@
+// 11: The provider pattern
+
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/switch.dart';
-import 'package:ap_over_react/src/exercises/11/context.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/src/app_components/not_ready.dart';
 
@@ -58,7 +58,3 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 // 💯 Extra credit: support render props as well
 //
 // 💯 Extra credit: support (and expose) compound components!
-
-// Don't make changes to the Usage component. It's here to show you how your
-// component is intended to be used and is used in the tests.
-// You can make all the tests pass by updating the Toggle component.

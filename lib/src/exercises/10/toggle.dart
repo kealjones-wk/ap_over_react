@@ -1,4 +1,4 @@
-// 05: Prop Collections
+// 10: control props
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
@@ -71,6 +71,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       ..onClick = toggle
     )();
   }
+
   // These extra credit ideas are to expand this solution to elegantly handle
   // more state properties than just a single `on` state.
   // 💯 Make the `getState` function generic enough to support all state in

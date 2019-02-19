@@ -1,9 +1,14 @@
+// 10: control props
+
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
+
+// 💯 Add support for a `type` property in the `changes` you pass to
+// `onStateChange` so consumers can differentiate different state changes.
 
 @Factory()
 // ignore: undefined_identifier
@@ -19,8 +24,6 @@ class _$ToggleState extends UiState {
   bool isOn;
 }
 
-// 💯 Add support for a `type` property in the `changes` you pass to
-// `onStateChange` so consumers can differentiate different state changes.
 @Component()
 class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   @override

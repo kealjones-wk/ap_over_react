@@ -1,5 +1,4 @@
 // 11: The Provider Pattern
-// Extra credit: Validate the consumer is rendered within a provider
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/11/extra/1/toggle.dart';

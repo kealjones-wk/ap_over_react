@@ -1,4 +1,5 @@
-// Building the toggle component
+// 02: Compound Components
+
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises/02/toggle.dart';
 import 'package:ap_over_react/src/exercises/02/on.dart';

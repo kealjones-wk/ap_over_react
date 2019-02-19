@@ -1,5 +1,4 @@
 // 11: The Provider Pattern
-// Extra credit: avoid unecessary re-renders by only updating the value when state changes
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/11/extra/2/toggle.dart';

@@ -1,9 +1,7 @@
-// 10: Control Props Primer
+// 10: control props
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/10/extra/2/toggle.dart';
-import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:ap_over_react/switch.dart';
 
 // ignore: uri_has_not_been_generated
 part 'usage.over_react.g.dart';

@@ -1,4 +1,4 @@
-// 05: Prop Collections
+// 10: control props
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
@@ -6,6 +6,9 @@ import 'package:ap_over_react/switch.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
+
+// 💯 Make the `getState` function generic enough to support all state in
+// `this.state` even if we add any number of properties to state.
 
 @Factory()
 // ignore: undefined_identifier
@@ -30,8 +33,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     return props[prop] != null;
   }
 
-  // 💯 Make the `getState` function generic enough to support all state in
-  // `this.state` even if we add any number of properties to state.
+
   getState() {
     return BaseToggleProps()
       ..isOn = isControlled('isOn') ? props.isOn : state.isOn;
