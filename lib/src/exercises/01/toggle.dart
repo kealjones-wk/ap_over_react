@@ -14,14 +14,12 @@ UiFactory<ToggleProps> Toggle = _$Toggle;
 
 @Props()
 class _$ToggleProps extends UiProps {
-  /// Callback that returns `state.isOn` when the toggle switches;
-  Callback1Arg onToggle;
+
 }
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
-  bool isOn;
+
 }
 
 @Component()
@@ -44,14 +42,5 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   render() {
     // 🐨 here you'll want to return the switch with the `on` and `onClick` props
     return null;
-  }
-
-  // --------------------------------------------------------------------------
-  // Public API Methods
-  // --------------------------------------------------------------------------
-  void toggle() {
-    setState(newState()..isOn = !state.isOn, () {
-      props.onToggle(state.isOn);
-    });
   }
 }
