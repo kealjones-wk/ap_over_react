@@ -21,7 +21,6 @@ part 'toggle.over_react.g.dart';
 
 // Flexible Compound Components with context
 
-
 @Factory()
 // ignore: undefined_identifier
 UiFactory<ToggleProps> Toggle = _$Toggle;
@@ -30,7 +29,6 @@ UiFactory<ToggleProps> Toggle = _$Toggle;
 class _$ToggleProps extends AbstractToggleProps {
   /// Callback that returns `state.isOn` when the toggle switches;
   Callback1Arg onToggle;
-
 }
 
 @State()
@@ -47,11 +45,11 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   void toggle(_) {
     setState(
       newState()..isOn = !state.isOn,
-          () => props.onToggle(state.isOn),
+      () => props.onToggle(state.isOn),
     );
   }
 
-  BaseToggleProps getStateAndHelpers(){
+  BaseToggleProps getStateAndHelpers() {
     return BaseToggleProps()
       ..isOn = state.isOn
       ..toggle = toggle

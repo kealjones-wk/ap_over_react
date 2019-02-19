@@ -42,14 +42,18 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
 
     return Dom.div()(
       (Toggle()
-          ..isOn = state.bothOn
-          ..onToggle = handleToggle
-          ..ref = (ref) { toggle1Ref = ref; }
+        ..isOn = state.bothOn
+        ..onToggle = handleToggle
+        ..ref = (ref) {
+          toggle1Ref = ref;
+        }
       )(),
       (Toggle()
-          ..isOn = state.bothOn
-          ..onToggle = handleToggle
-          ..ref = (ref) { toggle2Ref = ref; }
+        ..isOn = state.bothOn
+        ..onToggle = handleToggle
+        ..ref = (ref) {
+          toggle2Ref = ref;
+        }
       )(),
     );
   }

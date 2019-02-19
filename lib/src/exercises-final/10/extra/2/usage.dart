@@ -39,10 +39,10 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
 
   @override
   Map getDefaultProps() => newProps()
-    ..onStateChange = (_) { print('onStateChange'); }
+    ..onStateChange = (_) {
+      print('onStateChange');
+    }
     ..onToggle = (args) => print('onToggle $args');
-
-
 
   @override
   render() {
@@ -54,13 +54,17 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
         ..isOn = state.bothOn
         ..onToggle = handleToggle
         ..onStateChange = handleStateChange
-        ..ref = (ref) { toggle1Ref = ref; }
+        ..ref = (ref) {
+          toggle1Ref = ref;
+        }
       )(),
       (Toggle()
         ..isOn = state.bothOn
         ..onToggle = handleToggle
         ..onStateChange = handleStateChange
-        ..ref = (ref) { toggle2Ref = ref; }
+        ..ref = (ref) {
+          toggle2Ref = ref;
+        }
       )(),
     );
   }

@@ -36,12 +36,11 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   @override
   render() {
-    return ToggleContext.Provider(
-      {
+    return ToggleContext.Provider({
       'value': BaseToggleProps()
-          ..isOn = state.isOn
-          ..toggle = toggle,
-      }
+        ..isOn = state.isOn
+        ..toggle = toggle,
+    }
     )(props.children);
   }
 }

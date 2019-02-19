@@ -79,13 +79,14 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     // value (the value prop).
     int indexKey = 0;
     return Dom.div()(
-      props.children.map((child){
-        return cloneElement(child, BaseToggleProps()
-          ..isOn = state.isOn
-          ..toggle = toggle
-          ..key = indexKey++
-        );
-      })
+      props.children.map((child) {
+        return cloneElement(
+            child,
+            BaseToggleProps()
+              ..isOn = state.isOn
+              ..toggle = toggle
+              ..key = indexKey++);
+      }),
     );
   }
 }

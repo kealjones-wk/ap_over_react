@@ -28,11 +28,14 @@ class _$UsageState extends UiState {
 
 @Component()
 class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
-
   @override
   Map getDefaultProps() => newProps()
-        ..onToggle = (args) { print('onToggle $args'); }
-        ..onToggleReset = (args) { print('onToggleReset $args'); };
+    ..onToggle = (args) {
+      print('onToggle $args');
+    }
+    ..onToggleReset = (args) {
+      print('onToggleReset $args');
+    };
 
   @override
   Map getInitialState() => newState()..timesClicked = 0;
@@ -49,13 +52,12 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
 
   toggleStateReducer(newState, changes) {
     if (changes['type'] == 'forced') {
-      return BaseToggleProps()
-          ..addAll(changes);
+      return BaseToggleProps()..addAll(changes);
     }
     if (state.timesClicked >= 4) {
       return BaseToggleProps()
-          ..addAll(changes)
-          ..isOn = false;
+        ..addAll(changes)
+        ..isOn = false;
     }
     return changes;
   }
@@ -66,24 +68,36 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
       ..stateReducer = toggleStateReducer
       ..onToggle = handleToggle
       ..onToggleReset = handleReset
-      ..ref = (ref) { props.ref = ref; }
+      ..ref = (ref) {
+        props.ref = ref;
+      }
     )(
       (BaseToggleProps value) {
         return Dom.div()(
           (Switch()
-            ..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
+            ..addProps(
+                value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
           )(),
-          state.timesClicked > 4 ? (
-            (Dom.div()..addTestId('notice'))(
-              'Whoa, you clicked too much!',
-              Dom.br()(),
-              (Dom.button()..onClick = (_) { value.toggle({'type': 'forced'}); })('Force Toggle'),
-              Dom.br()()
-            )
-          ) : state.timesClicked > 0 ? (
-            (Dom.div()..addTestId('click-count'))('Click count: ${state.timesClicked}')
-          ) : null,
-          (Dom.button()..onClick = (_) { value.reset(); } )('Reset'),
+          state.timesClicked > 4
+              ? ((Dom.div()..addTestId('notice'))(
+                  'Whoa, you clicked too much!',
+                  Dom.br()(),
+                  (Dom.button()
+                    ..onClick = (_) {
+                      value.toggle({'type': 'forced'});
+                    }
+                  )('Force Toggle'),
+                  Dom.br()(),
+                ))
+              : state.timesClicked > 0
+                  ? ((Dom.div()..addTestId('click-count'))(
+                      'Click count: ${state.timesClicked}'))
+                  : null,
+          (Dom.button()
+            ..onClick = (_) {
+              value.reset();
+            }
+          )('Reset'),
         );
       },
     );

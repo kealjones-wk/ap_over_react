@@ -25,10 +25,10 @@ class Layer4Component extends UiComponent<Layer4Props> {
     return ToggleContext.Consumer()(
       (BaseToggleProps value) {
         return (Switch()
-            ..isOn = value.isOn
-            ..onClick = value.toggle
-          )();
-      }
+          ..isOn = value.isOn
+          ..onClick = value.toggle
+        )();
+      },
     );
   }
 }

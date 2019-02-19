@@ -26,10 +26,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   Map getInitialState() => newState()..isOn = false;
 
   void toggle(_) {
-    setState(newState()
-      ..isOn = !state.isOn,
-      () => props.onToggle(state.isOn)
-    );
+    setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
   }
 
   @override

@@ -26,12 +26,11 @@ class _$ToggleState extends UiState {
 
 @Component()
 class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
-
   @override
   Map getDefaultProps() => newProps()
-      ..initialOn = false
-      ..onToggleReset = (_) {}
-      ..stateReducer = (state, changes) => changes;
+    ..initialOn = false
+    ..onToggleReset = (_) {}
+    ..stateReducer = (state, changes) => changes;
 
   static const stateChangeTypes = {
     'reset': '__toggle_reset__',
@@ -43,7 +42,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   internalSetState(changes, callback) {
     getNewState(changes) {
-       // handle function setState call
+      // handle function setState call
       Map changesObject = (changes is Function) ? changes(state) : changes;
 
       // apply state reducer
@@ -59,6 +58,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       // return null if there are no changes to be made
       return onlyChanges.isNotEmpty ? onlyChanges : null;
     }
+
     setState(getNewState(changes), callback);
   }
 
@@ -71,11 +71,13 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   void toggle([Map map]) {
     String type = stateChangeTypes['toggle'];
-    if (map != null && map.containsKey('type')){
+    if (map != null && map.containsKey('type')) {
       type = map['type'];
     }
     internalSetState(
-      BaseToggleProps()..addAll({'type': type })..isOn = !state.isOn,
+      BaseToggleProps()
+        ..addAll({'type': type})
+        ..isOn = !state.isOn,
       () => props.onToggle(state.isOn),
     );
   }
@@ -86,15 +88,16 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     return BaseToggleProps()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
+      ..onClick = mouseEventCallbacks
+          .chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
-  BaseToggleProps getStateAndHelpers(){
+  BaseToggleProps getStateAndHelpers() {
     return BaseToggleProps()
-        ..isOn = state.isOn
-        ..toggle = toggle
-        ..reset = reset
-        ..getTogglerProps = getTogglerProps;
+      ..isOn = state.isOn
+      ..toggle = toggle
+      ..reset = reset
+      ..getTogglerProps = getTogglerProps;
   }
 
   @override

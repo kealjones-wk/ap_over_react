@@ -24,14 +24,13 @@ class _$ToggleState extends UiState {
 
 @Component()
 class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
-
   @override
   Map getInitialState() => newState()..isOn = null;
 
   static const Map stateChangeTypes = {
-    'toggle' : '__toggle__',
-    'toggleOn' : '__toggle_on__',
-    'toggleOff' : '__toggle_off__',
+    'toggle': '__toggle__',
+    'toggleOn': '__toggle_on__',
+    'toggleOff': '__toggle_off__',
   };
 
   isControlled(prop) {
@@ -39,7 +38,6 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   }
 
   getState([ToggleState stateParam]) {
-
     if (stateParam != null) {
       BaseToggleProps combinedState = BaseToggleProps();
       ToggleState componentState = stateParam;
@@ -64,23 +62,23 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   }
 
   internalSetState(changes, callback) {
-
     Map allChanges;
 
     getNewState(passedInChanges) {
-
       BaseToggleProps combinedState = getState(state);
 
-      Map changesObject = (passedInChanges is Function) ? passedInChanges(combinedState) : passedInChanges;
+      Map changesObject = (passedInChanges is Function)
+          ? passedInChanges(combinedState)
+          : passedInChanges;
       allChanges = changesObject;
 
       Map onlyChanges = Map.from(changesObject);
-          onlyChanges.remove('type');
-          
+      onlyChanges.remove('type');
+
       BaseToggleProps nonControlledChanges = BaseToggleProps();
 
-      onlyChanges.forEach((mapKey, mapValue){
-        if(!isControlled(mapKey)) {
+      onlyChanges.forEach((mapKey, mapValue) {
+        if (!isControlled(mapKey)) {
           nonControlledChanges.addAll({
             mapKey: mapValue,
           });
@@ -90,6 +88,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       // return null if there are no changes to be made
       return nonControlledChanges.isNotEmpty ? nonControlledChanges : null;
     }
+
     setState(getNewState(changes), () {
       props.onStateChange(allChanges);
       callback();
@@ -97,23 +96,17 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   }
 
   void toggle([newState, type]) {
-
     type ??= ToggleComponent.stateChangeTypes['toggle'];
 
-    internalSetState(
-      (passedInState) {
-        bool onValue = newState is bool
-            ? newState
-            : passedInState.isOn != null
-              ? !passedInState.isOn
-              : {};
-        return {
-          'isOn': onValue,
-          'type': type,
-        };
-      },
-      () => props.onToggle(getState().isOn)
-    );
+    internalSetState((passedInState) {
+      bool onValue = newState is bool
+          ? newState
+          : passedInState.isOn != null ? !passedInState.isOn : {};
+      return {
+        'isOn': onValue,
+        'type': type,
+      };
+    }, () => props.onToggle(getState().isOn));
   }
 
   void handleSwitchClick(_) {
@@ -137,24 +130,22 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       )(),
       Dom.hr()(),
       (Dom.button()
-        ..addProps(
-            BaseToggleProps()
-              ..id = 'custom-button-id'
-              ..onClick = handleOffClick
-              ..aria.label = 'custom-button'
+        ..addProps(BaseToggleProps()
+          ..id = 'custom-button-id'
+          ..onClick = handleOffClick
+          ..aria.label = 'custom-button'
         )
       )(
-          'Off'
+        'Off',
       ),
       (Dom.button()
-        ..addProps(
-            BaseToggleProps()
-              ..id = 'custom-button-id'
-              ..onClick = handleOnClick
-              ..aria.label = 'custom-button'
+        ..addProps(BaseToggleProps()
+          ..id = 'custom-button-id'
+          ..onClick = handleOnClick
+          ..aria.label = 'custom-button'
         )
       )(
-          'On'
+        'On',
       ),
     );
   }

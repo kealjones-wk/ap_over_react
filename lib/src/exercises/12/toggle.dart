@@ -22,7 +22,6 @@ class _$ToggleState extends UiState {
 
 @Component()
 class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
-
 // The `withToggle` function is called a "Higher Order Component"
 // It's another way to share code and allows you to statically
 // create new components to render.
@@ -53,10 +52,9 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     //When the component is functional (not necessarily complete), it will render
     try {
       //Remove the error before starting
-      return throw Error();
+      throw Error();
     } catch (_) {
       return (NotReady())();
     }
-
   }
 }

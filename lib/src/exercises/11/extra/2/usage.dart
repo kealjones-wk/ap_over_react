@@ -28,7 +28,7 @@ class UsageComponent extends UiComponent<UsageProps> {
   @override
   render() {
     return (Toggle()..onToggle = props.onToggle)(
-        Layer1()()
+      Layer1()(),
     );
   }
 }

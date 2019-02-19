@@ -22,7 +22,8 @@ class _$UsageProps extends UiProps {
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
   @override
-  Map getDefaultProps() => newProps()..onToggle = (args) => print('onToggle $args');
+  Map getDefaultProps() =>
+      newProps()..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {
@@ -39,7 +40,7 @@ class UsageComponent extends UiComponent<UsageProps> {
             ..aria.label = 'custom-button'
             ..onClick = value.toggle
           )(
-            value.isOn ? 'on' : 'off'
+            value.isOn ? 'on' : 'off',
           ),
         );
       },

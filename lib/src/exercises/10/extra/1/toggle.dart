@@ -29,6 +29,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   isControlled(prop) {
     return props[prop] != null;
   }
+
   // 💯 Make the `getState` function generic enough to support all state in
   // `this.state` even if we add any number of properties to state.
   getState() {
@@ -50,8 +51,8 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   @override
   render() {
     return (Switch()
-        ..isOn = getState().isOn
-        ..onClick = toggle
-      )();
+      ..isOn = getState().isOn
+      ..onClick = toggle
+    )();
   }
 }

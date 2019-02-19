@@ -29,7 +29,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   void toggle(_) {
     setState(
       newState()..isOn = !state.isOn,
-          () => props.onToggle(state.isOn),
+      () => props.onToggle(state.isOn),
     );
   }
 
@@ -38,13 +38,9 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     //Before working on the Toggle component in this exercise, it will cause errors
     //When the component is functional (not necessarily complete), it will render
     try {
-      return (
-          props.children.single(
-              BaseToggleProps()
-                ..isOn = state.isOn
-                ..toggle = toggle
-          )
-      )();
+      return (props.children.single(BaseToggleProps()
+        ..isOn = state.isOn
+        ..toggle = toggle))();
     } catch (_) {
       return (NotReady())();
     }

@@ -18,6 +18,7 @@ class _$ToggleProps extends AbstractToggleProps {
 class _$ToggleState extends UiState {
   bool isOn;
 }
+
 // 💯 Add support for a `type` property in the `changes` you pass to
 // `onStateChange` so consumers can differentiate different state changes.
 @Component()
@@ -32,7 +33,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   getState() {
     BaseToggleProps combinedState = BaseToggleProps();
 
-    state.forEach((mapKey, mapValue){
+    state.forEach((mapKey, mapValue) {
       if (isControlled(mapKey)) {
         combinedState.addAll({
           mapKey: props[mapKey],
@@ -52,7 +53,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     } else {
       setState(
         newState()..isOn = !state.isOn,
-            () => props.onToggle(getState().isOn),
+        () => props.onToggle(getState().isOn),
       );
     }
   }

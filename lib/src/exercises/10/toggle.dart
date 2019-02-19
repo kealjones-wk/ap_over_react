@@ -7,7 +7,6 @@ import 'package:ap_over_react/switch.dart';
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
 
-
 // Here we're going to simplify our component slightly so you
 // can learn the control props pattern in isolation from everything else.
 // Next you'll put the pieces together.
@@ -68,9 +67,9 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     // 🐨 rather than getting state from this.state,
     // let's use our `getState` method.
     return (Switch()
-        ..isOn = state.isOn
-        ..onClick = toggle
-      )();
+      ..isOn = state.isOn
+      ..onClick = toggle
+    )();
   }
   // These extra credit ideas are to expand this solution to elegantly handle
   // more state properties than just a single `on` state.

@@ -12,11 +12,10 @@ class _$NotReadyProps extends UiProps {}
 
 @Component()
 class NotReadyComponent extends UiComponent<NotReadyProps> {
-
   @override
   render() {
     return Dom.div()(
-      'Exercise has not been implemented yet.'
+      'Exercise has not been implemented yet.',
     );
   }
 }

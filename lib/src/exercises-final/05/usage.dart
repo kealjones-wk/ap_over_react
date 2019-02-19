@@ -40,7 +40,7 @@ class UsageComponent extends UiComponent<UsageProps> {
             ..addProps(value.togglerProps)
             ..aria.label = 'custom-button'
           )(
-            value.isOn ? 'on' : 'off'
+            value.isOn ? 'on' : 'off',
           ),
         );
       },

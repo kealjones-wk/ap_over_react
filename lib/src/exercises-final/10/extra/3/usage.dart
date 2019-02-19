@@ -41,13 +41,10 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
   handleStateChange(changes) {
     bool isButtonChange =
         changes['type'] == ToggleComponent.stateChangeTypes['toggleOn'] ||
-        changes['type'] == ToggleComponent.stateChangeTypes['toggleOff'];
+            changes['type'] == ToggleComponent.stateChangeTypes['toggleOff'];
 
-    if (
-        changes['type'] == ToggleComponent.stateChangeTypes['toggle'] ||
-            (lastWasButton && isButtonChange)
-    ) {
-
+    if (changes['type'] == ToggleComponent.stateChangeTypes['toggle'] ||
+        (lastWasButton && isButtonChange)) {
       setState({'bothOn': changes['isOn']});
       lastWasButton = false;
     } else {
@@ -57,7 +54,9 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
 
   @override
   Map getDefaultProps() => newProps()
-    ..onStateChange = (_) { print('onStateChange'); }
+    ..onStateChange = (_) {
+      print('onStateChange');
+    }
     ..onToggle = (args) => print('onToggle $args');
 
   @override
@@ -70,13 +69,17 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
         ..isOn = state.bothOn
         ..onToggle = props.onToggle
         ..onStateChange = handleStateChange
-        ..ref = (ref) { toggle1Ref = ref; }
+        ..ref = (ref) {
+          toggle1Ref = ref;
+        }
       )(),
       (Toggle()
         ..isOn = state.bothOn
         ..onToggle = props.onToggle
         ..onStateChange = handleStateChange
-        ..ref = (ref) { toggle1Ref = ref; }
+        ..ref = (ref) {
+          toggle1Ref = ref;
+        }
       )(),
     );
   }

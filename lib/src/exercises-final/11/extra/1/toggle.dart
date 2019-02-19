@@ -1,4 +1,3 @@
-
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/src/exercises-final/11/extra/1/context.dart';
@@ -29,18 +28,17 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   void toggle(_) {
     setState(
       newState()..isOn = !state.isOn,
-          () => props.onToggle(state.isOn),
+      () => props.onToggle(state.isOn),
     );
   }
 
   @override
   render() {
-    return ToggleContext.Provider(
-        {
-          'value': BaseToggleProps()
-            ..isOn = state.isOn
-            ..toggle = toggle,
-        }
+    return ToggleContext.Provider({
+      'value': BaseToggleProps()
+        ..isOn = state.isOn
+        ..toggle = toggle,
+    }
     )(props.children);
   }
 }

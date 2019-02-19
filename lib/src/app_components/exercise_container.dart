@@ -35,7 +35,7 @@ class ExerciseContainerComponent extends UiComponent<ExerciseContainerProps> {
     )(
       (Dom.div()..style = {'gridColumn': 'span 2', 'textAlign': 'center'})(
         Dom.h1()('Exercise $exerciseId'),
-        (Dom.h3()..style = {'marginTop':0})('${exerciseTitles[exerciseId]}'),
+        (Dom.h3()..style = {'marginTop': 0})('${exerciseTitles[exerciseId]}'),
       ),
       (ComponentContainer()..label = 'Exercise')(
         (FullPage()..id = props.id)(),

@@ -32,7 +32,6 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   }
 
   getState([ToggleState stateParam]) {
-
     if (stateParam != null) {
       BaseToggleProps combinedState = BaseToggleProps();
       ToggleState componentState = stateParam;
@@ -57,29 +56,29 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   }
 
   internalSetState(changes, callback) {
-
     Map allChanges;
 
     getNewState(changes) {
-
       BaseToggleProps combinedState = getState(state);
 
       // handle function setState call
-      Map changesObject = (changes is Function) ? changes(combinedState) : changes;
+      Map changesObject =
+          (changes is Function) ? changes(combinedState) : changes;
       allChanges = changesObject;
 
       // apply state reducer
       BaseToggleProps nonControlledChanges = BaseToggleProps();
 
-      changesObject.forEach((mapKey, mapValue){
-          nonControlledChanges.addAll({
-            mapKey: mapValue,
-          });
+      changesObject.forEach((mapKey, mapValue) {
+        nonControlledChanges.addAll({
+          mapKey: mapValue,
+        });
       });
 
       // return null if there are no changes to be made
       return nonControlledChanges.isNotEmpty ? nonControlledChanges : null;
     }
+
     setState(getNewState(changes), () {
       props.onStateChange(allChanges['isOn']);
       callback();
@@ -87,14 +86,11 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   }
 
   void toggle(_) {
-    internalSetState(
-        (passedInState) {
-          if (passedInState.isOn != null) {
-            return {'isOn': !passedInState.isOn};
-          }
-        },
-        () => props.onToggle(getState().isOn)
-    );
+    internalSetState((passedInState) {
+      if (passedInState.isOn != null) {
+        return {'isOn': !passedInState.isOn};
+      }
+    }, () => props.onToggle(getState().isOn));
   }
 
   @override

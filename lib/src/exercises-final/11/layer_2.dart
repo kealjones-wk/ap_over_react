@@ -29,9 +29,9 @@ class Layer2Component extends UiComponent<Layer2Props> {
       (BaseToggleProps value) {
         return Fragment()(
           value.isOn ? 'The button is on' : 'The button is off',
-          Layer3()()
+          Layer3()(),
         );
-      }
+      },
     );
   }
 }

@@ -44,12 +44,16 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
       (Toggle()
         ..isOn = state.bothOn
         ..onToggle = handleToggle
-        ..ref = (ref) { toggle1Ref = ref; }
+        ..ref = (ref) {
+          toggle1Ref = ref;
+        }
       )(),
       (Toggle()
         ..isOn = state.bothOn
         ..onToggle = handleToggle
-        ..ref = (ref) { toggle2Ref = ref; }
+        ..ref = (ref) {
+          toggle2Ref = ref;
+        }
       )(),
     );
   }

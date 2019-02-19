@@ -51,8 +51,8 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   @override
   render() {
     return (Switch()
-        ..isOn = getState().isOn
-        ..onClick = toggle
-      )();
+      ..isOn = getState().isOn
+      ..onClick = toggle
+    )();
   }
 }

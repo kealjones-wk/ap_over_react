@@ -14,7 +14,8 @@ class _$FragmentV2Props extends UiProps {}
 
 // AF-3369 This will be removed once the transition to Dart 2 is complete.
 // ignore: mixin_of_non_class, undefined_class
-class FragmentV2Props extends _$FragmentV2Props with _$FragmentV2PropsAccessorsMixin {
+class FragmentV2Props extends _$FragmentV2Props
+    with _$FragmentV2PropsAccessorsMixin {
   // ignore: undefined_identifier, undefined_class, const_initialized_with_non_constant_value
   static const PropsMeta meta = _$metaForFragmentV2Props;
 }
@@ -55,14 +56,14 @@ class FragmentV2Component extends UiComponent<FragmentV2Props> {
   setupChildren() {
     var key = 0;
     fragmentChildren = props.children.map((child) {
-        var propsToAdd = domProps()
-          ..addProp('data-fragment',fragmentId)
-          ..key = key++;
-        if (child is String) {
-          child = Dom.span()(child);
-        }
-        return cloneElement(Dom.div()(child), propsToAdd);
-      }).toList();
+      var propsToAdd = domProps()
+        ..addProp('data-fragment', fragmentId)
+        ..key = key++;
+      if (child is String) {
+        child = Dom.span()(child);
+      }
+      return cloneElement(Dom.div()(child), propsToAdd);
+    }).toList();
   }
 
   unwrapChildren() {
@@ -88,9 +89,10 @@ class FragmentV2Component extends UiComponent<FragmentV2Props> {
     if (!(div != null && div.parentNode != null)) {
       return;
     }
-    var fragmentChildrenNodes = window.document.querySelectorAll('[data-fragment="$fragmentId"]');
+    var fragmentChildrenNodes =
+        window.document.querySelectorAll('[data-fragment="$fragmentId"]');
     fragmentChildrenNodes[0].before(div);
-    fragmentChildrenNodes.forEach((fragmentChild){
+    fragmentChildrenNodes.forEach((fragmentChild) {
       div.append(fragmentChild);
     });
     div.style.display = 'auto';
@@ -100,7 +102,7 @@ class FragmentV2Component extends UiComponent<FragmentV2Props> {
   @override
   render() {
     return (Dom.div()
-      ..addProp('data-fragment-id',fragmentId)
+      ..addProp('data-fragment-id', fragmentId)
       ..ref = (ref) {
         div = ref;
       }

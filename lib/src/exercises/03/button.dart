@@ -17,8 +17,8 @@ class _$ToggleButtonProps extends AbstractToggleProps {}
 class ToggleButtonComponent extends UiComponent<ToggleButtonProps> {
   @override
   Map getDefaultProps() => newProps()
-      ..onClick = (_) {}
-      ..isOn = false;
+    ..onClick = (_) {}
+    ..isOn = false;
 
   @override
   render() {

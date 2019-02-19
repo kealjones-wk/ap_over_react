@@ -41,7 +41,7 @@ class UsageComponent extends UiComponent<UsageProps> {
             ..aria.label = 'custom-button'
             ..onClick = value.toggle
           )(
-            value.isOn ? 'on' : 'off'
+            value.isOn ? 'on' : 'off',
           ),
         );
       },

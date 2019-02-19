@@ -29,7 +29,7 @@ class UsageComponent extends UiComponent<UsageProps> {
   @override
   render() {
     return (Toggle()..onToggle = props.onToggle)(
-          (BaseToggleProps value) {
+      (BaseToggleProps value) {
         return Dom.div()(
           (Switch()
             ..addProps(value.togglerProps)
@@ -40,7 +40,7 @@ class UsageComponent extends UiComponent<UsageProps> {
             ..addProps(value.togglerProps)
             ..aria.label = 'custom-button'
           )(
-              value.isOn ? 'on' : 'off'
+            value.isOn ? 'on' : 'off',
           ),
         );
       },

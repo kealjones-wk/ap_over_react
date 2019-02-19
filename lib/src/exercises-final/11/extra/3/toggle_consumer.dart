@@ -19,7 +19,7 @@ class ToggleConsumerComponent extends UiComponent<ToggleConsumerProps> {
   @override
   render() {
     return ToggleContext.Consumer()(
-          (BaseToggleProps value) {
+      (BaseToggleProps value) {
         if (value == null) {
           throw new Exception(
               'Toggle compound components cannot be rendered outside the Toggle component');
