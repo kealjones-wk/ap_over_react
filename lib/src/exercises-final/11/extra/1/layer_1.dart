@@ -1,4 +1,5 @@
 // 11: The provider pattern
+// Extra credit: Validate the consumer is rendered within a provider
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';

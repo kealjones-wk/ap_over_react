@@ -1,4 +1,5 @@
 // 11: The provider pattern
+// Extra credit: support render props
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';

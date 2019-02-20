@@ -1,4 +1,6 @@
 // 10: control props
+// Add support for a `type` in the changes so consumers can differentiate the
+// different state updates
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
@@ -55,10 +57,8 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
           });
         }
       });
-
       return combinedState;
     }
-
     return BaseToggleProps()
       ..isOn = state.isOn != null ? state.isOn : props.isOn;
   }

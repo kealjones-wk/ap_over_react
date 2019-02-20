@@ -10,6 +10,7 @@ part 'toggle.over_react.g.dart';
 // Here we're going to simplify our component slightly so you
 // can learn the control props pattern in isolation from everything else.
 // Next you'll put the pieces together.
+
 @Factory()
 // ignore: undefined_identifier
 UiFactory<ToggleProps> Toggle = _$Toggle;
@@ -42,15 +43,6 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   // whether it's coming from this.state or this.props
   // Call it `getState` and have it return on from
   // state if it's not controlled or props if it is.
-
-  isControlled(prop) {
-    return props[prop] != null;
-  }
-
-  getState() {
-    return BaseToggleProps()
-      ..isOn = isControlled('isOn') ? props.isOn : state.isOn;
-  }
 
   void toggle(SyntheticMouseEvent e) {
     // 🐨 if the toggle is controlled, then we shouldn't

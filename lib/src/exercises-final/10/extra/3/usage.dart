@@ -1,4 +1,6 @@
 // 10: control props
+// Add support for a `type` in the changes so consumers can differentiate the
+// different state updates
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/10/extra/3/toggle.dart';
