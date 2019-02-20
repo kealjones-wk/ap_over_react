@@ -67,7 +67,6 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   //
   // 🐨 Finally, update all pre-existing instances of this.setState
   // to this.internalSetState
-
   void reset() {
     setState(
       getInitialState(),

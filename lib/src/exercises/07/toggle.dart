@@ -31,16 +31,15 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   @override
   Map getInitialState() => newState()..isOn = false;
 
+  // 🐨 now let's add a reset method here that resets the state
+  // to the initial state. Then add a callback that calls
+  // this.props.onReset with the `on` state.
   void toggle() {
     setState(
       newState()..isOn = !state.isOn,
       () => props.onToggle(state.isOn),
     );
   }
-
-  // 🐨 now let's add a reset method here that resets the state
-  // to the initial state. Then add a callback that calls
-  // this.props.onReset with the `on` state.
 
   BaseToggleProps getTogglerProps([BaseToggleProps additionalProps]) {
     additionalProps ??= BaseToggleProps();

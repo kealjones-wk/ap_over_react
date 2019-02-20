@@ -31,7 +31,10 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     ..initialOn = false
     ..onToggleReset = (_) {}
     ..stateReducer = (state, changes) => changes;
-
+  // 💰 any time I use a string as an identifier for a type,
+  // I prefer to give it a variable name. That way folks who
+  // want to reference the type can do so using variable which
+  // will help mitigate the problems of indirection.
   static const stateChangeTypes = {
     'reset': '__toggle_reset__',
     'toggle': '__toggle_toggle__',
