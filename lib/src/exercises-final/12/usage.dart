@@ -1,9 +1,8 @@
-// 12: The provider pattern
+// 12: Higher order components
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/12/toggle.dart';
-import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:ap_over_react/switch.dart';
+import 'package:ap_over_react/src/exercises-final/12/layer_1.dart';
 
 // ignore: uri_has_not_been_generated
 part 'usage.over_react.g.dart';
@@ -28,22 +27,8 @@ class UsageComponent extends UiComponent<UsageProps> {
 
   @override
   render() {
-    return (Toggle()..onToggle = props.onToggle)(
-      (BaseToggleProps value) {
-        return Dom.div()(
-          (Switch()
-            ..addProps(value.togglerProps)
-            ..isOn = value.isOn
-          )(),
-          Dom.hr()(),
-          (Dom.button()
-            ..addProps(value.togglerProps)
-            ..aria.label = 'custom-button'
-          )(
-            value.isOn ? 'on' : 'off',
-          ),
-        );
-      },
+    return (Toggle())(
+      Layer1()(),
     );
   }
 }

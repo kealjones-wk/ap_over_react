@@ -14,6 +14,7 @@ UiFactory<ToggleProps> Toggle = _$Toggle;
 class _$ToggleProps extends AbstractToggleProps {
   bool initialOn;
   Callback1Arg onToggleReset;
+  Callback1Arg onToggle;
   Callback2Arg stateReducer;
 }
 
