@@ -2,11 +2,9 @@
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/polyfills/fragment.dart';
-import 'package:ap_over_react/src/polyfills/fragment_2.dart';
-import 'package:ap_over_react/src/exercises-final/11/context.dart';
-import 'package:ap_over_react/src/exercises-final/11/layer_3.dart';
+import 'package:ap_over_react/src/exercises/11/context.dart';
+import 'package:ap_over_react/src/exercises/11/layer_3.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:ap_over_react/switch.dart';
 
 // ignore: uri_has_not_been_generated
 part 'layer_2.over_react.g.dart';
@@ -29,9 +27,9 @@ class Layer2Component extends UiComponent<Layer2Props> {
       (BaseToggleProps value) {
         return Fragment()(
           value.isOn ? 'The button is on' : 'The button is off',
-          Layer3()()
+          Layer3()(),
         );
-      }
+      },
     );
   }
 }

@@ -1,3 +1,5 @@
+// 01: Building the toggle component
+
 import 'package:over_react/over_react.dart';
 // 🐨 uncomment this import to get the switch component.
 // It takes an `onClick` and an `on` prop
@@ -18,7 +20,7 @@ class _$ToggleProps extends UiProps {
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 
@@ -42,14 +44,5 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   render() {
     // 🐨 here you'll want to return the switch with the `on` and `onClick` props
     return null;
-  }
-
-  // --------------------------------------------------------------------------
-  // Public API Methods
-  // --------------------------------------------------------------------------
-  void toggle() {
-    setState(newState()..isOn = !state.isOn, () {
-      props.onToggle(state.isOn);
-    });
   }
 }

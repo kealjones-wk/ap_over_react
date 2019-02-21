@@ -1,4 +1,4 @@
-// Prop Getters
+// 07: State Initializers
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
@@ -19,17 +19,16 @@ class _$ToggleProps extends AbstractToggleProps {
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 
 @Component()
 class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
-
   @override
   Map getDefaultProps() => newProps()
-      ..initialOn = false
-      ..onToggleReset = (_) {};
+    ..initialOn = false
+    ..onToggleReset = (_) {};
 
   @override
   Map getInitialState() => newState()..isOn = props.initialOn;
@@ -54,15 +53,16 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     return BaseToggleProps()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
+      ..onClick = mouseEventCallbacks
+          .chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
-  BaseToggleProps getStateAndHelpers(){
+  BaseToggleProps getStateAndHelpers() {
     return BaseToggleProps()
-        ..isOn = state.isOn
-        ..toggle = toggle
-        ..reset = reset
-        ..getTogglerProps = getTogglerProps;
+      ..isOn = state.isOn
+      ..toggle = toggle
+      ..reset = reset
+      ..getTogglerProps = getTogglerProps;
   }
 
   @override

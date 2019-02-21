@@ -1,4 +1,4 @@
-// Prop Getters
+// 06: prop getters
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/06/toggle.dart';
@@ -23,32 +23,30 @@ class _$UsageProps extends UiProps {
 
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
-
   @override
   Map getDefaultProps() => newProps()
-        ..onButtonClick = (_) { print('onButtonClick'); }
-        ..onToggle = (args) => print('onToggle $args');
+    ..onButtonClick = (_) {
+      print('onButtonClick');
+    }
+    ..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {
-    return (Toggle()
-      ..onToggle = props.onToggle
-    )(
+    return (Toggle()..onToggle = props.onToggle)(
       (BaseToggleProps value) {
         return Dom.div()(
           (Switch()
-            ..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
+            ..addProps(
+                value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
           )(),
           Dom.hr()(),
           (Dom.button()
-            ..addProps(value.getTogglerProps(
-                BaseToggleProps()
-                  ..id = 'custom-button-id'
-                  ..onClick = props.onButtonClick
-                  ..aria.label = 'custom-button'
-            ))
+            ..addProps(value.getTogglerProps(BaseToggleProps()
+              ..id = 'custom-button-id'
+              ..onClick = props.onButtonClick
+              ..aria.label = 'custom-button'))
           )(
-              value.isOn ? 'on' : 'off'
+            value.isOn ? 'on' : 'off',
           ),
         );
       },

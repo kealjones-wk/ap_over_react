@@ -1,8 +1,8 @@
-// Flexible Compound Components with context
+// 03: Flexible Compound Components with context
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/switch.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
+import 'package:ap_over_react/src/app_components/not_ready.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
@@ -54,7 +54,7 @@ class _$ToggleProps extends UiProps {
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 
@@ -65,6 +65,18 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   // from props, it'll get it from the ToggleContext.Consumer value.
   @override
   Map getInitialState() => newState()..isOn = false;
+
+  static On(children) {
+    return null;
+  }
+
+  static Off(children) {
+    return null;
+  }
+
+  static Button() {
+    return null;
+  }
 
   void toggle(_) {
     setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
@@ -78,15 +90,22 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     // expose the `on` state and `toggle` method as properties in the context
     // value (the value prop).
     int indexKey = 0;
-    return Dom.div()(
-      props.children.map((child){
-        return cloneElement(child, BaseToggleProps()
-          ..isOn = state.isOn
-          ..toggle = toggle
-          ..key = indexKey++
-        );
-      })
-    );
+    //Before working on the Toggle component in this exercise, it will cause errors
+    //When the component is functional (not necessarily complete), it will render
+    try {
+      return Dom.div()(
+        props.children.map((child) {
+          return cloneElement(
+              child,
+              BaseToggleProps()
+                ..isOn = state.isOn
+                ..toggle = toggle
+                ..key = indexKey++);
+        }),
+      );
+    } catch (_) {
+      return (NotReady())();
+    }
   }
 }
 

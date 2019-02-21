@@ -1,4 +1,4 @@
-// 05: Prop Collections
+// 11: The provider pattern
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/11/toggle.dart';
@@ -28,7 +28,7 @@ class UsageComponent extends UiComponent<UsageProps> {
   @override
   render() {
     return (Toggle()..onToggle = props.onToggle)(
-          Layer1()()
-        );
+      Layer1()(),
+    );
   }
 }

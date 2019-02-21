@@ -3,7 +3,6 @@ import 'package:over_react/over_react.dart';
 // ignore: uri_has_not_been_generated
 part 'shared_props.over_react.g.dart';
 
-
 // This mixin allows us to share these common props.
 @PropsMixin(keyNamespace: '')
 abstract class _$TogglePropsMixin {

@@ -1,3 +1,5 @@
+// 02: Compound Components
+
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 
@@ -16,7 +18,7 @@ class _$ToggleProps extends AbstractToggleProps {
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 
@@ -26,10 +28,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   Map getInitialState() => newState()..isOn = false;
 
   void toggle(_) {
-    setState(newState()
-      ..isOn = !state.isOn,
-      () => props.onToggle(state.isOn)
-    );
+    setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
   }
 
   @override

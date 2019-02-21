@@ -1,8 +1,10 @@
-// Flexible Compound Components with context
+// 03: Flexible Compound Components with context
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/03/context.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
+import 'package:ap_over_react/src/exercises-final/03/toggle_consumer.dart';
+import 'package:ap_over_react/switch.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
@@ -19,7 +21,7 @@ class _$ToggleProps extends AbstractToggleProps {
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 
@@ -28,11 +30,43 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   @override
   Map getInitialState() => newState()..isOn = false;
 
-  void toggle(_) {
-    setState(newState()
-      ..isOn = !state.isOn,
-      () => props.onToggle(state.isOn)
+  static On(children) {
+    return ToggleConsumer()(
+      (BaseToggleProps value) {
+        if (value.isOn) {
+          return Dom.span()(children);
+        } else {
+          return null;
+        }
+      },
     );
+  }
+
+  static Off(children) {
+    return ToggleConsumer()(
+      (BaseToggleProps value) {
+        if (value.isOn) {
+          return null;
+        } else {
+          return Dom.span()(children);
+        }
+      },
+    );
+  }
+
+  static Button() {
+    return ToggleConsumer()(
+      (BaseToggleProps value) {
+        return (Switch()
+          ..isOn = value.isOn
+          ..onClick = value.toggle
+        )();
+      },
+    );
+  }
+
+  void toggle(_) {
+    setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
   }
 
   @override
@@ -42,7 +76,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       ..toggle = toggle;
 
     return ToggleContext.Provider({'value': tValue})(
-      props.children
+      props.children,
     );
   }
 }

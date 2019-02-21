@@ -1,4 +1,4 @@
-// Render Props
+// 04: render props
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/04/toggle.dart';
@@ -41,7 +41,7 @@ class UsageComponent extends UiComponent<UsageProps> {
             ..aria.label = 'custom-button'
             ..onClick = value.toggle
           )(
-            value.isOn ? 'on' : 'off'
+            value.isOn ? 'on' : 'off',
           ),
         );
       },

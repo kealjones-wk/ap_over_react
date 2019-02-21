@@ -1,4 +1,4 @@
-// 05: Prop Collections
+// 10: control props
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
@@ -19,7 +19,7 @@ class _$ToggleProps extends AbstractToggleProps {
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 
@@ -51,8 +51,8 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   @override
   render() {
     return (Switch()
-        ..isOn = getState().isOn
-        ..onClick = toggle
-      )();
+      ..isOn = getState().isOn
+      ..onClick = toggle
+    )();
   }
 }

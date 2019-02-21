@@ -1,4 +1,4 @@
-// Prop Getters
+// 06: prop getters
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
@@ -14,12 +14,11 @@ UiFactory<ToggleProps> Toggle = _$Toggle;
 class _$ToggleProps extends AbstractToggleProps {
   /// Callback that returns `state.isOn` when the toggle switches;
   Callback1Arg onToggle;
-
 }
 
 @State()
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 
@@ -31,10 +30,10 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   void toggle(_) {
     setState(
       newState()..isOn = !state.isOn,
-          () {
+      () {
         print('toggle');
-            props.onToggle(state.isOn);
-          },
+        props.onToggle(state.isOn);
+      },
     );
   }
 
@@ -44,16 +43,17 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     var propsToSendBack = BaseToggleProps()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = mouseEventCallbacks.chainFromList([toggle, additionalProps.onClick]);
+      ..onClick =
+          mouseEventCallbacks.chainFromList([toggle, additionalProps.onClick]);
 
     return propsToSendBack;
   }
 
-  BaseToggleProps getStateAndHelpers(){
+  BaseToggleProps getStateAndHelpers() {
     return BaseToggleProps()
-        ..isOn = state.isOn
-        ..toggle = toggle
-        ..getTogglerProps = getTogglerProps;
+      ..isOn = state.isOn
+      ..toggle = toggle
+      ..getTogglerProps = getTogglerProps;
   }
 
   @override

@@ -1,9 +1,7 @@
-// 05: Prop Collections
+// 10: control props
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/10/toggle.dart';
-import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:ap_over_react/switch.dart';
 
 // ignore: uri_has_not_been_generated
 part 'usage.over_react.g.dart';
@@ -24,7 +22,7 @@ class _$UsageProps extends UiProps {
 
 @State()
 class _$UsageState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool bothOn;
 }
 
@@ -42,14 +40,18 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
 
     return Dom.div()(
       (Toggle()
-          ..isOn = state.bothOn
-          ..onToggle = handleToggle
-          ..ref = (ref) { toggle1Ref = ref; }
+        ..isOn = state.bothOn
+        ..onToggle = handleToggle
+        ..ref = (ref) {
+          toggle1Ref = ref;
+        }
       )(),
       (Toggle()
-          ..isOn = state.bothOn
-          ..onToggle = handleToggle
-          ..ref = (ref) { toggle2Ref = ref; }
+        ..isOn = state.bothOn
+        ..onToggle = handleToggle
+        ..ref = (ref) {
+          toggle2Ref = ref;
+        }
       )(),
     );
   }

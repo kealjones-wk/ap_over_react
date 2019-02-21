@@ -15,7 +15,7 @@ UiFactory<SwitchProps> Switch = _$Switch;
 
 @Props(keyNamespace: '')
 class _$SwitchProps extends UiProps {
-  /// Wether the switch should appear on or off.
+  /// Whether the switch should appear on or off.
   bool isOn;
 }
 
@@ -41,12 +41,16 @@ class SwitchComponent extends UiComponent<SwitchProps> {
 
   @override
   render() {
-    return (Dom.div()..addTestId('switch')..addProps(copyUnconsumedDomProps()))(
+    return (Dom.div()
+      ..addTestId('switch')
+      ..addProps(copyUnconsumedDomProps())
+    )(
       (Dom.input()
         ..addTestId('switch.input')
         ..className = 'toggle-input'
         ..type = 'checkbox'
         ..checked = props.isOn
+        ..readOnly = true
       )(),
       (Dom.button()
         ..addTestId('switch.button')

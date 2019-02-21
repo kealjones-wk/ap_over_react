@@ -36,11 +36,12 @@ class FragmentComponent extends UiComponent<FragmentProps> {
 
   @override
   componentWillUnmount() {
+    super.componentWillMount();
     rewrapChildren();
   }
 
   @override
-  componentWillUpdate(_, __) {
+  componentWillUpdate(nextProps, nextState) {
     rewrapChildren();
   }
 

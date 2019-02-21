@@ -1,3 +1,5 @@
+// 01: Building the toggle component
+
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
 
@@ -16,7 +18,7 @@ class _$ToggleProps extends UiProps {
 
 @State()
 class _$ToggleState extends UiState {
-  /// Wether the toggle is On or Off
+  /// Whether the toggle is On or Off
   bool isOn;
 }
 

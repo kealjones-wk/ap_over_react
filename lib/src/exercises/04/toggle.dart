@@ -24,14 +24,11 @@ class _$ToggleState extends UiState {
 
 @Component()
 class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
-
   @override
   Map getInitialState() => newState()..isOn = false;
 
   void toggle(_) => setState(
-    newState()..isOn = !state.isOn,
-    () => props.onToggle(state.isOn)
-  );
+      newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
 
   @override
   render() {

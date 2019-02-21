@@ -1,7 +1,7 @@
-// Prop Collections
+// 06: prop getters
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/exercises-final/06/toggle.dart';
+import 'package:ap_over_react/src/exercises/06/toggle.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
@@ -18,18 +18,22 @@ UiFactory<UsageProps> Usage = _$Usage;
 @Props()
 class _$UsageProps extends UiProps {
   Callback1Arg onToggle;
+  Callback1Arg onButtonClick;
 }
 
 @Component()
 class UsageComponent extends UiComponent<UsageProps> {
   @override
-  Map getDefaultProps() =>
-      newProps()..onToggle = (args) => print('onToggle $args');
+  Map getDefaultProps() => newProps()
+    ..onButtonClick = (_) {
+      print('onButtonClick');
+    }
+    ..onToggle = (args) => print('onToggle $args');
 
   @override
   render() {
     return (Toggle()..onToggle = props.onToggle)(
-          (BaseToggleProps value) {
+      (BaseToggleProps value) {
         return Dom.div()(
           (Switch()
             ..addProps(value.togglerProps)
@@ -40,7 +44,7 @@ class UsageComponent extends UiComponent<UsageProps> {
             ..addProps(value.togglerProps)
             ..aria.label = 'custom-button'
           )(
-              value.isOn ? 'on' : 'off'
+            value.isOn ? 'on' : 'off',
           ),
         );
       },

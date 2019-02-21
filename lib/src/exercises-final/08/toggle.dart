@@ -1,4 +1,4 @@
-// Prop Getters
+// 08: state reducer
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
@@ -20,25 +20,24 @@ class _$ToggleProps extends AbstractToggleProps {
 
 @State(keyNamespace: '')
 class _$ToggleState extends UiState {
-  // Wether the toggle is On or Off
+  // Whether the toggle is On or Off
   bool isOn;
 }
 
 @Component()
 class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
-
   @override
   Map getDefaultProps() => newProps()
-      ..initialOn = false
-      ..onToggleReset = (_) {}
-      ..stateReducer = (state, changes) => changes;
+    ..initialOn = false
+    ..onToggleReset = (_) {}
+    ..stateReducer = (state, changes) => changes;
 
   @override
   Map getInitialState() => newState()..isOn = props.initialOn;
 
   internalSetState(changes, callback) {
     getNewState(changes) {
-       // handle function setState call
+      // handle function setState call
       Map changesObject = (changes is Function) ? changes(state) : changes;
 
       // apply state reducer
@@ -47,6 +46,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
       // return null if there are no changes to be made
       return onlyChanges.isNotEmpty ? onlyChanges : null;
     }
+
     setState(getNewState(changes), callback);
   }
 
@@ -70,15 +70,16 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
     return BaseToggleProps()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
+      ..onClick = mouseEventCallbacks
+          .chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
-  BaseToggleProps getStateAndHelpers(){
+  BaseToggleProps getStateAndHelpers() {
     return BaseToggleProps()
-        ..isOn = state.isOn
-        ..toggle = toggle
-        ..reset = reset
-        ..getTogglerProps = getTogglerProps;
+      ..isOn = state.isOn
+      ..toggle = toggle
+      ..reset = reset
+      ..getTogglerProps = getTogglerProps;
   }
 
   @override
