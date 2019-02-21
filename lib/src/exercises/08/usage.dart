@@ -79,7 +79,8 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
                 ))
               : state.timesClicked > 0
                   ? ((Dom.div()..addTestId('click-count'))(
-                      'Click count: ${state.timesClicked}'))
+                      'Click count: ${state.timesClicked}',
+                    ))
                   : null,
           (Dom.button()
             ..onClick = (_) {

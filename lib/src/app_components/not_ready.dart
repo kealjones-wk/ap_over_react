@@ -15,7 +15,7 @@ class NotReadyComponent extends UiComponent<NotReadyProps> {
   @override
   render() {
     return Dom.div()(
-      'Exercise has not been implemented yet.',
+      'Something is wrong. Edit the code and try again.',
     );
   }
 }

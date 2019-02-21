@@ -20,7 +20,7 @@ Map<String, String> exerciseTitles = {
   '11.2': 'The Provider Pattern (Avoid Unnecessary Re-renders)',
   '11.3': 'The Provider Pattern (Support Render Props)',
   '11.4': 'The Provider Pattern (Compound Components)',
-  '12': 'Higher Order Components',
+  // '12': 'Higher Order Components', // TODO: Implement once we have react 16
 };
 
 List<String> exerciseList = exerciseTitles.keys.toList();

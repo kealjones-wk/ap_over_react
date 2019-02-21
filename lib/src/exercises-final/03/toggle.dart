@@ -32,7 +32,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   static On(children) {
     return ToggleConsumer()(
-          (BaseToggleProps value) {
+      (BaseToggleProps value) {
         if (value.isOn) {
           return Dom.span()(children);
         } else {
@@ -44,7 +44,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   static Off(children) {
     return ToggleConsumer()(
-          (BaseToggleProps value) {
+      (BaseToggleProps value) {
         if (value.isOn) {
           return null;
         } else {
@@ -56,7 +56,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
 
   static Button() {
     return ToggleConsumer()(
-          (BaseToggleProps value) {
+      (BaseToggleProps value) {
         return (Switch()
           ..isOn = value.isOn
           ..onClick = value.toggle
