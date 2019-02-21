@@ -1,10 +1,7 @@
 // 03: Flexible Compound Components with context
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/switch.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:ap_over_react/src/exercises-final/03/context.dart';
-import 'package:ap_over_react/src/exercises/03/toggle_consumer.dart';
 import 'package:ap_over_react/src/app_components/not_ready.dart';
 
 // ignore: uri_has_not_been_generated

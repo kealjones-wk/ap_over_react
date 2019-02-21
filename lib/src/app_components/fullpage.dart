@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/src/app_components/not_ready.dart';
 
 import 'package:ap_over_react/src/exercises-final/01/usage.dart'
@@ -328,7 +327,8 @@ class FullPageComponent
             await exercise_11_4_final.loadLibrary();
             return exercise_11_4_final.Usage;
           } else {
-            return NotReady;
+            await exercise_11.loadLibrary();
+            return exercise_11.Usage;
           }
         }
         break;

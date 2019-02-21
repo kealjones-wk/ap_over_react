@@ -50,6 +50,7 @@ class SwitchComponent extends UiComponent<SwitchProps> {
         ..className = 'toggle-input'
         ..type = 'checkbox'
         ..checked = props.isOn
+        ..readOnly = true
       )(),
       (Dom.button()
         ..addTestId('switch.button')

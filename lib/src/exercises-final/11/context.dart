@@ -1,9 +1,9 @@
 import 'package:ap_over_react/src/polyfills/context.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart'
-    as sharedToggleProps;
+    as shared_toggle_props;
 
-sharedToggleProps.BaseToggleProps tDefaultValue =
-    sharedToggleProps.BaseToggleProps()
+shared_toggle_props.BaseToggleProps tDefaultValue =
+    shared_toggle_props.BaseToggleProps()
       ..isOn = false
       ..toggle = (_) {
         print('context default onClick');
