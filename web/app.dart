@@ -31,8 +31,8 @@ class AppState extends _$AppState with _$AppStateAccessorsMixin {
   static const StateMeta meta = _$metaForAppState;
 }
 
-@Component()
-class AppComponent extends UiStatefulComponent<AppProps, AppState> {
+@Component2()
+class AppComponent extends UiStatefulComponent2<AppProps, AppState> {
 
   String defaultExerciseId = '01';
 

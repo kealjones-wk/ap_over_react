@@ -13,8 +13,8 @@ UiFactory<ExerciseContainerProps> ExerciseContainer = _$ExerciseContainer;
 @Props()
 class _$ExerciseContainerProps extends UiProps {}
 
-@Component()
-class ExerciseContainerComponent extends UiComponent<ExerciseContainerProps> {
+@Component2()
+class ExerciseContainerComponent extends UiComponent2<ExerciseContainerProps> {
   get exerciseId => props.id;
 
   @override

@@ -36,8 +36,8 @@ class _$ToggleState extends UiState {
   bool isOn;
 }
 
-@Component()
-class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
+@Component2()
+class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
   Map getInitialState() => newState()..isOn = false;
 

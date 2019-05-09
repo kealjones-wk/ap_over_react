@@ -14,11 +14,11 @@ UiFactory<ToggleConsumerProps> ToggleConsumer = _$ToggleConsumer;
 @Props()
 class _$ToggleConsumerProps extends AbstractToggleProps {}
 
-@Component()
-class ToggleConsumerComponent extends UiComponent<ToggleConsumerProps> {
+@Component2()
+class ToggleConsumerComponent extends UiComponent2<ToggleConsumerProps> {
   @override
   render() {
-    return ToggleContext.Consumer()(
+    return ToggleContext.Consumer({},
       (BaseToggleProps value) {
         if (value == null) {
           throw new Exception(

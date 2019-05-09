@@ -18,11 +18,11 @@ UiFactory<Layer4Props> Layer4 = _$Layer4;
 @Props()
 class _$Layer4Props extends AbstractToggleProps {}
 
-@Component()
-class Layer4Component extends UiComponent<Layer4Props> {
+@Component2()
+class Layer4Component extends UiComponent2<Layer4Props> {
   @override
   render() {
-    return ToggleContext.Consumer()(
+    return ToggleContext.Consumer({},
       (BaseToggleProps value) {
         return (Switch()
           ..isOn = value.isOn

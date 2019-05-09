@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'package:over_react/over_react.dart';
 
 // ignore: uri_has_not_been_generated
@@ -18,66 +17,10 @@ class FragmentProps extends _$FragmentProps with _$FragmentPropsAccessorsMixin {
   static const PropsMeta meta = _$metaForFragmentProps;
 }
 
-@Component()
-class FragmentComponent extends UiComponent<FragmentProps> {
-  Element div;
-  List orphans = const [];
-
-  @override
-  componentDidMount() {
-    unwrapChildren();
-    div.style.display = 'none';
-  }
-
-  @override
-  componentDidUpdate(Map prevProps, Map prevState) {
-    unwrapChildren();
-  }
-
-  @override
-  componentWillUnmount() {
-    super.componentWillMount();
-    rewrapChildren();
-  }
-
-  @override
-  componentWillUpdate(nextProps, nextState) {
-    rewrapChildren();
-  }
-
-  unwrapChildren() {
-    // defer first to style calculation to ensure CSS transitions can happen:
-    // https://stackoverflow.com/a/24195559/4956731
-    new Future.delayed(const Duration(milliseconds: 0), () {
-      // plain js rocks!
-      // https://plainjs.com/javascript/manipulation/unwrap-a-dom-element-35/
-      if (div.parentNode == null) {
-        return;
-      }
-      orphans = [];
-      while (div.firstChild != null) {
-        orphans.add(div.firstChild);
-        div.parentNode.insertBefore(div.firstChild, div);
-      }
-    });
-  }
-
-  rewrapChildren() {
-    if (!(div != null && div.parentNode != null)) {
-      return;
-    }
-    orphans.forEach((orphan) {
-      div.append(orphan);
-    });
-  }
-
+@Component2()
+class FragmentComponent extends UiComponent2<FragmentProps> {
   @override
   render() {
-    rewrapChildren();
-    return (Dom.div()
-      ..ref = (ref) {
-        div = ref;
-      }
-    )(props.children);
+    return []..addAll(props.children);
   }
 }

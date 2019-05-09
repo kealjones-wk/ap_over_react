@@ -10,8 +10,8 @@ UiFactory<NotReadyProps> NotReady = _$NotReady;
 @Props()
 class _$NotReadyProps extends UiProps {}
 
-@Component()
-class NotReadyComponent extends UiComponent<NotReadyProps> {
+@Component2()
+class NotReadyComponent extends UiComponent2<NotReadyProps> {
   @override
   render() {
     return Dom.div()(

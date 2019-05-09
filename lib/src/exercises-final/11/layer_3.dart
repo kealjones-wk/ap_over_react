@@ -17,8 +17,8 @@ UiFactory<Layer3Props> Layer3 = _$Layer3;
 @Props()
 class _$Layer3Props extends AbstractToggleProps {}
 
-@Component()
-class Layer3Component extends UiComponent<Layer3Props> {
+@Component2()
+class Layer3Component extends UiComponent2<Layer3Props> {
   @override
   render() => Layer4()();
 }

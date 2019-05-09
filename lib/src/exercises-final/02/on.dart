@@ -11,8 +11,8 @@ UiFactory<ToggleOnProps> ToggleOn = _$ToggleOn;
 @Props()
 class _$ToggleOnProps extends AbstractToggleProps {}
 
-@Component()
-class ToggleOnComponent extends UiComponent<ToggleOnProps> {
+@Component2()
+class ToggleOnComponent extends UiComponent2<ToggleOnProps> {
   @override
   render() {
     return props.isOn ? Dom.span()(props.children) : null;

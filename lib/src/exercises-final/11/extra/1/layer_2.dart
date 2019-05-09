@@ -20,8 +20,8 @@ UiFactory<Layer2Props> Layer2 = _$Layer2;
 @Props()
 class _$Layer2Props extends AbstractToggleProps {}
 
-@Component()
-class Layer2Component extends UiComponent<Layer2Props> {
+@Component2()
+class Layer2Component extends UiComponent2<Layer2Props> {
   @override
   render() {
     return ToggleConsumer()(

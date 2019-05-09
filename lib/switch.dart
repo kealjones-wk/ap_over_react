@@ -26,8 +26,8 @@ class SwitchProps extends _$SwitchProps with _$SwitchPropsAccessorsMixin {
   static const PropsMeta meta = _$metaForSwitchProps;
 }
 
-@Component()
-class SwitchComponent extends UiComponent<SwitchProps> {
+@Component2()
+class SwitchComponent extends UiComponent2<SwitchProps> {
   String get btnClassNames => [
         props.className,
         'toggle-btn',

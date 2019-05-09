@@ -83,11 +83,9 @@ class _$FullPageState extends UiState {
   UiFactory componentFactory;
 }
 
-@Component()
+@Component2()
 class FullPageComponent
-    extends UiStatefulComponent<FullPageProps, FullPageState> {
-  @override
-  getInitialState() => newState()..componentFactory = null;
+    extends UiStatefulComponent2<FullPageProps, FullPageState> {
 
   void updateFactory() {
     getExerciseClass().then((UiFactory cfactory) {
@@ -96,7 +94,7 @@ class FullPageComponent
   }
 
   @override
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState, [snapshot]) {
     FullPageProps tprevProps = typedPropsFactory(prevProps);
     if (tprevProps.id != props.id) {
       updateFactory();
@@ -107,7 +105,6 @@ class FullPageComponent
   @override
   componentDidMount() async {
     updateFactory();
-    super.componentWillMount();
   }
 
   Future<UiFactory> getExerciseClass() async {

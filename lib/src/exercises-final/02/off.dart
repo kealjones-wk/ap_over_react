@@ -11,8 +11,8 @@ UiFactory<ToggleOffProps> ToggleOff = _$ToggleOff;
 @Props()
 class _$ToggleOffProps extends AbstractToggleProps {}
 
-@Component()
-class ToggleOffComponent extends UiComponent<ToggleOffProps> {
+@Component2()
+class ToggleOffComponent extends UiComponent2<ToggleOffProps> {
   @override
   render() {
     return props.isOn ? null : Dom.span()(props.children);

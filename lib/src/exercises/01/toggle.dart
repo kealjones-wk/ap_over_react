@@ -24,8 +24,8 @@ class _$ToggleState extends UiState {
   bool isOn;
 }
 
-@Component()
-class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
+@Component2()
+class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 this toggle component is going to need to have state for `on`
   //
   // You'll also want a method to handle when the switch is clicked

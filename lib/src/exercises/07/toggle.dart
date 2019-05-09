@@ -24,8 +24,8 @@ class _$ToggleState extends UiState {
   bool isOn;
 }
 
-@Component()
-class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
+@Component2()
+class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 Rather than initializing state to have on as false,
   // set on to this.props.initialOn
   @override

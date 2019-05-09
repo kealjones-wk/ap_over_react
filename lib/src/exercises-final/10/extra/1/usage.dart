@@ -27,12 +27,12 @@ class _$UsageState extends UiState {
   bool bothOn;
 }
 
-@Component()
-class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
+@Component2()
+class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
   @override
   Map getInitialState() => newState()..bothOn = false;
 
-  handleToggle(isOn) => setState(newState()..bothOn = isOn);
+  handleToggle(isOn) => setState({'bothOn ': isOn});
 
   @override
   render() {

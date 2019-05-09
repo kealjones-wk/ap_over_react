@@ -1,4 +1,4 @@
-import 'package:ap_over_react/src/polyfills/context.dart';
+import 'package:react/react_client.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart'
     as shared_toggle_props;
 
@@ -9,4 +9,4 @@ shared_toggle_props.BaseToggleProps tDefaultValue =
         print('default OnClick');
       };
 
-Context ToggleContext = createContext(tDefaultValue);
+ReactDartContext ToggleContext = createContext(tDefaultValue);

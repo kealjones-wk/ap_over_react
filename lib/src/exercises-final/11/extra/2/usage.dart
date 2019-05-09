@@ -21,8 +21,8 @@ class _$UsageProps extends UiProps {
   Callback1Arg onToggle;
 }
 
-@Component()
-class UsageComponent extends UiComponent<UsageProps> {
+@Component2()
+class UsageComponent extends UiComponent2<UsageProps> {
   @override
   Map getDefaultProps() =>
       newProps()..onToggle = (args) => print('onToggle $args');

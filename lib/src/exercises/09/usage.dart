@@ -26,8 +26,8 @@ class _$UsageState extends UiState {
   int timesClicked;
 }
 
-@Component()
-class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
+@Component2()
+class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
   @override
   Map getDefaultProps() => newProps()
     ..onToggle = (args) {
@@ -41,7 +41,7 @@ class UsageComponent extends UiStatefulComponent<UsageProps, UsageState> {
   Map getInitialState() => newState()..timesClicked = 0;
 
   handleToggle(args) {
-    setState(newState()..timesClicked = state.timesClicked++);
+    setState({'timesClicked ': state.timesClicked++});
     props.onToggle(args);
   }
 

@@ -12,8 +12,8 @@ UiFactory<ToggleButtonProps> ToggleButton = _$ToggleButton;
 @Props()
 class _$ToggleButtonProps extends AbstractToggleProps {}
 
-@Component()
-class ToggleButtonComponent extends UiComponent<ToggleButtonProps> {
+@Component2()
+class ToggleButtonComponent extends UiComponent2<ToggleButtonProps> {
   @override
   render() {
     return (Switch()

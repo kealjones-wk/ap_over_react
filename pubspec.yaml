@@ -11,23 +11,20 @@ dev_dependencies:
   test: ^1.5.2
   dart_dev: ^2.0.2
   dart_style: any
-  over_react_format:
-    hosted:
-      name: over_react_format
-      url: https://pub.workiva.org
-    version: "^2.0.1"
-  build_resolvers: ^0.2.0
+  build_resolvers: any
   build_runner: any
   build_test: any
   build_web_compilers: any
   over_react_test: ^2.2.0
-  over_react_analyzer_plugin_host:
-    git:
-      url: git@github.com:greglittlefield-wf/git_playground.git
-      ref: over_react_analyzer_plugin/master
-      path: plugin_hosts/git
 dependency_overrides:
+  over_react_test:
+    path: /Users/kealjones/Documents/GitHub/over_react_test
+  react:
+    git:
+      url: https://github.com/cleandart/react-dart.git
+      ref: 5.1.0-wip
   over_react:
     git:
-      url: git@github.com:Workiva/over_react.git
-      ref: 2.0.0-dev
+      url: https://github.com/workiva/over_react.git
+      ref: 3.1.0-wip
+  

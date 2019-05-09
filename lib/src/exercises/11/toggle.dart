@@ -22,8 +22,8 @@ class _$ToggleState extends UiState {
 }
 
 // 🐨 create your React context here with React.createContext
-@Component()
-class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
+@Component2()
+class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 expose the ToggleContext.Consumer as a static property of Toggle here.
   @override
   Map getInitialState() => newState()..isOn = false;
@@ -39,13 +39,9 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   render() {
     //Before working on the Toggle component in this exercise, it will cause errors
     //When the component is functional (not necessarily complete), it will render
-    try {
-      return (props.children.single(BaseToggleProps()
-        ..isOn = state.isOn
-        ..toggle = toggle))();
-    } catch (_) {
-      return (NotReady())();
-    }
+    return (props.children.single(BaseToggleProps()
+      ..isOn = state.isOn
+      ..toggle = toggle))();
   }
 }
 

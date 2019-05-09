@@ -22,8 +22,8 @@ class _$ToggleState extends UiState {
   bool isOn;
 }
 
-@Component()
-class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
+@Component2()
+class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // In OverReact we dont yet support functional components (maybe soon!).
   // So this tutorial is a little more verbose than the video will go though.
   // SubComponents are handy because it makes the relationship between the
@@ -42,7 +42,7 @@ class ToggleComponent extends UiStatefulComponent<ToggleProps, ToggleState> {
   Map getInitialState() => newState()..isOn = false;
 
   void toggle(_) {
-    setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
+    setState({'isOn ': !state.isOn}, () => props.onToggle(state.isOn));
   }
 
   @override
