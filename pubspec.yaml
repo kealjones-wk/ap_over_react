@@ -16,18 +16,14 @@ dev_dependencies:
       name: over_react_format
       url: https://pub.workiva.org
     version: "^2.0.1"
-  build_resolvers: ^0.2.0
-  build_runner: any
+  build_daemon: ">=1.0.0 <2.0.0"
+  build_resolvers: ^1.0.0
+  build_runner: ">=1.3.0 <2.0.0"
   build_test: any
-  build_web_compilers: any
+  build_web_compilers: ">=1.2.0 <2.0.0"
   over_react_test: ^2.2.0
   over_react_analyzer_plugin_host:
     git:
       url: git@github.com:greglittlefield-wf/git_playground.git
       ref: over_react_analyzer_plugin/master
       path: plugin_hosts/git
-dependency_overrides:
-  over_react:
-    git:
-      url: git@github.com:Workiva/over_react.git
-      ref: 2.0.0-dev
