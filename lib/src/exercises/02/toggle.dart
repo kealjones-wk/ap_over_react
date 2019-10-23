@@ -2,6 +2,9 @@
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
+import 'on.dart';
+import 'off.dart';
+import 'button.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
@@ -31,18 +34,25 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 You'll need to create three such components here: ToggleOn, ToggleOff, and ToggleButton
   //    The button will be responsible for rendering the <Switch /> (with the right props)
   // 💰 Combined with changes you'll make in the `render` method, these should
-  //    be able to accept `on`, `toggle`, and `children` as props.
+  //    be able to accept `isOn`, `toggle`, and `children` as props.
   //    Note that they will _not_ have access to Toggle instance properties
-  //    like `this.state.on` or `this.toggle`. The base files for the OverReact components
+  //    like `this.state.isOn` or `this.toggle`. The base files for the OverReact components
   //    have been setup and imported to the usage file already. You just need to go and update them:
   //    src/exercises/02/button.dart
   //    src/exercises/02/on.dart
   //    src/exercises/02/off.dart
+
+  static On() => ToggleOn();
+
+  static Off() => ToggleOff();
+
+  static Button() => ToggleButton();
+
   @override
-  Map getInitialState() => newState()..isOn = false;
+  get initialState => (newState()..isOn = false);
 
   void toggle(_) {
-    setState({'isOn ': !state.isOn}, () => props.onToggle(state.isOn));
+    setState((newState()..isOn = !state.isOn), () => props.onToggle(state.isOn));
   }
 
   @override

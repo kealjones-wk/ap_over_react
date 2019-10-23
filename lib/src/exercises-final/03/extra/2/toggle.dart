@@ -28,15 +28,15 @@ class _$ToggleState extends UiState {
 @Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  Map getInitialState() => newState()..isOn = false;
+  get initialState => (newState()..isOn = false);
 
   void toggle(_) {
-    setState({'isOn ': !state.isOn}, () => props.onToggle(state.isOn));
+    setState((newState()..isOn = !state.isOn), () => props.onToggle(state.isOn));
   }
 
   static On(children) {
     return ToggleConsumer()(
-      (BaseToggleProps value) {
+      (value) {
         if (value.isOn) {
           return Dom.span()(children);
         } else {
@@ -48,7 +48,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   static Off(children) {
     return ToggleConsumer()(
-      (BaseToggleProps value) {
+      (value) {
         if (value.isOn) {
           return null;
         } else {
@@ -60,7 +60,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   static Button() {
     return ToggleConsumer()(
-      (BaseToggleProps value) {
+      (value) {
         return (Switch()
           ..isOn = value.isOn
           ..onClick = value.toggle
@@ -74,7 +74,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     var tValue = BaseToggleProps()
       ..isOn = state.isOn
       ..toggle = toggle;
-    return ToggleContext.Provider({'value': tValue},
+    return (ToggleContext.Provider()..value = tValue)(
       props.children,
     );
   }

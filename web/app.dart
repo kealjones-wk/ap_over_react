@@ -37,8 +37,9 @@ class AppComponent extends UiStatefulComponent2<AppProps, AppState> {
   String defaultExerciseId = '01';
 
   @override
-  Map getInitialState() => newState()
-    ..exerciseId = exerciseIdFromUrl ?? defaultExerciseId;
+  get initialState => (newState()
+    ..exerciseId = exerciseIdFromUrl ?? defaultExerciseId
+  );
 
   String get exerciseIdFromUrl {
     var exerciseId = Uri.base.queryParameters['id'];

@@ -29,7 +29,7 @@ class _$ToggleState extends UiState {
 @Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  Map getInitialState() => newState()..isOn = null;
+  get initialState => (newState()..isOn = null);
 
   static const Map stateChangeTypes = {
     'toggle': '__toggle__',
@@ -59,8 +59,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       });
       return combinedState;
     }
-    return BaseToggleProps()
-      ..isOn = state.isOn != null ? state.isOn : props.isOn;
+    return BaseToggleProps()..isOn = state.isOn != null ? state.isOn : props.isOn;
   }
 
   internalSetState(changes, callback) {
@@ -69,9 +68,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     getNewState(passedInChanges) {
       BaseToggleProps combinedState = getState(state);
 
-      Map changesObject = (passedInChanges is Function)
-          ? passedInChanges(combinedState)
-          : passedInChanges;
+      Map changesObject = (passedInChanges is Function) ? passedInChanges(combinedState) : passedInChanges;
       allChanges = changesObject;
 
       Map onlyChanges = Map.from(changesObject);
@@ -101,9 +98,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     type ??= ToggleComponent.stateChangeTypes['toggle'];
 
     internalSetState((passedInState) {
-      bool onValue = newState is bool
-          ? newState
-          : passedInState.isOn != null ? !passedInState.isOn : {};
+      bool onValue = newState is bool ? newState : passedInState.isOn != null ? !passedInState.isOn : {};
       return {
         'isOn': onValue,
         'type': type,

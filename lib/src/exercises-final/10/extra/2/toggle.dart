@@ -28,7 +28,7 @@ class _$ToggleState extends UiState {
 @Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  Map getInitialState() => newState()..isOn = null;
+  get initialState => (newState()..isOn = null);
 
   isControlled(prop) {
     return props[prop] != null;
@@ -54,8 +54,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       return combinedState;
     }
 
-    return BaseToggleProps()
-      ..isOn = state.isOn != null ? state.isOn : props.isOn;
+    return BaseToggleProps()..isOn = state.isOn != null ? state.isOn : props.isOn;
   }
 
   internalSetState(changes, callback) {
@@ -65,8 +64,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       BaseToggleProps combinedState = getState(state);
 
       // handle function setState call
-      Map changesObject =
-          (changes is Function) ? changes(combinedState) : changes;
+      Map changesObject = (changes is Function) ? changes(combinedState) : changes;
       allChanges = changesObject;
 
       // apply state reducer

@@ -38,7 +38,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   //
   // 💯 Use a state updater function for `newState` to avoid issues with batching
   @override
-  Map getInitialState() => newState();
+  get initialState => newState();
 
   @override
   render() {

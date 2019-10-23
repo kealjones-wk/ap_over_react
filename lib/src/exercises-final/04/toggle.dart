@@ -25,7 +25,7 @@ class _$ToggleState extends UiState {
 @Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  Map getInitialState() => newState()..isOn = false;
+  get initialState => (newState()..isOn = false);
 
   void toggle(_) {
     setState(

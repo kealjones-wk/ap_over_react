@@ -2,7 +2,6 @@
 // Extra credit: support render props
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/polyfills/fragment.dart';
 import 'package:ap_over_react/src/exercises-final/11/extra/3/layer_3.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/src/exercises-final/11/extra/3/toggle_consumer.dart';
@@ -25,7 +24,7 @@ class Layer2Component extends UiComponent2<Layer2Props> {
   @override
   render() {
     return ToggleConsumer()(
-      (BaseToggleProps value) {
+      (value) {
         return Fragment()(
           value.isOn ? 'The button is on' : 'The button is off',
           Layer3()(),

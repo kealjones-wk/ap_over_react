@@ -1,5 +1,4 @@
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/app_components/error_boundary.dart' as local;
 
 // ignore: uri_has_not_been_generated
 part 'component_container.over_react.g.dart';
@@ -17,8 +16,7 @@ class _$ComponentContainerProps extends UiProps {
 class ComponentContainerComponent extends UiComponent2<ComponentContainerProps> {
   @override
   render() {
-    return local.ErrorBoundary()(
-      (Dom.div()..style = {'display': 'flex', 'flexDirection': 'column'})(
+    return (Dom.div()..style = {'display': 'flex', 'flexDirection': 'column'})(
       (Dom.h2()..style = {'textAlign': 'center'})(props.label),
       (Dom.div()
         ..style = {
@@ -30,7 +28,6 @@ class ComponentContainerComponent extends UiComponent2<ComponentContainerProps> 
           'justifyContent': 'center',
         }
       )(props.children),
-    )
     );
   }
 }

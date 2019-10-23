@@ -27,10 +27,11 @@ class _$ToggleState extends UiState {
 @Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  Map getDefaultProps() => newProps()
+  get defaultProps => (newProps()
     ..initialOn = false
     ..onToggleReset = (_) {}
-    ..stateReducer = (state, changes) => changes;
+    ..stateReducer = (state, changes) => changes
+  );
   // 💰 any time I use a string as an identifier for a type,
   // I prefer to give it a variable name. That way folks who
   // want to reference the type can do so using variable which
@@ -41,7 +42,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   };
 
   @override
-  Map getInitialState() => newState()..isOn = props.initialOn;
+  get initialState => (newState()..isOn = props.initialOn);
 
   internalSetState(changes, callback) {
     getNewState(changes) {
@@ -91,8 +92,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     return BaseToggleProps()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = mouseEventCallbacks
-          .chainFromList([additionalProps.onClick, (_) => toggle()]);
+      ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
   BaseToggleProps getStateAndHelpers() {

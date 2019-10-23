@@ -1,7 +1,6 @@
 // 11: The provider pattern
 
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/polyfills/fragment.dart';
 import 'package:ap_over_react/src/exercises-final/11/context.dart';
 import 'package:ap_over_react/src/exercises-final/11/layer_3.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
@@ -23,8 +22,8 @@ class _$Layer2Props extends AbstractToggleProps {}
 class Layer2Component extends UiComponent2<Layer2Props> {
   @override
   render() {
-    return ToggleContext.Consumer({},
-      (BaseToggleProps value) {
+    return ToggleContext.Consumer()(
+      (value) {
         return Fragment()(
           Dom.span()(value.isOn ? 'The button is on' : 'The button is off'),
           Layer3()(),

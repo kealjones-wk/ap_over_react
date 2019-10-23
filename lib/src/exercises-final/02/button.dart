@@ -17,7 +17,7 @@ class ToggleButtonComponent extends UiComponent2<ToggleButtonProps> {
   @override
   render() {
     return (Switch()
-      ..addProps(copyUnconsumedProps())
+      ..modifyProps(addUnconsumedProps)
       ..isOn = props.isOn
       ..onClick = props.toggle
     )();

@@ -1,3 +1,4 @@
+import 'package:ap_over_react/switch.dart';
 import 'package:over_react/over_react.dart';
 // Uncomment this out when you need it
 //import 'package:ap_over_react/switch.dart';
@@ -19,6 +20,10 @@ class _$ToggleButtonProps extends AbstractToggleProps {}
 class ToggleButtonComponent extends UiComponent2<ToggleButtonProps> {
   @override
   render() {
-    return ToggleContext.Consumer(null);
+    return (Switch()
+        ..isOn = props.isOn ?? false
+        ..onClick = props.toggle
+        ..modifyProps(addUnconsumedProps)
+      )();
   }
 }

@@ -18,7 +18,7 @@ class ExerciseContainerComponent extends UiComponent2<ExerciseContainerProps> {
   get exerciseId => props.id;
 
   @override
-  Map getDefaultProps() => newProps()..id = '01';
+  get defaultProps => (newProps()..id = '01');
 
   @override
   render() {

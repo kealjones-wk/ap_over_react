@@ -26,7 +26,7 @@ class _$ToggleState extends UiState {
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 expose the ToggleContext.Consumer as a static property of Toggle here.
   @override
-  Map getInitialState() => newState()..isOn = false;
+  get initialState => (newState()..isOn = false);
 
   void toggle(_) {
     setState(

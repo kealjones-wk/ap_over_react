@@ -1,8 +1,15 @@
 // 03: Flexible Compound Components with context
 
+import 'dart:js';
+
+import 'package:ap_over_react/switch.dart';
 import 'package:over_react/over_react.dart';
+import 'package:react/react.dart' as react;
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/src/app_components/not_ready.dart';
+import 'on.dart';
+import 'off.dart';
+import 'button.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
@@ -63,23 +70,21 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 each of these compound components will need to be changed to use
   // ToggleContext.Consumer and rather than getting `on` and `toggle`
   // from props, it'll get it from the ToggleContext.Consumer value.
+
+  static On() => ToggleOn();
+
+  static Off() => ToggleOff();
+
+  static Button() => ToggleButton();
+
   @override
-  Map getInitialState() => newState()..isOn = false;
-
-  static On(children) {
-    return null;
-  }
-
-  static Off(children) {
-    return null;
-  }
-
-  static Button() {
-    return null;
-  }
+  get initialState => (newState()..isOn = false);
 
   void toggle(_) {
-    setState({'isOn ': !state.isOn}, () => props.onToggle(state.isOn));
+    setState(
+      (newState()..isOn = !state.isOn),
+      () => props.onToggle(state.isOn),
+    );
   }
 
   @override

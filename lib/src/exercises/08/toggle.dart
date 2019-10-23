@@ -44,13 +44,14 @@ class _$ToggleState extends UiState {
 @Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  Map getDefaultProps() => newProps()
+  get defaultProps => (newProps()
     ..initialOn = false
-    ..onToggleReset = (_) {};
+    ..onToggleReset = (_) {}
+  );
   // 🐨 let's add a default stateReducer here. It should return
   // the changes object as it is passed.
   @override
-  Map getInitialState() => newState()..isOn = props.initialOn;
+  get initialState => (newState()..isOn = props.initialOn);
   // 🐨 let's add a method here called `internalSetState`. It will simulate
   // the same API as `setState(updater, callback)`:
   // - updater: (changes object or function that returns the changes object)
@@ -87,8 +88,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     return BaseToggleProps()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = mouseEventCallbacks
-          .chainFromList([additionalProps.onClick, (_) => toggle()]);
+      ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
   BaseToggleProps getStateAndHelpers() {

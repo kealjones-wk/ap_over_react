@@ -29,19 +29,20 @@ class _$UsageState extends UiState {
 @Component2()
 class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
   @override
-  Map getDefaultProps() => newProps()
+  get defaultProps => (newProps()
     ..onToggle = (args) {
       print('onToggle $args');
     }
     ..onToggleReset = (args) {
       print('onToggleReset $args');
-    };
+    }
+  );
 
   @override
-  Map getInitialState() => newState()..timesClicked = 0;
+  get initialState => (newState()..timesClicked = 0);
 
   handleToggle(args) {
-    setState({'timesClicked ': state.timesClicked++});
+    setState((newState()..timesClicked = state.timesClicked++));
     props.onToggle(args);
   }
 
@@ -72,12 +73,9 @@ class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
         props.ref = ref;
       }
     )(
-      (BaseToggleProps value) {
+      (value) {
         return Dom.div()(
-          (Switch()
-            ..addProps(
-                value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
-          )(),
+          (Switch()..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn)))(),
           state.timesClicked > 4
               ? ((Dom.div()..addTestId('notice'))(
                   'Whoa, you clicked too much!',

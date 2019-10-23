@@ -2,6 +2,9 @@
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
+import 'on.dart';
+import 'off.dart';
+import 'button.dart';
 
 // ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
@@ -24,11 +27,18 @@ class _$ToggleState extends UiState {
 
 @Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
+
+  static On() => ToggleOn();
+
+  static Off() => ToggleOff();
+
+  static Button() => ToggleButton();
+
   @override
-  Map getInitialState() => newState()..isOn = false;
+  get initialState => (newState()..isOn = false);
 
   void toggle(_) {
-    setState({'isOn ': !state.isOn}, () => props.onToggle(state.isOn));
+    setState((newState()..isOn = !state.isOn), () => props.onToggle(state.isOn));
   }
 
   @override

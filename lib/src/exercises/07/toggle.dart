@@ -29,7 +29,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 Rather than initializing state to have on as false,
   // set on to this.props.initialOn
   @override
-  Map getInitialState() => newState()..isOn = false;
+  get initialState => (newState()..isOn = false);
 
   // 🐨 now let's add a reset method here that resets the state
   // to the initial state. Then add a callback that calls
@@ -47,8 +47,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     return BaseToggleProps()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = mouseEventCallbacks
-          .chainFromList([additionalProps.onClick, (_) => toggle()]);
+      ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
   BaseToggleProps getStateAndHelpers() {

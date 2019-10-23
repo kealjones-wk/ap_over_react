@@ -30,7 +30,7 @@ class _$ToggleState extends UiState {
 @Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  Map getInitialState() => newState()..isOn = false;
+  get initialState => (newState()..isOn = false);
 
   // 🐨 let's add a function that can determine whether
   // the on prop is controlled. Call it `isControlled`.

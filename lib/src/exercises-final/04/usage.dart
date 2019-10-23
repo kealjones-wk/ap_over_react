@@ -23,13 +23,12 @@ class _$UsageProps extends UiProps {
 @Component2()
 class UsageComponent extends UiComponent2<UsageProps> {
   @override
-  Map getDefaultProps() =>
-      newProps()..onToggle = (args) => print('onToggle $args');
+  get defaultProps => (newProps()..onToggle = (args) => print('onToggle $args'));
 
   @override
   render() {
     return (Toggle()..onToggle = props.onToggle)(
-      (BaseToggleProps value) {
+      (value) {
         return Dom.div()(
           value.isOn ? 'The button is on' : 'The button is off',
           (Switch()

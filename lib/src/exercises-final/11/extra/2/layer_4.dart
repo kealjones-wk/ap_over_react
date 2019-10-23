@@ -25,7 +25,7 @@ class Layer4Component extends UiComponent2<Layer4Props> {
   @override
   render() {
     return ToggleConsumer()(
-      (BaseToggleProps value) {
+      (value) {
         return (Switch()
           ..isOn = value.isOn
           ..onClick = value.toggle

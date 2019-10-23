@@ -26,12 +26,13 @@ class _$ToggleState extends UiState {
 @Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  Map getDefaultProps() => newProps()
+  get defaultProps => (newProps()
     ..initialOn = false
-    ..onToggleReset = (_) {};
+    ..onToggleReset = (_) {}
+  );
 
   @override
-  Map getInitialState() => newState()..isOn = props.initialOn;
+  get initialState => (newState()..isOn = props.initialOn);
 
   void reset() {
     setState(
@@ -53,8 +54,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     return BaseToggleProps()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = mouseEventCallbacks
-          .chainFromList([additionalProps.onClick, (_) => toggle()]);
+      ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
   BaseToggleProps getStateAndHelpers() {

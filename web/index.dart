@@ -9,5 +9,5 @@ main() {
   // Initialize React within our Dart app
   setClientConfiguration();
   // Mount / render your component.
-  react_dom.render(App()(), querySelector('#app'));
+  react_dom.render(ErrorBoundary()(App()()), querySelector('#app'));
 }

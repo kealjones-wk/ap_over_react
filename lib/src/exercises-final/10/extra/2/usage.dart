@@ -31,17 +31,18 @@ class _$UsageState extends UiState {
 @Component2()
 class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
   @override
-  Map getInitialState() => newState()..bothOn = false;
+  get initialState => (newState()..bothOn = false);
 
-  handleToggle(isOn) => setState({'bothOn ': isOn});
-  handleStateChange(isOn) => setState({'bothOn ': isOn});
+  handleToggle(isOn) => setState((newState()..bothOn = isOn));
+  handleStateChange(isOn) => setState((newState()..bothOn = isOn));
 
   @override
-  Map getDefaultProps() => newProps()
+  get defaultProps => (newProps()
     ..onStateChange = (_) {
       print('onStateChange');
     }
-    ..onToggle = (args) => print('onToggle $args');
+    ..onToggle = (args) => print('onToggle $args')
+  );
 
   @override
   render() {

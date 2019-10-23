@@ -22,8 +22,8 @@ class _$Layer4Props extends AbstractToggleProps {}
 class Layer4Component extends UiComponent2<Layer4Props> {
   @override
   render() {
-    return ToggleContext.Consumer({},
-      (BaseToggleProps value) {
+    return ToggleContext.Consumer()(
+      (value) {
         return (Switch()
           ..isOn = value.isOn
           ..onClick = value.toggle

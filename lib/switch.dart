@@ -35,15 +35,16 @@ class SwitchComponent extends UiComponent2<SwitchProps> {
       ].join(' ');
 
   @override
-  Map getDefaultProps() => newProps()
+  get defaultProps => (newProps()
     ..isOn = false
-    ..className = '';
+    ..className = ''
+  );
 
   @override
   render() {
     return (Dom.div()
       ..addTestId('switch')
-      ..addProps(copyUnconsumedDomProps())
+      ..modifyProps(addUnconsumedDomProps)
     )(
       (Dom.input()
         ..addTestId('switch.input')
@@ -54,7 +55,7 @@ class SwitchComponent extends UiComponent2<SwitchProps> {
       )(),
       (Dom.button()
         ..addTestId('switch.button')
-        ..addProps(copyUnconsumedDomProps())
+        ..modifyProps(addUnconsumedDomProps)
         ..className = btnClassNames
         ..aria.label = 'Toggle'
       )(),

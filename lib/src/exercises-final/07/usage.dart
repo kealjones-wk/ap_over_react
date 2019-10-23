@@ -24,13 +24,14 @@ class _$UsageProps extends UiProps {
 @Component2()
 class UsageComponent extends UiComponent2<UsageProps> {
   @override
-  Map getDefaultProps() => newProps()
+  get defaultProps => (newProps()
     ..onToggle = (args) {
       print('onToggle $args');
     }
     ..onToggleReset = (args) {
       print('onToggleReset $args');
-    };
+    }
+  );
 
   @override
   render() {
@@ -39,12 +40,9 @@ class UsageComponent extends UiComponent2<UsageProps> {
       ..onToggle = props.onToggle
       ..onToggleReset = props.onToggleReset
     )(
-      (BaseToggleProps value) {
+      (value) {
         return Dom.div()(
-          (Switch()
-            ..addProps(
-                value.getTogglerProps(BaseToggleProps()..isOn = value.isOn))
-          )(),
+          (Switch()..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn)))(),
           Dom.hr()(),
           (Dom.button()
             ..onClick = (_) {

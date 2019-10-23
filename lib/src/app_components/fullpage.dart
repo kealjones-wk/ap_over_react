@@ -3,68 +3,37 @@ import 'dart:async';
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/app_components/not_ready.dart';
 
-import 'package:ap_over_react/src/exercises-final/01/usage.dart'
-    deferred as exercise_01_final;
-import 'package:ap_over_react/src/exercises/01/usage.dart'
-    deferred as exercise_01;
-import 'package:ap_over_react/src/exercises-final/02/usage.dart'
-    deferred as exercise_02_final;
-import 'package:ap_over_react/src/exercises/02/usage.dart'
-    deferred as exercise_02;
-import 'package:ap_over_react/src/exercises-final/03/usage.dart'
-    deferred as exercise_03_final;
-import 'package:ap_over_react/src/exercises/03/usage.dart'
-    deferred as exercise_03;
-import 'package:ap_over_react/src/exercises-final/03/extra/1/usage.dart'
-    deferred as exercise_03_1_final;
-import 'package:ap_over_react/src/exercises-final/03/extra/2/usage.dart'
-    deferred as exercise_03_2_final;
-import 'package:ap_over_react/src/exercises-final/04/usage.dart'
-    deferred as exercise_04_final;
-import 'package:ap_over_react/src/exercises/04/usage.dart'
-    deferred as exercise_04;
-import 'package:ap_over_react/src/exercises-final/05/usage.dart'
-    deferred as exercise_05_final;
-import 'package:ap_over_react/src/exercises/05/usage.dart'
-    deferred as exercise_05;
-import 'package:ap_over_react/src/exercises-final/06/usage.dart'
-    deferred as exercise_06_final;
-import 'package:ap_over_react/src/exercises/06/usage.dart'
-    deferred as exercise_06;
-import 'package:ap_over_react/src/exercises-final/07/usage.dart'
-    deferred as exercise_07_final;
-import 'package:ap_over_react/src/exercises/07/usage.dart'
-    deferred as exercise_07;
-import 'package:ap_over_react/src/exercises-final/08/usage.dart'
-    deferred as exercise_08_final;
-import 'package:ap_over_react/src/exercises/08/usage.dart'
-    deferred as exercise_08;
-import 'package:ap_over_react/src/exercises-final/09/usage.dart'
-    deferred as exercise_09_final;
-import 'package:ap_over_react/src/exercises/09/usage.dart'
-    deferred as exercise_09;
-import 'package:ap_over_react/src/exercises-final/10/usage.dart'
-    deferred as exercise_10_final;
-import 'package:ap_over_react/src/exercises-final/10/extra/1/usage.dart'
-    deferred as exercise_10_1_final;
-import 'package:ap_over_react/src/exercises-final/10/extra/2/usage.dart'
-    deferred as exercise_10_2_final;
-import 'package:ap_over_react/src/exercises-final/10/extra/3/usage.dart'
-    deferred as exercise_10_3_final;
-import 'package:ap_over_react/src/exercises/10/usage.dart'
-    deferred as exercise_10;
-import 'package:ap_over_react/src/exercises-final/11/usage.dart'
-    deferred as exercise_11_final;
-import 'package:ap_over_react/src/exercises-final/11/extra/1/usage.dart'
-    deferred as exercise_11_1_final;
-import 'package:ap_over_react/src/exercises-final/11/extra/2/usage.dart'
-    deferred as exercise_11_2_final;
-import 'package:ap_over_react/src/exercises-final/11/extra/3/usage.dart'
-    deferred as exercise_11_3_final;
-import 'package:ap_over_react/src/exercises-final/11/extra/4/usage.dart'
-    deferred as exercise_11_4_final;
-import 'package:ap_over_react/src/exercises/11/usage.dart'
-    deferred as exercise_11;
+import 'package:ap_over_react/src/exercises-final/01/usage.dart' deferred as exercise_01_final;
+import 'package:ap_over_react/src/exercises/01/usage.dart' deferred as exercise_01;
+import 'package:ap_over_react/src/exercises-final/02/usage.dart' deferred as exercise_02_final;
+import 'package:ap_over_react/src/exercises/02/usage.dart' deferred as exercise_02;
+import 'package:ap_over_react/src/exercises-final/03/usage.dart' deferred as exercise_03_final;
+import 'package:ap_over_react/src/exercises/03/usage.dart' deferred as exercise_03;
+import 'package:ap_over_react/src/exercises-final/03/extra/1/usage.dart' deferred as exercise_03_1_final;
+import 'package:ap_over_react/src/exercises-final/03/extra/2/usage.dart' deferred as exercise_03_2_final;
+import 'package:ap_over_react/src/exercises-final/04/usage.dart' deferred as exercise_04_final;
+import 'package:ap_over_react/src/exercises/04/usage.dart' deferred as exercise_04;
+import 'package:ap_over_react/src/exercises-final/05/usage.dart' deferred as exercise_05_final;
+import 'package:ap_over_react/src/exercises/05/usage.dart' deferred as exercise_05;
+import 'package:ap_over_react/src/exercises-final/06/usage.dart' deferred as exercise_06_final;
+import 'package:ap_over_react/src/exercises/06/usage.dart' deferred as exercise_06;
+import 'package:ap_over_react/src/exercises-final/07/usage.dart' deferred as exercise_07_final;
+import 'package:ap_over_react/src/exercises/07/usage.dart' deferred as exercise_07;
+import 'package:ap_over_react/src/exercises-final/08/usage.dart' deferred as exercise_08_final;
+import 'package:ap_over_react/src/exercises/08/usage.dart' deferred as exercise_08;
+import 'package:ap_over_react/src/exercises-final/09/usage.dart' deferred as exercise_09_final;
+import 'package:ap_over_react/src/exercises/09/usage.dart' deferred as exercise_09;
+import 'package:ap_over_react/src/exercises-final/10/usage.dart' deferred as exercise_10_final;
+import 'package:ap_over_react/src/exercises-final/10/extra/1/usage.dart' deferred as exercise_10_1_final;
+import 'package:ap_over_react/src/exercises-final/10/extra/2/usage.dart' deferred as exercise_10_2_final;
+import 'package:ap_over_react/src/exercises-final/10/extra/3/usage.dart' deferred as exercise_10_3_final;
+import 'package:ap_over_react/src/exercises/10/usage.dart' deferred as exercise_10;
+import 'package:ap_over_react/src/exercises-final/11/usage.dart' deferred as exercise_11_final;
+import 'package:ap_over_react/src/exercises-final/11/extra/1/usage.dart' deferred as exercise_11_1_final;
+import 'package:ap_over_react/src/exercises-final/11/extra/2/usage.dart' deferred as exercise_11_2_final;
+import 'package:ap_over_react/src/exercises-final/11/extra/3/usage.dart' deferred as exercise_11_3_final;
+import 'package:ap_over_react/src/exercises-final/11/extra/4/usage.dart' deferred as exercise_11_4_final;
+import 'package:ap_over_react/src/exercises/11/usage.dart' deferred as exercise_11;
 
 // ignore: uri_has_not_been_generated
 part 'fullpage.over_react.g.dart';
@@ -84,9 +53,7 @@ class _$FullPageState extends UiState {
 }
 
 @Component2()
-class FullPageComponent
-    extends UiStatefulComponent2<FullPageProps, FullPageState> {
-
+class FullPageComponent extends UiStatefulComponent2<FullPageProps, FullPageState> {
   void updateFactory() {
     getExerciseClass().then((UiFactory cfactory) {
       setState(newState()..componentFactory = cfactory);
@@ -346,7 +313,9 @@ class FullPageComponent
         'justifyContent': 'center',
       }
     )(
-      state.componentFactory != null ? state.componentFactory()() : null,
+      (ErrorBoundary()..fallbackUIRenderer = (_, __) => Dom.span()('There was an error. Edit the code and try again.'))(
+        state.componentFactory != null ? state.componentFactory()() : null,
+      ),
     );
   }
 }
