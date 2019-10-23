@@ -14,11 +14,8 @@ main(List<String> args) async {
   // config.docs
   // config.examples
   // config.format
-  config.format
-    ..lineLength = 120
-    ..exclude = [
-      'tool/over_react_format/'
-    ];
+  config.format.lineLength = 120;
+
   config.test.platforms = [
       'chrome'
     ];
