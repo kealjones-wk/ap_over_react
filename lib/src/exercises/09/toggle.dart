@@ -15,7 +15,7 @@ mixin TogglePropsMixin on UiProps {
   /// Callback that returns `state.isOn` when the toggle switches;
   Callback1Arg onToggle;
   Callback1Arg onToggleReset;
-  Callback2Arg stateReducer;
+  Map Function(Map state, Map changes) stateReducer;
 }
 
 class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
@@ -40,10 +40,10 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   internalSetState(changes, callback) {
     getNewState(changes) {
       // handle function setState call
-      Map changesObject = (changes is Function) ? changes(state) : changes;
+      final changesObject = ((changes is Function) ? changes(state) : changes) as Map;
 
       // apply state reducer
-      Map onlyChanges = props.stateReducer(state, changesObject) ?? {};
+      final onlyChanges = props.stateReducer(state, changesObject) ?? const {};
 
       // 🐨  in addition to what we've done, let's pluck off the `type`
       // property and return an object only if the state changes

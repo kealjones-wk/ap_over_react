@@ -61,7 +61,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   @override
   render() {
-    var tValue = SharedTogglePropsMapView()
+    final tValue = SharedTogglePropsMapView()
       ..isOn = state.isOn
       ..toggle = toggle;
 

@@ -32,7 +32,7 @@ mixin TogglePropsMixin on UiProps {
   /// Callback that returns `state.isOn` when the toggle switches;
   Callback1Arg onToggle;
   Callback1Arg onToggleReset;
-  Callback2Arg stateReducer;
+  Map Function(Map state, Map changes) stateReducer;
 }
 
 class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;

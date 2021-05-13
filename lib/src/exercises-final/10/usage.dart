@@ -30,8 +30,8 @@ class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
 
   @override
   render() {
-    var toggle1Ref = props.toggle1Ref;
-    var toggle2Ref = props.toggle2Ref;
+    var toggle1Ref = props.toggle1Ref; // ignore: unused_local_variable
+    var toggle2Ref = props.toggle2Ref; // ignore: unused_local_variable
 
     return Dom.div()(
       (Toggle()

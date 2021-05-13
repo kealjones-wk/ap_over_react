@@ -35,10 +35,8 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   getState([ToggleState stateParam]) {
     if (stateParam != null) {
-      SharedTogglePropsMapView combinedState = SharedTogglePropsMapView();
-      ToggleState componentState = stateParam;
-
-      componentState.forEach((mapKey, mapValue) {
+      final combinedState = SharedTogglePropsMapView();
+      stateParam.forEach((mapKey, mapValue) {
         if (isControlled(mapKey)) {
           combinedState.addAll({
             mapKey: props[mapKey],
@@ -53,21 +51,21 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       return combinedState;
     }
 
-    return SharedTogglePropsMapView()..isOn = state.isOn != null ? state.isOn : props.isOn;
+    return SharedTogglePropsMapView()..isOn = state.isOn ?? props.isOn;
   }
 
   internalSetState(changes, callback) {
     Map allChanges;
 
     getNewState(changes) {
-      SharedTogglePropsMapView combinedState = getState(state);
+      final combinedState = getState(state);
 
       // handle function setState call
-      Map changesObject = (changes is Function) ? changes(combinedState) : changes;
+      final changesObject = ((changes is Function) ? changes(combinedState) : changes) as Map;
       allChanges = changesObject;
 
       // apply state reducer
-      SharedTogglePropsMapView nonControlledChanges = SharedTogglePropsMapView();
+      final nonControlledChanges = SharedTogglePropsMapView();
 
       changesObject.forEach((mapKey, mapValue) {
         nonControlledChanges.addAll({
@@ -88,8 +86,9 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   void toggle(_) {
     internalSetState((passedInState) {
       if (passedInState.isOn != null) {
-        return {'isOn': !passedInState.isOn};
+        return newState()..isOn = !passedInState.isOn;
       }
+      return null;
     }, () => props.onToggle(getState().isOn));
   }
 

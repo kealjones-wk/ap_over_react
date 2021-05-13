@@ -38,7 +38,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   SharedTogglePropsMapView getTogglerProps([SharedTogglePropsMapView additionalProps]) {
     additionalProps ??= SharedTogglePropsMapView();
 
-    var propsToSendBack = SharedTogglePropsMapView()
+    final propsToSendBack = SharedTogglePropsMapView()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
       ..onClick = mouseEventCallbacks.chainFromList([toggle, additionalProps.onClick]);

@@ -42,10 +42,8 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   SharedTogglePropsMixin getState([ToggleState stateParam]) {
     if (stateParam != null) {
-      SharedTogglePropsMapView combinedState = SharedTogglePropsMapView();
-      ToggleState componentState = stateParam;
-
-      componentState.forEach((mapKey, mapValue) {
+      final combinedState = SharedTogglePropsMapView();
+      stateParam.forEach((mapKey, mapValue) {
         if (isControlled(mapKey)) {
           combinedState.addAll({
             mapKey: props[mapKey],
@@ -58,22 +56,21 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       });
       return combinedState;
     }
-    return SharedTogglePropsMapView()..isOn = state.isOn != null ? state.isOn : props.isOn;
+    return SharedTogglePropsMapView()..isOn = state.isOn ?? props.isOn;
   }
 
   internalSetState(changes, callback) {
     Map allChanges;
 
     getNewState(passedInChanges) {
-      SharedTogglePropsMapView combinedState = getState(state);
+      final combinedState = getState(state);
 
-      Map changesObject = (passedInChanges is Function) ? passedInChanges(combinedState) : passedInChanges;
+      final changesObject = (passedInChanges is Function) ? passedInChanges(combinedState) : passedInChanges;
       allChanges = changesObject;
 
-      Map onlyChanges = Map.from(changesObject);
-      onlyChanges.remove('type');
+      final onlyChanges = Map.of(changesObject)..remove('type');
 
-      SharedTogglePropsMapView nonControlledChanges = SharedTogglePropsMapView();
+      final nonControlledChanges = SharedTogglePropsMapView();
 
       onlyChanges.forEach((mapKey, mapValue) {
         if (!isControlled(mapKey)) {
@@ -97,7 +94,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     type ??= ToggleComponent.stateChangeTypes['toggle'];
 
     internalSetState((passedInState) {
-      bool onValue = newState is bool ? newState : passedInState.isOn != null ? !passedInState.isOn : {};
+      final onValue = newState is bool ? newState : passedInState.isOn != null ? !passedInState.isOn : {};
       return {
         'isOn': onValue,
         'type': type,

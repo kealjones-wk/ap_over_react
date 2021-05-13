@@ -40,10 +40,10 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   @override
   render() {
-    int key = 0;
+    var key = 0;
     return Dom.div()(
       props.children.map((child) {
-        var propsToAdd = Toggle()
+        final propsToAdd = Toggle()
           ..isOn = state.isOn
           ..toggle = toggle
           ..key = key++;

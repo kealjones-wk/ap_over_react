@@ -33,7 +33,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   }
 
   getState() {
-    SharedTogglePropsMapView combinedState = SharedTogglePropsMapView();
+    final combinedState = SharedTogglePropsMapView();
 
     state.forEach((mapKey, mapValue) {
       if (isControlled(mapKey)) {

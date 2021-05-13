@@ -21,7 +21,7 @@ class AppComponent extends UiStatefulComponent2<AppProps, AppState> {
   get initialState => (newState()..exerciseId = exerciseIdFromUrl ?? defaultExerciseId);
 
   String get exerciseIdFromUrl {
-    var exerciseId = Uri.base.queryParameters['id'];
+    final exerciseId = Uri.base.queryParameters['id'];
     if (exerciseId != null) {
       if (exerciseId.length == 3 && exerciseId.contains('.') || exerciseId.length <= 1) {
         return formatExerciseId(exerciseId);
@@ -52,7 +52,7 @@ class AppComponent extends UiStatefulComponent2<AppProps, AppState> {
           'textAlign': 'center',
         }
       )(
-        exerciseList.map((String exerciseId) {
+        exerciseList.map((exerciseId) {
           return (Dom.a()
             ..className = '${exerciseId == exerciseIdFromUrl ? "active" : ""}'
             ..key = exerciseId

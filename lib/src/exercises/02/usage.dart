@@ -2,9 +2,6 @@
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises/02/toggle.dart';
-import 'package:ap_over_react/src/exercises/02/on.dart';
-import 'package:ap_over_react/src/exercises/02/off.dart';
-import 'package:ap_over_react/src/exercises/02/button.dart';
 
 part 'usage.over_react.g.dart';
 

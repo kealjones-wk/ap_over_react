@@ -2,7 +2,6 @@
 
 import 'dart:html';
 import 'dart:js';
-import 'dart:math';
 
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
@@ -45,8 +44,8 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 //  measureTextWidthCanvas('Exercise 01', fontStyle:'normal normal 700 normal 32px / normal "Antic Slab", serif');
 //  measureTextWidthCanvas('Exercise 01', sourceElement: document.querySelector('#app h1'));
 measureTextWidthCanvas(text, {String fontStyle, Element sourceElement}) {
-  var canvas = new CanvasElement();
-  var canvasContext = canvas.context2D;
+  final canvas = CanvasElement();
+  final canvasContext = canvas.context2D;
 
   if (sourceElement != null) {
     canvasContext.font = context.callMethod('getComputedStyle', [sourceElement])['font'];
@@ -55,7 +54,7 @@ measureTextWidthCanvas(text, {String fontStyle, Element sourceElement}) {
     canvasContext.font = fontStyle;
   }
 
-  var metrics = canvasContext.measureText(text);
+  final metrics = canvasContext.measureText(text);
   return metrics.width;
 }
 
@@ -64,8 +63,8 @@ measureTextWidthCanvas(text, {String fontStyle, Element sourceElement}) {
 /// Uses [CssStyleDeclaration.cssText] for Chrome, and copies each property manually for other browsers.
 void copyStyles(Element src, Element target) {
   /// Use JS interop since we can't iterate over all the styles in Dart's [CssStyleDeclaration].
-  JsObject computedJs = context.callMethod('getComputedStyle', [src]);
-  var cssText = computedJs['cssText'];
+  final computedJs = context.callMethod('getComputedStyle', [src]) as JsObject;
+  final cssText = computedJs['cssText'] as String;
 
   // Some browsers don't support fetching `cssText` from computed style,
   // and return an empty string instead.
@@ -75,9 +74,9 @@ void copyStyles(Element src, Element target) {
   if (cssText.isNotEmpty) {
     target.style.cssText = cssText;
   } else {
-    var length = computedJs['length'];
+    final length = computedJs['length'];
     for (var i = 0; i < length; i++) {
-      var key = computedJs[i];
+      final key = computedJs[i];
       target.style.setProperty(key, computedJs[key]?.toString());
     }
   }

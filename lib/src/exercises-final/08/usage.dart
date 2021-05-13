@@ -48,7 +48,7 @@ class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
     props.onToggleReset(args);
   }
 
-  toggleStateReducer(newState, changes) {
+  Map toggleStateReducer(Map newState, Map changes) {
     if (state.timesClicked >= 4) {
       return SharedTogglePropsMapView()
         ..addAll(changes)

@@ -2,7 +2,6 @@ import 'package:over_react/over_react.dart';
 // Uncomment this out when you need it
 //import 'package:ap_over_react/switch.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:over_react/over_react.dart';
 
 part 'button.over_react.g.dart';
 

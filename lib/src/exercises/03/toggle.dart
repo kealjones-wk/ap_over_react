@@ -1,12 +1,8 @@
 // 03: Flexible Compound Components with context
 
-import 'dart:js';
-
-import 'package:ap_over_react/switch.dart';
 import 'package:over_react/over_react.dart';
-import 'package:react/react.dart' as react;
 import 'package:ap_over_react/src/shared/shared_props.dart';
-import 'package:ap_over_react/src/app_components/not_ready.dart';
+
 import 'on.dart';
 import 'off.dart';
 import 'button.dart';
@@ -89,7 +85,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     // this.props.children as the children of the provider. Then we'll
     // expose the `on` state and `toggle` method as properties in the context
     // value (the value prop).
-    int indexKey = 0;
+    var indexKey = 0;
     //Before working on the Toggle component in this exercise, it will cause errors
     //When the component is functional (not necessarily complete), it will render
     return Dom.div()([

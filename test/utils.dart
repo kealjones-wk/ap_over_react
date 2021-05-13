@@ -14,14 +14,14 @@ findSwitchInstances(rootInstance) {
 
 validateSwitchInstance(switchInstance) {
   if (switchInstance != null) {
-    throw new ArgumentError('Unable to find the Switch component. Make sure you\'re rendering that!');
+    throw ArgumentError('Unable to find the Switch component. Make sure you\'re rendering that!');
   }
   try {
-    var switchProps = Switch(getProps(switchInstance));
+    final switchProps = Switch(getProps(switchInstance));
     expect(switchProps.isOn, const TypeMatcher<bool>());
     expect(switchProps.onClick, const TypeMatcher<Callback1Arg>());
   } catch (error) {
-    throw new ArgumentError('🚨  The Switch component is not being passed the right props. 🚨');
+    throw ArgumentError('🚨  The Switch component is not being passed the right props. 🚨');
   }
 }
 

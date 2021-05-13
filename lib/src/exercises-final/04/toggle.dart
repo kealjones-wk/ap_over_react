@@ -40,6 +40,6 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   @override
   render() {
-    return props.children.single(this.getStateAndHelpers());
+    return props.children.single(getStateAndHelpers());
   }
 }

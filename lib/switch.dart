@@ -21,7 +21,7 @@ class SwitchComponent extends UiComponent2<SwitchProps> {
   String get btnClassNames => [
         props.className,
         'toggle-btn',
-        props.isOn ? 'toggle-btn-on' : 'toggle-btn-off',
+        if (props.isOn) 'toggle-btn-on' else 'toggle-btn-off',
       ].join(' ');
 
   @override

@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:over_react/over_react.dart';
+import 'package:over_react/components.dart' show ErrorBoundary;
+import 'package:over_react/over_react.dart' hide ErrorBoundary;
 import 'package:ap_over_react/src/app_components/not_ready.dart';
 
 import 'package:ap_over_react/src/exercises-final/01/usage.dart' deferred as exercise_01_final;
@@ -50,15 +51,15 @@ mixin FullPageState on UiState {
 
 class FullPageComponent extends UiStatefulComponent2<FullPageProps, FullPageState> {
   void updateFactory() {
-    getExerciseClass().then((UiFactory cfactory) {
+    getExerciseClass().then((cfactory) {
       setState(newState()..componentFactory = cfactory);
     });
   }
 
   @override
   componentDidUpdate(prevProps, prevState, [snapshot]) {
-    FullPageProps tprevProps = typedPropsFactory(prevProps);
-    if (tprevProps.id != props.id) {
+    final tPrevProps = typedPropsFactory(prevProps);
+    if (tPrevProps.id != props.id) {
       updateFactory();
     }
     super.componentDidUpdate(prevProps, prevState);

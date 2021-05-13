@@ -36,7 +36,7 @@ class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
   //handleToggle(isOn) => setState((newState()..bothOn = isOn));
   handleToggle(isOn) => {};
   handleStateChange(changes) {
-    bool isButtonChange = changes['type'] == ToggleComponent.stateChangeTypes['toggleOn'] ||
+    final isButtonChange = changes['type'] == ToggleComponent.stateChangeTypes['toggleOn'] ||
         changes['type'] == ToggleComponent.stateChangeTypes['toggleOff'];
 
     if (changes['type'] == ToggleComponent.stateChangeTypes['toggle'] || (lastWasButton && isButtonChange)) {
@@ -57,8 +57,8 @@ class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
 
   @override
   render() {
-    var toggle1Ref = props.toggle1Ref;
-    var toggle2Ref = props.toggle2Ref;
+    var toggle1Ref = props.toggle1Ref; // ignore: unused_local_variable
+    var toggle2Ref = props.toggle2Ref; // ignore: unused_local_variable
 
     return Dom.div()(
       (Toggle()
@@ -74,7 +74,7 @@ class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
         ..onToggle = props.onToggle
         ..onStateChange = handleStateChange
         ..ref = (ref) {
-          toggle1Ref = ref;
+          toggle2Ref = ref;
         }
       )(),
     );

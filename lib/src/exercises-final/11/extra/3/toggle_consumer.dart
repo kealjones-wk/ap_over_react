@@ -20,7 +20,7 @@ class ToggleConsumerComponent extends UiComponent2<ToggleConsumerProps> {
     return ToggleContext.Consumer()(
       (value) {
         if (value == null) {
-          throw new Exception('Toggle compound components cannot be rendered outside the Toggle component');
+          throw Exception('Toggle compound components cannot be rendered outside the Toggle component');
         }
         return props.children.single(value);
       },

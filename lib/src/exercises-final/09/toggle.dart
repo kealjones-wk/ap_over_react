@@ -13,7 +13,7 @@ mixin TogglePropsMixin on UiProps {
   bool initialOn;
   Callback1Arg onToggle;
   Callback1Arg onToggleReset;
-  Callback2Arg stateReducer;
+  Map Function(Map state, Map changes) stateReducer;
 }
 
 class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
@@ -46,17 +46,17 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   internalSetState(changes, callback) {
     getNewState(changes) {
       // handle function setState call
-      Map changesObject = (changes is Function) ? changes(state) : changes;
+      final changesObject = ((changes is Function) ? changes(state) : changes) as Map;
 
       // apply state reducer
-      Map reducedChanges = props.stateReducer(state, changesObject) ?? {};
+      final reducedChanges = props.stateReducer(state, changesObject) ?? const {};
 
       // remove the type so it's not set into state
       if (reducedChanges.containsKey('type')) {
         reducedChanges.remove('type');
       }
 
-      Map onlyChanges = reducedChanges;
+      final onlyChanges = reducedChanges;
       print(onlyChanges);
       // return null if there are no changes to be made
       return onlyChanges.isNotEmpty ? onlyChanges : null;
@@ -73,7 +73,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   }
 
   void toggle([Map map]) {
-    String type = stateChangeTypes['toggle'];
+    var type = stateChangeTypes['toggle'];
     if (map != null && map.containsKey('type')) {
       type = map['type'];
     }

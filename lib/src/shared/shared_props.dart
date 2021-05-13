@@ -10,7 +10,6 @@ mixin SharedTogglePropsMixin on UiProps {
   Function reset;
   DomProps togglerProps;
   dynamic getTogglerProps;
-  dynamic ref;
 }
 
 // This allows us to create a new class of props and set the values for passing through functions.
