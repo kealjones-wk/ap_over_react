@@ -8,7 +8,7 @@ import 'package:ap_over_react/src/exercises-final/02/usage.dart'; // comment out
 
 import './utils.dart';
 
-main(){
+main() {
   setClientConfiguration();
   ValidationUtil.WARNINGS_ENABLED = false;
   enableTestMode();

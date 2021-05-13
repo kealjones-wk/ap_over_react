@@ -6,26 +6,21 @@ import 'on.dart';
 import 'off.dart';
 import 'button.dart';
 
-// ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
 
-@Factory()
 // ignore: undefined_identifier
-UiFactory<ToggleProps> Toggle = _$Toggle;
+UiFactory<ToggleProps> Toggle = castUiFactory(_$Toggle);
 
-@Props()
-class _$ToggleProps extends UiProps {
+mixin ToggleProps on UiProps {
   /// Callback that returns `state.isOn` when the toggle switches;
   Callback1Arg onToggle;
 }
 
-@State()
-class _$ToggleState extends UiState {
+mixin ToggleState on UiState {
   // Whether the toggle is On or Off
   bool isOn;
 }
 
-@Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // In OverReact we dont yet support functional components (maybe soon!).
   // So this tutorial is a little more verbose than the video will go though.

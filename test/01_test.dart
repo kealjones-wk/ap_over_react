@@ -14,13 +14,13 @@ main() {
   enableTestMode();
 
   test('renders a toggle component', () {
-      TestCallback testCB = TestCallback();
-      renderToggle((Usage()..onToggle = testCB.callback)());
+    TestCallback testCB = TestCallback();
+    renderToggle((Usage()..onToggle = testCB.callback)());
 
-      expect(toggleButton, hasClasses('toggle-btn-off')); // is Off
-      toggle();
-      expect(toggleButton, hasClasses('toggle-btn-on')); // is On
-      expect(testCB.count, 1);
-      expect(testCB.returnValue, true);
+    expect(toggleButton, hasClasses('toggle-btn-off')); // is Off
+    toggle();
+    expect(toggleButton, hasClasses('toggle-btn-on')); // is On
+    expect(testCB.count, 1);
+    expect(testCB.returnValue, true);
   });
 }

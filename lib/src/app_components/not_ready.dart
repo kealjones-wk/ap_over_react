@@ -1,16 +1,12 @@
 import 'package:over_react/over_react.dart';
 
-// ignore: uri_has_not_been_generated
 part 'not_ready.over_react.g.dart';
 
-@Factory()
 // ignore: undefined_identifier
-UiFactory<NotReadyProps> NotReady = _$NotReady;
+UiFactory<NotReadyProps> NotReady = castUiFactory(_$NotReady);
 
-@Props()
-class _$NotReadyProps extends UiProps {}
+mixin NotReadyProps on UiProps {}
 
-@Component2()
 class NotReadyComponent extends UiComponent2<NotReadyProps> {
   @override
   render() {

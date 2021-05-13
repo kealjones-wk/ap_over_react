@@ -32,7 +32,7 @@ renderToggle(ui) {
 
   // validateSwitchInstance(jacket.getInstance()); // TODO: Fix this...
 
-  toggleButton = queryByTestId(jacket.getNode(),'switch.button');
+  toggleButton = queryByTestId(jacket.getNode(), 'switch.button');
   toggle = () => click(toggleButton);
 
   return jacket;
@@ -45,6 +45,7 @@ class TestCallback {
     count++;
     returnValue = args;
   }
+
   reset() {
     count = 0;
     returnValue = null;

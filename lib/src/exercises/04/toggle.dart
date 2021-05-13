@@ -3,26 +3,21 @@
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
 
-// ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
 
 // we're back to basics here. Rather than compound components,
 // let's use a render prop!
-@Factory()
 // ignore: undefined_identifier
-UiFactory<ToggleProps> Toggle = _$Toggle;
+UiFactory<ToggleProps> Toggle = castUiFactory(_$Toggle);
 
-@Props()
-class _$ToggleProps extends UiProps {
+mixin ToggleProps on UiProps {
   Callback1Arg onToggle;
 }
 
-@State()
-class _$ToggleState extends UiState {
+mixin ToggleState on UiState {
   bool isOn;
 }
 
-@Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
   get initialState => (newState()..isOn = false);

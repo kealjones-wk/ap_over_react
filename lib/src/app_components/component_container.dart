@@ -1,18 +1,14 @@
 import 'package:over_react/over_react.dart';
 
-// ignore: uri_has_not_been_generated
 part 'component_container.over_react.g.dart';
 
-@Factory()
 // ignore: undefined_identifier
-UiFactory<ComponentContainerProps> ComponentContainer = _$ComponentContainer;
+UiFactory<ComponentContainerProps> ComponentContainer = castUiFactory(_$ComponentContainer);
 
-@Props()
-class _$ComponentContainerProps extends UiProps {
+mixin ComponentContainerProps on UiProps {
   String label;
 }
 
-@Component2()
 class ComponentContainerComponent extends UiComponent2<ComponentContainerProps> {
   @override
   render() {

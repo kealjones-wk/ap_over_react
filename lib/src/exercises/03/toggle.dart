@@ -11,7 +11,6 @@ import 'on.dart';
 import 'off.dart';
 import 'button.dart';
 
-// ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
 // Right now our component can only clone and pass props to immediate children.
 // So we need some way for our compound components to implicitly accept the on
@@ -49,23 +48,19 @@ part 'toggle.over_react.g.dart';
 // make sure that you don't have the extra space in there
 //   (newlines are ok, like in the above example)
 
-@Factory()
 // ignore: undefined_identifier
-UiFactory<ToggleProps> Toggle = _$Toggle;
+UiFactory<ToggleProps> Toggle = castUiFactory(_$Toggle);
 
-@Props()
-class _$ToggleProps extends UiProps {
+mixin ToggleProps on UiProps {
   /// Callback that returns `state.isOn` when the toggle switches;
   Callback1Arg onToggle;
 }
 
-@State()
-class _$ToggleState extends UiState {
+mixin ToggleState on UiState {
   // Whether the toggle is On or Off
   bool isOn;
 }
 
-@Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 each of these compound components will need to be changed to use
   // ToggleContext.Consumer and rather than getting `on` and `toggle`

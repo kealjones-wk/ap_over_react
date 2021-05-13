@@ -35,24 +35,19 @@ import 'package:ap_over_react/src/exercises-final/11/extra/3/usage.dart' deferre
 import 'package:ap_over_react/src/exercises-final/11/extra/4/usage.dart' deferred as exercise_11_4_final;
 import 'package:ap_over_react/src/exercises/11/usage.dart' deferred as exercise_11;
 
-// ignore: uri_has_not_been_generated
 part 'fullpage.over_react.g.dart';
 
-@Factory()
 // ignore: undefined_identifier
-UiFactory<FullPageProps> FullPage = _$FullPage;
+UiFactory<FullPageProps> FullPage = castUiFactory(_$FullPage);
 
-@Props()
-class _$FullPageProps extends UiProps {
+mixin FullPageProps on UiProps {
   String type;
 }
 
-@State()
-class _$FullPageState extends UiState {
+mixin FullPageState on UiState {
   UiFactory componentFactory;
 }
 
-@Component2()
 class FullPageComponent extends UiStatefulComponent2<FullPageProps, FullPageState> {
   void updateFactory() {
     getExerciseClass().then((UiFactory cfactory) {

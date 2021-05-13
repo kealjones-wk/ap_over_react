@@ -3,19 +3,15 @@
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/01/toggle.dart';
 
-// ignore: uri_has_not_been_generated
 part 'usage.over_react.g.dart';
 
-@Factory()
 // ignore: undefined_identifier
-UiFactory<UsageProps> Usage = _$Usage;
+UiFactory<UsageProps> Usage = castUiFactory(_$Usage);
 
-@Props()
-class _$UsageProps extends UiProps {
+mixin UsageProps on UiProps {
   Callback1Arg onToggle;
 }
 
-@Component2()
 class UsageComponent extends UiComponent2<UsageProps> {
   @override
   get defaultProps => (newProps()..onToggle = (args) => print('onToggle $args'));

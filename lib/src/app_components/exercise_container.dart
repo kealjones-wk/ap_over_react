@@ -3,17 +3,14 @@ import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/app_components/component_container.dart';
 import 'package:ap_over_react/src/app_components/fullpage.dart';
 import 'package:ap_over_react/src/shared/exercise_titles.dart';
-// ignore: uri_has_not_been_generated
+
 part 'exercise_container.over_react.g.dart';
 
-@Factory()
 // ignore: undefined_identifier
-UiFactory<ExerciseContainerProps> ExerciseContainer = _$ExerciseContainer;
+UiFactory<ExerciseContainerProps> ExerciseContainer = castUiFactory(_$ExerciseContainer);
 
-@Props()
-class _$ExerciseContainerProps extends UiProps {}
+mixin ExerciseContainerProps on UiProps {}
 
-@Component2()
 class ExerciseContainerComponent extends UiComponent2<ExerciseContainerProps> {
   get exerciseId => props.id;
 

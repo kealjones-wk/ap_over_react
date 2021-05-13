@@ -7,7 +7,6 @@ import 'package:ap_over_react/src/exercises-final/11/extra/2/toggle_consumer.dar
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
-// ignore: uri_has_not_been_generated
 part 'layer_4.over_react.g.dart';
 
 // Don't make changes to the Layer4 component. It's here to show you how your
@@ -17,6 +16,8 @@ part 'layer_4.over_react.g.dart';
 // ignore: undefined_identifier
 UiFactory<Layer4Props> Layer4 = _$Layer4;
 
+// FIXME: `Layer4Props` could not be auto-migrated to the new over_react boilerplate because it extends from `AbstractToggleProps`, which was not able to be migrated.
+// Address comments on that component and then see instructions here: https://github.com/Workiva/over_react_codemod/tree/master/docs/boilerplate_upgrade.md#unmigrated-superclass
 @Props()
 class _$Layer4Props extends AbstractToggleProps {}
 

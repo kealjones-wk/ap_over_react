@@ -5,23 +5,20 @@ import 'package:ap_over_react/src/exercises/07/toggle.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:ap_over_react/switch.dart';
 
-// ignore: uri_has_not_been_generated
 part 'usage.over_react.g.dart';
 
 // Don't make changes to the Usage component. It's here to show you how your
 // component is intended to be used and is used in the tests.
 // You can make all the tests pass by updating the Toggle component.
-@Factory()
 // ignore: undefined_identifier
-UiFactory<UsageProps> Usage = _$Usage;
+UiFactory<UsageProps> Usage = castUiFactory(_$Usage);
 
 @Props(keyNamespace: '')
-class _$UsageProps extends UiProps {
+mixin UsageProps on UiProps {
   Callback1Arg onToggle;
   Callback1Arg onToggleReset;
 }
 
-@Component2()
 class UsageComponent extends UiComponent2<UsageProps> {
   @override
   get defaultProps => (newProps()

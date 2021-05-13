@@ -3,13 +3,13 @@
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 
-// ignore: uri_has_not_been_generated
 part 'toggle.over_react.g.dart';
 
-@Factory()
 // ignore: undefined_identifier
-UiFactory<ToggleProps> Toggle = _$Toggle;
+UiFactory<ToggleProps> Toggle = castUiFactory(_$Toggle);
 
+// FIXME: `ToggleProps` could not be auto-migrated to the new over_react boilerplate because it extends from `AbstractToggleProps`, which was not able to be migrated.
+// Address comments on that component and then see instructions here: https://github.com/Workiva/over_react_codemod/tree/master/docs/boilerplate_upgrade.md#unmigrated-superclass
 @Props(keyNamespace: '')
 class _$ToggleProps extends AbstractToggleProps {
   bool initialOn;
@@ -17,13 +17,11 @@ class _$ToggleProps extends AbstractToggleProps {
   Callback1Arg onToggleReset;
 }
 
-@State()
-class _$ToggleState extends UiState {
+mixin ToggleState on UiState {
   // Whether the toggle is On or Off
   bool isOn;
 }
 
-@Component2()
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
   get defaultProps => (newProps()
