@@ -6,16 +6,15 @@ import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/src/exercises-final/02/usage.dart'; // comment out this line when you want to test your implementation
 // import 'package:ap_over_react/src/exercises/02/toggle.dart'; // uncomment this line when you want to test your implementation
 
-import './utils.dart';
+import '../utils.dart';
 
 main() {
-  setClientConfiguration();
   ValidationUtil.WARNINGS_ENABLED = false;
   enableTestMode();
 
   test('renders a toggle component', () {
-    TestCallback testCB = TestCallback();
-    TestJacket container = renderToggle((Usage()..onToggle = testCB.callback)());
+    final testCB = TestCallback();
+    final container = renderToggle((Usage()..onToggle = testCB.callback)());
 
     expect(toggleButton, hasClasses('toggle-btn-off')); // toBeOff
     expect(container.getNode().text, 'The button is off');

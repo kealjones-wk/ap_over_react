@@ -19,4 +19,5 @@ dev_dependencies:
       name: over_react_format
       url: https://pub.workiva.org
     version: ^3.0.0
+  test_html_builder: ^1.0.2
   workiva_analysis_options: ^1.1.0

@@ -9,7 +9,7 @@ AP OverReact is a Dart implementation of the Egghead Course by Kent C. Dodds:
 [Github Repo](https://github.com/kentcdodds/advanced-react-patterns-v2/tree/egghead/)
 
 Follow along with the videos in his course while doing these exercises to get the full benefit,
-even though it is not direclty 1 to 1 the concepts are the same and if you ever get stuck take a look at exercises-final to see how it is properly implemented.
+even though it is not directly 1 to 1 the concepts are the same and if you ever get stuck take a look at exercises-final to see how it is properly implemented.
 
 ## Requires Dart 2
 Yep, only dart 2 sorry.
