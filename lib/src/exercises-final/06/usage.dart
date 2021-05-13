@@ -32,10 +32,10 @@ class UsageComponent extends UiComponent2<UsageProps> {
     return (Toggle()..onToggle = props.onToggle)(
       (value) {
         return Dom.div()(
-          (Switch()..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn)))(),
+          (Switch()..addProps(value.getTogglerProps(SharedTogglePropsMapView()..isOn = value.isOn)))(),
           Dom.hr()(),
           (Dom.button()
-            ..addProps(value.getTogglerProps(BaseToggleProps()
+            ..addProps(value.getTogglerProps(SharedTogglePropsMapView()
               ..id = 'custom-button-id'
               ..onClick = props.onButtonClick
               ..aria.label = 'custom-button'))

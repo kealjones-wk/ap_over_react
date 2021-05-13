@@ -11,17 +11,15 @@ part 'layer_1.over_react.g.dart';
 // Don't make changes to the Layer1 component. It's here to show you how your
 // component is intended to be used and is used in the tests.
 // You can make all the tests pass by updating the Toggle component.
-@Factory()
 // ignore: undefined_identifier
-UiFactory<Layer1Props> Layer1 = _$Layer1;
+UiFactory<Layer1Props> Layer1 = castUiFactory(_$Layer1);
 
-// FIXME: `Layer1Props` could not be auto-migrated to the new over_react boilerplate because it extends from `AbstractToggleProps`, which was not able to be migrated.
-// Address comments on that component and then see instructions here: https://github.com/Workiva/over_react_codemod/tree/master/docs/boilerplate_upgrade.md#unmigrated-superclass
-@Props()
-class _$Layer1Props extends AbstractToggleProps {}
+class Layer1Props = UiProps with SharedTogglePropsMixin;
 
-@Component2()
 class Layer1Component extends UiComponent2<Layer1Props> {
+  @override
+  get consumedProps => [];
+
   @override
   render() => Layer2()();
 }

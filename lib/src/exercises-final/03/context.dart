@@ -1,7 +1,7 @@
 import 'package:over_react/over_react.dart';
-import 'package:ap_over_react/src/shared/shared_props.dart' as shared_toggle_props;
+import 'package:ap_over_react/src/shared/shared_props.dart';
 
-shared_toggle_props.BaseToggleProps tDefaultValue = shared_toggle_props.BaseToggleProps()
+final tDefaultValue = SharedTogglePropsMapView()
   ..isOn = false
   ..toggle = (_) {
     print('context default onClick');

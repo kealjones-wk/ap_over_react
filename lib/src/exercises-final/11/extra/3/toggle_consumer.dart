@@ -6,17 +6,15 @@ import 'package:ap_over_react/src/shared/shared_props.dart';
 
 part 'toggle_consumer.over_react.g.dart';
 
-@Factory()
 // ignore: undefined_identifier
-UiFactory<ToggleConsumerProps> ToggleConsumer = _$ToggleConsumer;
+UiFactory<ToggleConsumerProps> ToggleConsumer = castUiFactory(_$ToggleConsumer);
 
-// FIXME: `ToggleConsumerProps` could not be auto-migrated to the new over_react boilerplate because it extends from `AbstractToggleProps`, which was not able to be migrated.
-// Address comments on that component and then see instructions here: https://github.com/Workiva/over_react_codemod/tree/master/docs/boilerplate_upgrade.md#unmigrated-superclass
-@Props()
-class _$ToggleConsumerProps extends AbstractToggleProps {}
+class ToggleConsumerProps = UiProps with SharedTogglePropsMixin;
 
-@Component2()
 class ToggleConsumerComponent extends UiComponent2<ToggleConsumerProps> {
+  @override
+  get consumedProps => [];
+
   @override
   render() {
     return ToggleContext.Consumer()(

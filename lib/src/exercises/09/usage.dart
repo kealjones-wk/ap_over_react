@@ -50,10 +50,10 @@ class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
 
   toggleStateReducer(newState, changes) {
     if (changes['type'] == 'forced') {
-      return BaseToggleProps()..addAll(changes);
+      return SharedTogglePropsMapView()..addAll(changes);
     }
     if (state.timesClicked >= 4) {
-      return BaseToggleProps()
+      return SharedTogglePropsMapView()
         ..addAll(changes)
         ..isOn = false;
     }
@@ -72,7 +72,7 @@ class UsageComponent extends UiStatefulComponent2<UsageProps, UsageState> {
     )(
       (value) {
         return Dom.div()(
-          (Switch()..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn)))(),
+          (Switch()..addProps(value.getTogglerProps(SharedTogglePropsMapView()..isOn = value.isOn)))(),
           state.timesClicked > 4
               ? ((Dom.div()..addTestId('notice'))(
                   'Whoa, you clicked too much!',

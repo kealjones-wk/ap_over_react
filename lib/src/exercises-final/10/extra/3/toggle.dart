@@ -11,14 +11,14 @@ part 'toggle.over_react.g.dart';
 // ignore: undefined_identifier
 UiFactory<ToggleProps> Toggle = castUiFactory(_$Toggle);
 
-// FIXME: `ToggleProps` could not be auto-migrated to the new over_react boilerplate because it extends from `AbstractToggleProps`, which was not able to be migrated.
-// Address comments on that component and then see instructions here: https://github.com/Workiva/over_react_codemod/tree/master/docs/boilerplate_upgrade.md#unmigrated-superclass
 @Props(keyNamespace: '')
-class _$ToggleProps extends AbstractToggleProps {
+mixin TogglePropsMixin on UiProps {
   /// Callback that returns `state.isOn` when the toggle switches;
   Callback1Arg onToggle;
   Callback1Arg onStateChange;
 }
+
+class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
 
 @State(keyNamespace: '')
 mixin ToggleState on UiState {
@@ -40,9 +40,9 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     return props[prop] != null;
   }
 
-  getState([ToggleState stateParam]) {
+  SharedTogglePropsMixin getState([ToggleState stateParam]) {
     if (stateParam != null) {
-      BaseToggleProps combinedState = BaseToggleProps();
+      SharedTogglePropsMapView combinedState = SharedTogglePropsMapView();
       ToggleState componentState = stateParam;
 
       componentState.forEach((mapKey, mapValue) {
@@ -58,14 +58,14 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       });
       return combinedState;
     }
-    return BaseToggleProps()..isOn = state.isOn != null ? state.isOn : props.isOn;
+    return SharedTogglePropsMapView()..isOn = state.isOn != null ? state.isOn : props.isOn;
   }
 
   internalSetState(changes, callback) {
     Map allChanges;
 
     getNewState(passedInChanges) {
-      BaseToggleProps combinedState = getState(state);
+      SharedTogglePropsMapView combinedState = getState(state);
 
       Map changesObject = (passedInChanges is Function) ? passedInChanges(combinedState) : passedInChanges;
       allChanges = changesObject;
@@ -73,7 +73,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       Map onlyChanges = Map.from(changesObject);
       onlyChanges.remove('type');
 
-      BaseToggleProps nonControlledChanges = BaseToggleProps();
+      SharedTogglePropsMapView nonControlledChanges = SharedTogglePropsMapView();
 
       onlyChanges.forEach((mapKey, mapValue) {
         if (!isControlled(mapKey)) {
@@ -126,7 +126,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       )(),
       Dom.hr()(),
       (Dom.button()
-        ..addProps(BaseToggleProps()
+        ..addProps(SharedTogglePropsMapView()
           ..id = 'custom-button-id'
           ..onClick = handleOffClick
           ..aria.label = 'custom-button'
@@ -135,7 +135,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
         'Off',
       ),
       (Dom.button()
-        ..addProps(BaseToggleProps()
+        ..addProps(SharedTogglePropsMapView()
           ..id = 'custom-button-id'
           ..onClick = handleOnClick
           ..aria.label = 'custom-button'

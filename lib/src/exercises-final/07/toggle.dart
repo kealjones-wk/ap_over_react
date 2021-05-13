@@ -8,14 +8,14 @@ part 'toggle.over_react.g.dart';
 // ignore: undefined_identifier
 UiFactory<ToggleProps> Toggle = castUiFactory(_$Toggle);
 
-// FIXME: `ToggleProps` could not be auto-migrated to the new over_react boilerplate because it extends from `AbstractToggleProps`, which was not able to be migrated.
-// Address comments on that component and then see instructions here: https://github.com/Workiva/over_react_codemod/tree/master/docs/boilerplate_upgrade.md#unmigrated-superclass
 @Props(keyNamespace: '')
-class _$ToggleProps extends AbstractToggleProps {
+mixin TogglePropsMixin on UiProps {
   bool initialOn;
   Callback1Arg onToggle;
   Callback1Arg onToggleReset;
 }
+
+class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
 
 mixin ToggleState on UiState {
   // Whether the toggle is On or Off
@@ -46,17 +46,17 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     );
   }
 
-  BaseToggleProps getTogglerProps([BaseToggleProps additionalProps]) {
-    additionalProps ??= BaseToggleProps();
+  SharedTogglePropsMapView getTogglerProps([SharedTogglePropsMapView additionalProps]) {
+    additionalProps ??= SharedTogglePropsMapView();
 
-    return BaseToggleProps()
+    return SharedTogglePropsMapView()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
       ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
-  BaseToggleProps getStateAndHelpers() {
-    return BaseToggleProps()
+  SharedTogglePropsMapView getStateAndHelpers() {
+    return SharedTogglePropsMapView()
       ..isOn = state.isOn
       ..toggle = toggle
       ..reset = reset

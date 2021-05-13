@@ -39,7 +39,7 @@ class UsageComponent extends UiComponent2<UsageProps> {
     )(
       (value) {
         return Dom.div()(
-          (Switch()..addProps(value.getTogglerProps(BaseToggleProps()..isOn = value.isOn)))(),
+          (Switch()..addProps(value.getTogglerProps(SharedTogglePropsMapView()..isOn = value.isOn)))(),
           Dom.hr()(),
           (Dom.button()
             ..onClick = (_) {

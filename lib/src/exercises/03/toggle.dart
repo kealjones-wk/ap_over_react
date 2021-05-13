@@ -96,7 +96,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       props.children.map((child) {
         return cloneElement(
             child,
-            BaseToggleProps()
+            SharedTogglePropsMapView()
               ..isOn = state.isOn
               ..toggle = toggle
               ..key = indexKey++);
