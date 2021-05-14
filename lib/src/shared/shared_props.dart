@@ -13,4 +13,5 @@ mixin SharedTogglePropsMixin on UiProps {
 }
 
 // This allows us to create a new class of props and set the values for passing through functions.
-class SharedTogglePropsMapView = UiProps with SharedTogglePropsMixin;
+UiFactory<SharedTogglePropsMixin> SharedTogglePropsMapView =
+    castUiFactory(_$SharedTogglePropsMapView); // ignore: undefined_identifier

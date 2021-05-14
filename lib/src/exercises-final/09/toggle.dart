@@ -85,7 +85,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     );
   }
 
-  SharedTogglePropsMapView getTogglerProps([SharedTogglePropsMapView additionalProps]) {
+  SharedTogglePropsMixin getTogglerProps([SharedTogglePropsMixin additionalProps]) {
     additionalProps ??= SharedTogglePropsMapView();
 
     return SharedTogglePropsMapView()
@@ -94,7 +94,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       ..onClick = mouseEventCallbacks.chainFromList([additionalProps.onClick, (_) => toggle()]);
   }
 
-  SharedTogglePropsMapView getStateAndHelpers() {
+  SharedTogglePropsMixin getStateAndHelpers() {
     return SharedTogglePropsMapView()
       ..isOn = state.isOn
       ..toggle = toggle

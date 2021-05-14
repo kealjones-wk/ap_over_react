@@ -35,7 +35,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     );
   }
 
-  SharedTogglePropsMapView getTogglerProps([SharedTogglePropsMapView additionalProps]) {
+  SharedTogglePropsMixin getTogglerProps([SharedTogglePropsMixin additionalProps]) {
     additionalProps ??= SharedTogglePropsMapView();
 
     final propsToSendBack = SharedTogglePropsMapView()
@@ -46,7 +46,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     return propsToSendBack;
   }
 
-  SharedTogglePropsMapView getStateAndHelpers() {
+  SharedTogglePropsMixin getStateAndHelpers() {
     return SharedTogglePropsMapView()
       ..isOn = state.isOn
       ..toggle = toggle

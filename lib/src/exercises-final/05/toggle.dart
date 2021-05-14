@@ -32,7 +32,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     );
   }
 
-  SharedTogglePropsMapView getStateAndHelpers() {
+  SharedTogglePropsMixin getStateAndHelpers() {
     return SharedTogglePropsMapView()
       ..isOn = state.isOn
       ..toggle = toggle
