@@ -16,6 +16,6 @@ Yep, only dart 2 sorry.
 
 ## Get Started
 1. First, you'll need to run `pub get`.
-2. Then run `webdev serve --hot-reload`.
+2. Then run `webdev serve --auto=restart`.
 3. Open Chrome to http://localhost:8080
 4. Navigate to the `lib/src/exercises` directory and get started by editing `01.dart`, and because this is dart 2 all changes you make will automatically hot reload in your browser!
