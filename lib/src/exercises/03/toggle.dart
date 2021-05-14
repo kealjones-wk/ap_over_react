@@ -88,7 +88,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     var indexKey = 0;
     //Before working on the Toggle component in this exercise, it will cause errors
     //When the component is functional (not necessarily complete), it will render
-    return Dom.div()([
+    return Dom.div()(
       props.children.map((child) {
         return cloneElement(
             child,
@@ -97,7 +97,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
               ..toggle = toggle
               ..key = indexKey++);
       }),
-    ]);
+    );
   }
 }
 
