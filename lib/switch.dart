@@ -18,24 +18,17 @@ mixin SwitchProps on UiProps {
 }
 
 class SwitchComponent extends UiComponent2<SwitchProps> {
-  String get btnClassNames => [
-        props.className,
-        'toggle-btn',
-        if (props.isOn) 'toggle-btn-on' else 'toggle-btn-off',
-      ].join(' ');
-
   @override
-  get defaultProps => (newProps()
-    ..isOn = false
-    ..className = ''
-  );
+  get defaultProps => (newProps()..isOn = false);
 
   @override
   render() {
-    return (Dom.div()
-      ..addTestId('switch')
-      ..modifyProps(addUnconsumedDomProps)
-    )(
+    final btnClasses = forwardingClassNameBuilder()
+      ..add('toggle-btn')
+      ..add('toggle-btn-on', props.isOn)
+      ..add('toggle-btn-off', !props.isOn);
+
+    return (Dom.div()..addTestId('switch'))(
       (Dom.input()
         ..addTestId('switch.input')
         ..className = 'toggle-input'
@@ -46,7 +39,7 @@ class SwitchComponent extends UiComponent2<SwitchProps> {
       (Dom.button()
         ..addTestId('switch.button')
         ..modifyProps(addUnconsumedDomProps)
-        ..className = btnClassNames
+        ..className = btnClasses.toClassName()
         ..aria.label = 'Toggle'
       )(),
     );

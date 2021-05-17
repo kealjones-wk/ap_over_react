@@ -25,7 +25,7 @@ validateSwitchInstance(switchInstance) {
   }
 }
 
-renderToggle(ui) {
+TestJacket renderToggle(ui) {
   enableTestMode();
   TestJacket jacket;
   jacket = mount(ui);
