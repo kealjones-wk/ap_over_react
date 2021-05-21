@@ -1,27 +1,17 @@
 import 'package:over_react/over_react.dart';
 
 import 'package:ap_over_react/src/app_components/component_container.dart';
+import 'package:ap_over_react/src/app_components/example_type.dart';
 import 'package:ap_over_react/src/app_components/fullpage.dart';
 import 'package:ap_over_react/src/shared/exercise_titles.dart';
-// ignore: uri_has_not_been_generated
+
 part 'exercise_container.over_react.g.dart';
 
-@Factory()
-// ignore: undefined_identifier
-UiFactory<ExerciseContainerProps> ExerciseContainer = _$ExerciseContainer;
+mixin ExerciseContainerProps on UiProps {}
 
-@Props()
-class _$ExerciseContainerProps extends UiProps {}
-
-@Component()
-class ExerciseContainerComponent extends UiComponent<ExerciseContainerProps> {
-  get exerciseId => props.id;
-
-  @override
-  Map getDefaultProps() => newProps()..id = '01';
-
-  @override
-  render() {
+UiFactory<ExerciseContainerProps> ExerciseContainer = uiFunction(
+  (props) {
+    final id = props.id ?? '01';
     return (Dom.div()
       ..style = {
         'padding': 20,
@@ -34,18 +24,19 @@ class ExerciseContainerComponent extends UiComponent<ExerciseContainerProps> {
       }
     )(
       (Dom.div()..style = {'gridColumn': 'span 2', 'textAlign': 'center'})(
-        Dom.h1()('Exercise $exerciseId'),
-        (Dom.h3()..style = {'marginTop': 0})('${exerciseTitles[exerciseId]}'),
+        Dom.h1()('Exercise $id'),
+        (Dom.h3()..style = {'marginTop': 0})('${exerciseTitles[id]}'),
       ),
       (ComponentContainer()..label = 'Exercise')(
         (FullPage()..id = props.id)(),
       ),
       (ComponentContainer()..label = 'Final Version')(
         (FullPage()
-          ..type = 'final'
+          ..type = ExampleType.final_
           ..id = props.id
         )(),
       ),
     );
-  }
-}
+  },
+  _$ExerciseContainerConfig, // ignore: undefined_identifier
+);

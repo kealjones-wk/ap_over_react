@@ -3,8 +3,7 @@ Map<String, String> exerciseTitles = {
   '02': 'Compound Components',
   '03': 'Flexible Compound Components with context',
   '03.1': 'Flexible Compound Components with context (Consumer Validation)',
-  '03.2':
-      'Flexible Compound Components with context (Avoid Unnecessary Re-renders)',
+  '03.2': 'Flexible Compound Components with context (Avoid Unnecessary Re-renders)',
   '04': 'Render Props',
   '05': 'Prop Collections',
   '06': 'Prop Getters',
