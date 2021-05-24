@@ -3,7 +3,7 @@
 import 'package:over_react/over_react.dart';
 // 🐨 uncomment this import to get the switch component.
 // It takes an `onClick` and an `on` prop
-// import 'package:ap_over_react/switch.dart';
+import 'package:ap_over_react/switch.dart';
 
 part 'ap_01.over_react.g.dart';
 
@@ -21,24 +21,30 @@ mixin ToggleState on UiState {
 }
 
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
+
   // 🐨 this toggle component is going to need to have state for `on`
-  //
+  @override
+  get initialState => newState()..isOn = false;
+
   // You'll also want a method to handle when the switch is clicked
   // which will update the `on` state and call the `onToggle` prop
   // with the new `on` state.
-  //
-  // 💰 setState(newState, callback)
-  //
-  // The `callback` should be where you call `props.onToggle(state.isOn)`
-  //
-  // 💯 Use a state updater function for `newState` to avoid issues with batching
-  @override
-  get initialState => newState();
+  void toggle(_) {
+      // 💯 Use a state updater function for `newState` to avoid issues with batching
+      // 💰 setState(newState, callback)
+      setState((newState()..isOn = !state.isOn), () {
+      // The `callback` should be where you call `props.onToggle(state.isOn)`
+      props.onToggle(state.isOn);
+    });
+  }
 
   @override
   render() {
     // 🐨 here you'll want to return the switch with the `on` and `onClick` props
-    return null;
+    return (Switch()
+      ..isOn = state.isOn
+      ..onClick = toggle
+    )();
   }
 }
 
