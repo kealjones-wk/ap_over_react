@@ -50,6 +50,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
         ..onToggleReset = (_) {}
       // 🐨 let's add a default stateReducer here. It should return
       // the changes object as it is passed.
+        ..stateReducer = (state, changes) => changes
   );
 
   @override
@@ -61,6 +62,18 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // This will call setState with an updater function (a function that receives the state).
   // If the changes are a function, then call that function with the state to get the actual changes
   //
+  void internalSetState(dynamic changes, Function() callback) {
+    Map getNewState(dynamic changes) {
+      final changesObject = ((changes is Function) ? changes(state) : changes) as ToggleState;
+      return props.stateReducer(state, changesObject) ?? const {};
+    }
+
+    final newState = getNewState(changes);
+    if (newState.isEmpty) return;
+
+    setState(newState, callback);
+  }
+
   // 🐨 Call this.props.stateReducer with the `state` and `changes` to get the user changes.
   //
   // 🐨 Then, if the returned value exists and has properties, return that from your updater function.
@@ -71,10 +84,10 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 Finally, update all pre-existing instances of this.setState
   // to this.internalSetState
   void reset() {
-    setState(initialState, () => props.onToggleReset(state.isOn));
+    internalSetState(initialState, () => props.onToggleReset(state.isOn));
   }
 
-  void toggle(_) => setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
+  void toggle(_) => internalSetState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
 
   SharedTogglePropsMixin getTogglerProps([SharedTogglePropsMixin additionalProps]) {
     additionalProps ??= SharedTogglePropsMapView();

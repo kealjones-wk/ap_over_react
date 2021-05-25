@@ -11,9 +11,11 @@ part 'ap_04.over_react.g.dart';
 // ignore: undefined_identifier
 UiFactory<ToggleProps> Toggle = castUiFactory(_$Toggle);
 
-mixin ToggleProps on UiProps {
+mixin TogglePropsMixin on UiProps {
   void Function(bool isOn) onToggle;
 }
+
+class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
 
 mixin ToggleState on UiState {
   bool isOn;
@@ -32,11 +34,10 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     // You'll notice the children prop in the Usage component
     // is a function. 🐨 So you can replace this with a call this.props.children.single()
     // But you'll need to pass it some SharedTogglePropsMixin values.
-    return (Switch()
+    return props.children.single(SharedTogglePropsMapView()
       ..isOn = state.isOn
-      ..onClick = toggle
-    )();
-  }
+      ..toggle = toggle);
+    }
 }
 
 // Don't make changes to the Usage component. It's here to show you how your

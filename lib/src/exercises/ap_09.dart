@@ -34,6 +34,11 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     ..stateReducer = (state, changes) => changes
   );
 
+  static const stateChangeTypes = {
+    'reset': '__reset__',
+    'toggle': '__toggle__',
+  };
+
   @override
   get initialState => (newState()..isOn = props.initialOn);
 
@@ -41,10 +46,14 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     Map getNewState(dynamic changes) {
       // handle function setState call
       final changesObject = ((changes is Function) ? changes(state) : changes) as ToggleState;
+      final reducedChanges = props.stateReducer(state, changesObject) ?? const {};
 
       // 🐨  in addition to what we've done, let's pluck off the `type`
       // property and return an object only if the state changes
-      return props.stateReducer(state, changesObject) ?? const {};
+      if (reducedChanges.containsKey('type')) {
+        reducedChanges.remove('type');
+      }
+      return reducedChanges;
     }
 
     final newState = getNewState(changes);
@@ -55,13 +64,26 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   void reset() {
     // 🐨 add a `type` string property to initialState
-    internalSetState(initialState, () => props.onToggleReset(state.isOn));
+    internalSetState(
+      initialState..['type'] = stateChangeTypes['reset'],
+      () => props.onToggleReset(state.isOn),
+    );
   }
 
   // 🐨 accept a `type` property here and give it a default value
-  void toggle(_) {
+  void toggle([Map map]) {
     // pass the `type` string to newState
-    internalSetState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
+    var type = stateChangeTypes['toggle'];
+    if (map != null && map.containsKey('type')) {
+      type = map['type'];
+    }
+
+    internalSetState(
+      newState()
+        ..['type'] = type
+        ..isOn = !state.isOn,
+      () => props.onToggle(state.isOn),
+    );
   }
 
   SharedTogglePropsMixin getTogglerProps([SharedTogglePropsMixin additionalProps]) {
@@ -70,7 +92,10 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     return SharedTogglePropsMapView()
       ..addAll(additionalProps)
       ..aria.pressed = state.isOn
-      ..onClick = mouseEventCallbacks.chainFromList([toggle, additionalProps.onClick]);
+      ..onClick = (event) {
+        toggle();
+        additionalProps.onClick?.call(event);
+      };
   }
 
   @override

@@ -41,7 +41,11 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
         // to the toggle function.
         SharedTogglePropsMapView()
           ..isOn = state.isOn
-          ..toggle = toggle);
+          ..toggle = toggle
+          ..togglerProps = (domProps()
+            ..aria.pressed = state.isOn
+            ..onClick = toggle
+          ));
   }
 }
 
