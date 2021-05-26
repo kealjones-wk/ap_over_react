@@ -18,7 +18,8 @@ class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
 
 @Props(keyNamespace: '')
 mixin TogglePropsMixin on UiProps {
-  void Function(bool isOn) onToggle;  
+  void Function(bool isOn) onToggle;
+  void Function(bool isOn) onStateChange;
 }
 
 @State(keyNamespace: '')
@@ -29,7 +30,7 @@ mixin ToggleState on UiState {
 
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  get initialState => (newState()..isOn = false);
+  get initialState => (newState()..isOn = null);
 
   // 🐨 let's add a function that can determine whether
   // the isOn prop is controlled. Call it `isControlled`.
@@ -45,26 +46,53 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // Call it `getState` and have it return on from
   // state if it's not controlled or props if it is.
 
-  ToggleState getState() { // made more generic
-    final combinedState = newState();
-    state.forEach((stateMapKey, stateMapValue){
-      combinedState[stateMapKey] = isControlled(stateMapKey) ? props[stateMapKey] : stateMapValue;
+  ToggleState getState([ToggleState stateParam]) {
+    // made more generic
+    final combinedState = newState()..isOn = state.isOn ?? props.isOn;
+    stateParam?.forEach((stateMapKey, stateMapValue) {
+      combinedState[stateMapKey] =
+          isControlled(stateMapKey) ? props[stateMapKey] : stateMapValue;
     });
     return combinedState;
+  }
+
+  void internalSetState(changes, callback) {
+    ToggleState allChanges;
+
+    Map getNewState(changes) {
+      final combinedState = getState(state);
+
+      final changesObject = ((changes is Function) ? changes(combinedState) : changes) as ToggleState;
+      allChanges = changesObject;
+
+      final nonControlledChanges = SharedTogglePropsMapView();
+
+      changesObject.forEach((key, value) {
+        nonControlledChanges[key] = value;
+      });
+
+      return nonControlledChanges;
+    }
+
+    final nextState = getNewState(changes);
+    if (nextState.isEmpty) return;
+
+    setState(nextState, () {
+      props.onStateChange(allChanges.isOn);
+      callback();
+    });
   }
 
   void toggle(_) {
     // 🐨 if the toggle is controlled, then we shouldn't
     // be updating state. Instead we should just call
     // `this.props.onToggle` with what the state should be
-    if (isControlled('isOn')) {
-      props.onToggle(!getState().isOn);
-    } else {
-    setState(
-      newState()..isOn = !state.isOn,
-      () => props.onToggle(getState().isOn),
-    );
-    }
+    internalSetState((passedInState) {
+      if ((passedInState as ToggleState).isOn != null) {
+        return newState()..isOn = !(passedInState as ToggleState).isOn;
+      }
+      return null;
+    }, () => props.onToggle(getState().isOn));
   }
 
   @override
@@ -73,8 +101,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     // let's use our `getState` method.
     return (Switch()
       ..isOn = getState().isOn
-      ..onClick = toggle
-    )();
+      ..onClick = toggle)();
   }
 
   // These extra credit ideas are to expand this solution to elegantly handle
@@ -82,10 +109,14 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 💯 Make the `getState` function generic enough to support all state in
   // `this.state` even if we add any number of properties to state. ✅
   // 💯 Add support for an `onStateChange` prop which is called whenever any
-  // state changes. It should be called with `changes` and `state`
+  // state changes. It should be called with `changes` and `state` ✅
   // 💯 Add support for a `type` property in the `changes` you pass to
   // `onStateChange` so consumers can differentiate different state changes.
 }
+
+/*
+    I had to change the Usage component so that it would match that of ap_10.extra_2.dart
+*/
 
 // Don't make changes to the Usage component. It's here to show you how your
 // component is intended to be used and is used in the tests.
@@ -96,16 +127,19 @@ UiFactory<UsageProps> Usage = uiFunction(
     final bothOn = useState(false);
 
     void handleToggle(bool isOn) => bothOn.set(isOn);
+    void handleStateChange(bool isOn) => bothOn.set(isOn);
 
     return Dom.div()(
       (Toggle()
         ..isOn = bothOn.value
         ..onToggle = handleToggle
+        ..onStateChange = handleStateChange
         ..ref = props.toggle1Ref
       )(),
       (Toggle()
         ..isOn = bothOn.value
         ..onToggle = handleToggle
+        ..onStateChange = handleStateChange
         ..ref = props.toggle2Ref
       )(),
     );
@@ -115,6 +149,8 @@ UiFactory<UsageProps> Usage = uiFunction(
 
 mixin UsageProps on UiProps {
   void Function(bool isOn) onToggle;
+  void Function(bool isOn) onStateChange;
   Ref<ToggleComponent> toggle1Ref;
   Ref<ToggleComponent> toggle2Ref;
 }
+
