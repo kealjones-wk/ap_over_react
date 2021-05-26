@@ -1,6 +1,8 @@
 // 10: control props
 
 // ignore_for_file: avoid_positional_boolean_parameters
+import 'package:ap_over_react/src/exercises-final/ap_10.extra_1.dart';
+import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
 
@@ -13,11 +15,7 @@ part 'ap_10.over_react.g.dart';
 // ignore: undefined_identifier
 UiFactory<ToggleProps> Toggle = castUiFactory(_$Toggle);
 
-mixin ToggleProps on UiProps {
-  /// Callback that returns `state.isOn` when the toggle switches;
-  void Function(bool isOn) onToggle;
-  bool isOn;
-}
+class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
 
 mixin ToggleState on UiState {
   // Whether the toggle is On or Off
@@ -33,20 +31,31 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // It can accept a string called `prop` and should return
   // true if that prop is controlled
   // 💰 this.props[prop] != null
+
+  bool isControlled(String prop) => props[prop] != null;
+
   //
   // 🐨 Now let's add a function that can return the state
   // whether it's coming from this.state or this.props
   // Call it `getState` and have it return on from
   // state if it's not controlled or props if it is.
 
+  ToggleState getState() {
+    return newState()..isOn = isControlled('isOn') ? props.isOn : state.isOn;
+  }
+
   void toggle(_) {
     // 🐨 if the toggle is controlled, then we shouldn't
     // be updating state. Instead we should just call
     // `this.props.onToggle` with what the state should be
+    if (isControlled('isOn')) {
+      props.onToggle(!getState().isOn);
+    } else {
     setState(
       newState()..isOn = !state.isOn,
-      () => props.onToggle(state.isOn),
+      () => props.onToggle(getState().isOn),
     );
+    }
   }
 
   @override
@@ -54,7 +63,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     // 🐨 rather than getting state from this.state,
     // let's use our `getState` method.
     return (Switch()
-      ..isOn = state.isOn
+      ..isOn = getState().isOn
       ..onClick = toggle
     )();
   }
