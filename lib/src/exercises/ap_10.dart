@@ -1,7 +1,6 @@
 // 10: control props
 
 // ignore_for_file: avoid_positional_boolean_parameters
-import 'package:ap_over_react/src/exercises-final/ap_10.extra_1.dart';
 import 'package:ap_over_react/src/shared/shared_props.dart';
 import 'package:over_react/over_react.dart';
 import 'package:ap_over_react/switch.dart';
@@ -17,6 +16,12 @@ UiFactory<ToggleProps> Toggle = castUiFactory(_$Toggle);
 
 class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
 
+@Props(keyNamespace: '')
+mixin TogglePropsMixin on UiProps {
+  void Function(bool isOn) onToggle;  
+}
+
+@State(keyNamespace: '')
 mixin ToggleState on UiState {
   // Whether the toggle is On or Off
   bool isOn;
@@ -40,8 +45,12 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // Call it `getState` and have it return on from
   // state if it's not controlled or props if it is.
 
-  ToggleState getState() {
-    return newState()..isOn = isControlled('isOn') ? props.isOn : state.isOn;
+  ToggleState getState() { // made more generic
+    final combinedState = newState();
+    state.forEach((stateMapKey, stateMapValue){
+      combinedState[stateMapKey] = isControlled(stateMapKey) ? props[stateMapKey] : stateMapValue;
+    });
+    return combinedState;
   }
 
   void toggle(_) {
@@ -71,7 +80,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // These extra credit ideas are to expand this solution to elegantly handle
   // more state properties than just a single `on` state.
   // 💯 Make the `getState` function generic enough to support all state in
-  // `this.state` even if we add any number of properties to state.
+  // `this.state` even if we add any number of properties to state. ✅
   // 💯 Add support for an `onStateChange` prop which is called whenever any
   // state changes. It should be called with `changes` and `state`
   // 💯 Add support for a `type` property in the `changes` you pass to
