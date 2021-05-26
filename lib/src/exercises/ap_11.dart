@@ -34,7 +34,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   void toggle(_) => setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
 
-  static final Consumer = ToggleContext.Consumer;
+  static final Consumer = ToggleConsumer;
 
   @override
   render() {
@@ -48,8 +48,24 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   }
 }
 
+mixin ToggleConsumerProps on UiProps {}
+
+UiFactory<ToggleConsumerProps> ToggleConsumer = uiFunction(
+  (props) {
+    return ToggleContext.Consumer()(
+      (value) {
+        if (value == null) {
+          throw Exception('Cannot render toggle compound components outside the toggle component');
+        }
+        return props.children.single(value);
+      },
+    );
+  },
+  _$ToggleConsumerConfig, // ignore: undefined_identifier
+);
+
 // 💯 Extra credit: Add a custom Consumer that validates the
-// ToggleContext.Consumer is rendered within a provider
+// ToggleContext.Consumer is rendered within a provider ✅
 //
 // 💯 Extra credit: avoid unnecessary re-renders by only updating the value when
 // state changes
