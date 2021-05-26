@@ -40,9 +40,11 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   render() {
     //Before working on the Toggle component in this exercise, it will cause errors
     //When the component is functional (not necessarily complete), it will render
-    return (props.children.single(SharedTogglePropsMapView()
+    return (ToggleContext.Provider()
+      ..value = (SharedTogglePropsMapView()
       ..isOn = state.isOn
-      ..toggle = toggle))();
+      ..toggle = toggle)
+      )(props.children);
   }
 }
 
