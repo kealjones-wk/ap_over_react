@@ -43,11 +43,14 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   render() {
     //Before working on the Toggle component in this exercise, it will cause errors
     //When the component is functional (not necessarily complete), it will render
+    final dynamic children = props.children;
+    final extra = children is Function ? children(state) : children;
+
     return (ToggleContext.Provider()
       ..value = (SharedTogglePropsMapView()
       ..isOn = state.isOn
       ..toggle = toggle)
-      )(props.children);
+      )(extra);
   }
 }
 
@@ -73,7 +76,7 @@ UiFactory<ToggleConsumerProps> ToggleConsumer = uiFunction(
 // 💯 Extra credit: avoid unnecessary re-renders by only updating the value when
 // state changes ✅
 //
-// 💯 Extra credit: support render props as well
+// 💯 Extra credit: support render props as well ✅
 //
 // 💯 Extra credit: support (and expose) compound components!
 
