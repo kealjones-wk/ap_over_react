@@ -39,6 +39,33 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   static final Consumer = ToggleConsumer;
 
+  static ReactElement On(children) {
+    return Consumer()(
+      (value) {
+        return value.isOn ? children : null;
+      },
+    );
+  }
+
+  static ReactElement Off(children) {
+    return Consumer()(
+      (value) {
+        return value.isOn ? null : children;
+      },
+    );
+  }
+
+  static ReactElement Button() {
+    return Consumer()(
+      (value) {
+        return (Switch()
+          ..isOn = value.isOn
+          ..onClick = value.toggle
+        )();
+      }
+    );
+  }
+
   @override
   render() {
     //Before working on the Toggle component in this exercise, it will cause errors
@@ -78,7 +105,13 @@ UiFactory<ToggleConsumerProps> ToggleConsumer = uiFunction(
 //
 // 💯 Extra credit: support render props as well ✅
 //
-// 💯 Extra credit: support (and expose) compound components!
+// 💯 Extra credit: support (and expose) compound components! ✅
+
+/*
+
+  Some changes were actually made below to accomodate the exposed compound components
+  
+*/
 
 // Don't make changes to the Usage component. It's here to show you how your
 // component is intended to be used and is used in the tests.
@@ -119,9 +152,11 @@ class Layer1Props = UiProps with SharedTogglePropsMixin;
 UiFactory<Layer2Props> Layer2 = uiFunction(
   (props) {
     return ToggleComponent.Consumer()(
-      (value) {
+      // ignore: avoid_types_on_closure_parameters
+      (SharedTogglePropsMixin value) {
         return Fragment()(
-          Dom.span()(value.isOn ? 'The button is on' : 'The button is off'),
+          ToggleComponent.On('The button is on'),
+          ToggleComponent.Off('The button is off'),
           Layer3()(),
         );
       },
@@ -150,16 +185,7 @@ class Layer3Props = UiProps with SharedTogglePropsMixin;
 // ignore: undefined_identifier
 // ignore: undefined_identifier
 UiFactory<Layer4Props> Layer4 = uiFunction(
-  (props) {
-    return ToggleComponent.Consumer()(
-      (value) {
-        return (Switch()
-          ..isOn = value.isOn
-          ..onClick = value.toggle
-        )();
-      },
-    );
-  },
+  (props) => ToggleComponent.Button(),
   _$Layer4Config, // ignore: undefined_identifier
 );
 
