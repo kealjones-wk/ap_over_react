@@ -26,11 +26,14 @@ class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
 
 mixin ToggleState on UiState {
   bool isOn;
+  void Function(bool isOn) toggle;
 }
 
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  get initialState => (newState()..isOn = false);
+  get initialState => (newState()
+  ..isOn = false
+  ..toggle = toggle);
 
   void toggle(_) => setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
 
@@ -68,7 +71,7 @@ UiFactory<ToggleConsumerProps> ToggleConsumer = uiFunction(
 // ToggleContext.Consumer is rendered within a provider ✅
 //
 // 💯 Extra credit: avoid unnecessary re-renders by only updating the value when
-// state changes
+// state changes ✅
 //
 // 💯 Extra credit: support render props as well
 //
