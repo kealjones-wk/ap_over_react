@@ -25,15 +25,24 @@ mixin ToggleState on UiState {
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // 🐨 We're going to need some `defaultProps` here to allow
   // people to pass a `initialOn` prop.
+  @override
+  get defaultProps => (newProps()
+    ..initialOn = false
+    ..onToggleReset = (_){}
+  );
 
   // 🐨 Rather than initializing state to have on as false,
   // set on to this.props.initialOn
   @override
-  get initialState => (newState()..isOn = false);
+  get initialState => (newState()..isOn = props.initialOn);
 
   // 🐨 now let's add a reset method here that resets the state
   // to the initial state. Then add a callback that calls
   // this.props.onReset with the `on` state.
+  void reset() {
+    setState(initialState, () => props.onToggleReset(state.isOn));
+  }
+
   void toggle(_) => setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
 
   SharedTogglePropsMixin getTogglerProps([SharedTogglePropsMixin additionalProps]) {
@@ -54,6 +63,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
       ..toggle = toggle
       // 🐨 now let's include the reset method here
       // so folks can use that in their implementation.
+      ..reset = reset
       ..getTogglerProps = getTogglerProps);
   }
 }

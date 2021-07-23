@@ -25,9 +25,7 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   // parent Toggle component and the child component more explicit
   // 🐨 You'll need to update the three OverReact function components in this file:
   //        `ToggleOn`, `ToggleOff`, and `ToggleButton`
-  //    * ToggleOn should render its children only when the parent state.isOn is true
-  //    * ToggleOff should render its children only when the parent state.isOn is false
-  //    * ToggleButton will be responsible for rendering the <Switch /> (with the right props)
+
   // 💰 Combined with changes you'll make in the `render` method, these should
   //    be able to accept `on`, `toggle`, and `children` as props via `SharedTogglePropsMixin`.
   //    Note that they will _not_ have access to Toggle instance properties
@@ -36,14 +34,15 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   static ToggleOnProps On() => ToggleOn();
 
   static ToggleOffProps Off() => ToggleOff();
-
+  
   static ToggleButtonProps Button() => ToggleButton();
 
   @override
   get initialState => (newState()..isOn = false);
 
   void toggle(_) {
-    setState((newState()..isOn = !state.isOn), () => props.onToggle(state.isOn));
+    setState(
+        (newState()..isOn = !state.isOn), () => props.onToggle(state.isOn));
   }
 
   @override
@@ -58,36 +57,49 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
     // 2. cloneElement: https://pub.dev/documentation/over_react/latest/over_react.react_wrappers/cloneElement.html
     //
     // 🐨 you'll want to completely replace the code below with the above logic.
-    return (Switch()
-      ..isOn = state.isOn
-      ..onClick = toggle
-    )();
+
+    var key = 0;
+    return Fragment()(
+      props.children.map((child) {
+        final propsToAdd = SharedTogglePropsMapView()
+          ..isOn = state.isOn
+          ..toggle = toggle
+          ..key = key++;
+        return cloneElement(child, propsToAdd);
+      }).toList(),
+    );
   }
 }
 
 class ToggleOnProps = UiProps with SharedTogglePropsMixin;
 
+//    * ToggleOn should render its children only when the parent state.isOn is true
 UiFactory<ToggleOnProps> ToggleOn = uiFunction(
   (props) {
-    return null;
+    return props.isOn ? props.children : null;
   },
   _$ToggleOnConfig, // ignore: undefined_identifier
 );
 
 class ToggleOffProps = UiProps with SharedTogglePropsMixin;
 
+//    * ToggleOff should render its children only when the parent state.isOn is false
 UiFactory<ToggleOffProps> ToggleOff = uiFunction(
   (props) {
-    return null;
+    return props.isOn ? null : props.children;
   },
   _$ToggleOffConfig, // ignore: undefined_identifier
 );
 
 class ToggleButtonProps = UiProps with SharedTogglePropsMixin;
 
+//    * ToggleButton will be responsible for rendering the <Switch /> (with the right props)
 UiFactory<ToggleButtonProps> ToggleButton = uiFunction(
   (props) {
-    return null;
+    return (Switch()
+      ..addUnconsumedDomProps(props, const [])
+      ..isOn = props.isOn
+      ..onClick = props.toggle)();
   },
   _$ToggleButtonConfig, // ignore: undefined_identifier
 );

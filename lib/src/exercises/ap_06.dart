@@ -41,14 +41,22 @@ class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
 
   void toggle(_) => setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
 
+  SharedTogglePropsMixin getTogglerProps([SharedTogglePropsMixin extraProps]) {
+    extraProps ??= SharedTogglePropsMapView();
+
+    final propsToReturn = SharedTogglePropsMapView()
+      ..addAll(extraProps)
+      ..aria.pressed = state.isOn
+      ..onClick = mouseEventCallbacks.chainFromList([toggle, extraProps.onClick]);
+    return propsToReturn;
+  }
+
   @override
   render() {
     return props.children.single(SharedTogglePropsMapView()
       ..isOn = state.isOn
       ..toggle = toggle
-      ..togglerProps = (domProps()
-        ..aria.pressed = state.isOn
-        ..onClick = toggle));
+      ..getTogglerProps = getTogglerProps);
   }
 }
 

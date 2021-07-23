@@ -26,35 +26,92 @@ class ToggleProps = UiProps with SharedTogglePropsMixin, TogglePropsMixin;
 
 mixin ToggleState on UiState {
   bool isOn;
+  void Function(bool isOn) toggle;
 }
 
 class ToggleComponent extends UiStatefulComponent2<ToggleProps, ToggleState> {
   @override
-  get initialState => (newState()..isOn = false);
+  get initialState => (newState()
+  ..isOn = false
+  ..toggle = toggle);
 
   void toggle(_) => setState(newState()..isOn = !state.isOn, () => props.onToggle(state.isOn));
 
-  static final Consumer = ToggleContext.Consumer;
+  static final Consumer = ToggleConsumer;
+
+  static ReactElement On(children) {
+    return Consumer()(
+      (value) {
+        return value.isOn ? children : null;
+      },
+    );
+  }
+
+  static ReactElement Off(children) {
+    return Consumer()(
+      (value) {
+        return value.isOn ? null : children;
+      },
+    );
+  }
+
+  static ReactElement Button() {
+    return Consumer()(
+      (value) {
+        return (Switch()
+          ..isOn = value.isOn
+          ..onClick = value.toggle
+        )();
+      }
+    );
+  }
 
   @override
   render() {
     //Before working on the Toggle component in this exercise, it will cause errors
     //When the component is functional (not necessarily complete), it will render
-    return (props.children.single(SharedTogglePropsMapView()
+    final dynamic children = props.children;
+    final extra = children is Function ? children(state) : children;
+
+    return (ToggleContext.Provider()
+      ..value = (SharedTogglePropsMapView()
       ..isOn = state.isOn
-      ..toggle = toggle))();
+      ..toggle = toggle)
+      )(extra);
   }
 }
 
+mixin ToggleConsumerProps on UiProps {}
+
+UiFactory<ToggleConsumerProps> ToggleConsumer = uiFunction(
+  (props) {
+    return ToggleContext.Consumer()(
+      (value) {
+        if (value == null) {
+          throw Exception('Cannot render toggle compound components outside the toggle component');
+        }
+        return props.children.single(value);
+      },
+    );
+  },
+  _$ToggleConsumerConfig, // ignore: undefined_identifier
+);
+
 // 💯 Extra credit: Add a custom Consumer that validates the
-// ToggleContext.Consumer is rendered within a provider
+// ToggleContext.Consumer is rendered within a provider ✅
 //
 // 💯 Extra credit: avoid unnecessary re-renders by only updating the value when
-// state changes
+// state changes ✅
 //
-// 💯 Extra credit: support render props as well
+// 💯 Extra credit: support render props as well ✅
 //
-// 💯 Extra credit: support (and expose) compound components!
+// 💯 Extra credit: support (and expose) compound components! ✅
+
+/*
+
+  Some changes were actually made below to accomodate the exposed compound components
+  
+*/
 
 // Don't make changes to the Usage component. It's here to show you how your
 // component is intended to be used and is used in the tests.
@@ -95,9 +152,11 @@ class Layer1Props = UiProps with SharedTogglePropsMixin;
 UiFactory<Layer2Props> Layer2 = uiFunction(
   (props) {
     return ToggleComponent.Consumer()(
-      (value) {
+      // ignore: avoid_types_on_closure_parameters
+      (SharedTogglePropsMixin value) {
         return Fragment()(
-          Dom.span()(value.isOn ? 'The button is on' : 'The button is off'),
+          ToggleComponent.On('The button is on'),
+          ToggleComponent.Off('The button is off'),
           Layer3()(),
         );
       },
@@ -126,16 +185,7 @@ class Layer3Props = UiProps with SharedTogglePropsMixin;
 // ignore: undefined_identifier
 // ignore: undefined_identifier
 UiFactory<Layer4Props> Layer4 = uiFunction(
-  (props) {
-    return ToggleComponent.Consumer()(
-      (value) {
-        return (Switch()
-          ..isOn = value.isOn
-          ..onClick = value.toggle
-        )();
-      },
-    );
-  },
+  (props) => ToggleComponent.Button(),
   _$Layer4Config, // ignore: undefined_identifier
 );
 
